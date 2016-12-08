@@ -16,27 +16,36 @@ router.post('/', function(req, res, next) {
         console.log('undefined field');
         res.send({msg: "Invalid username or password"});
     } else {
-        User.getUserByUserName(username).then(function (data) {
-            var user = data[0];
-            if (password === user.password) {
-                console.log('login successful');
-                var token = md5(username + ''+ Date.now());
+        User.getUserByUserName(username, password).then(function (users) {
+            var user = users[0];
+            console.log("running");
+            User.comparePassword(password, user.password).then(function (isMatch) {
+                console.log("isMatch : " + isMatch);
+                if (isMatch) {
+                    console.log('login successful');
+                    var token = md5(username + '' + Date.now());
 
-                User.updateToken(username, token).then(function (document) {
-                    console.log(document);
-                }, function (err) {
-                    res.send(err);
-                });
-                res.send({
-                    token: token
-                });
-            } else {
+                    User.updateToken(username, token).then(function (user) {
+                        console.log("user"+ user);
+                    }, function (err) {
+                        res.send(err);
+                    });
+                    res.send({
+                        token: token
+                    });
+                } else {
+                    res.send({
+                        msg: "Invalid password"
+                    })
+                }
+            }, function (err) {
+                console.log("login: " + err);
                 res.send({
                     msg: "wrong username or password"
                 });
-            }
+            });
         }, function (err) {
-            // console.log(err);
+            console.log("get user: " + err);
             res.send(err);
         });
     }
