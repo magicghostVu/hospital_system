@@ -49,14 +49,14 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                 </div>
                                 <div class="modal-body">
-                                    <button class="btn-fb"> <i class="fa fa-fw fa-facebook pull-left" aria-hidden="true"></i>
-                                        Login with Facebook	</button> <br>
-                                    <button class="btn-gp"> <i class="fa fa-fw fa-google-plus pull-left" aria-hidden="true"></i>
-                                        Login with Google	</button> <br>
-                                    <div class="signup-or-separator">
-                                        <span class="h6 signup-or-separator--text">or</span>
-                                        <hr>
-                                    </div>
+                                    <!--<button class="btn-fb"> <i class="fa fa-fw fa-facebook pull-left" aria-hidden="true"></i>-->
+                                        <!--Login with Facebook	</button> <br>-->
+                                    <!--<button class="btn-gp"> <i class="fa fa-fw fa-google-plus pull-left" aria-hidden="true"></i>-->
+                                        <!--Login with Google	</button> <br>-->
+                                    <!--<div class="signup-or-separator">-->
+                                        <!--<span class="h6 signup-or-separator&#45;&#45;text">or</span>-->
+                                        <!--<hr>-->
+                                    <!--</div>-->
                                     <form>
                                         <div class="form-group">
                                             <input type="email" class="form-control-form " id="exampleInputEmaillog" placeholder="Email">
@@ -101,14 +101,14 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                 </div>
                                 <div class="modal-body">
-                                    <button class="btn-fb"> <i class="fa fa-fw fa-facebook pull-left" aria-hidden="true"></i>
-                                        Signup with Facebook	</button> <br>
-                                    <button class="btn-gp"> <i class="fa fa-fw fa-google-plus pull-left" aria-hidden="true"></i>
-                                        Signup with Google	</button> <br>
-                                    <div class="signup-or-separator">
-                                        <span class="h6 signup-or-separator--text">or</span>
-                                        <hr>
-                                    </div>
+                                    <!--<button class="btn-fb"> <i class="fa fa-fw fa-facebook pull-left" aria-hidden="true"></i>-->
+                                        <!--Signup with Facebook	</button> <br>-->
+                                    <!--<button class="btn-gp"> <i class="fa fa-fw fa-google-plus pull-left" aria-hidden="true"></i>-->
+                                        <!--Signup with Google	</button> <br>-->
+                                    <!--<div class="signup-or-separator">-->
+                                        <!--<span class="h6 signup-or-separator&#45;&#45;text">or</span>-->
+                                        <!--<hr>-->
+                                    <!--</div>-->
                                     <button type="submit" class="btn-lgin" data-toggle="modal"  data-dismiss="modal" data-target="#at-signup-filling">Signup with Email</button> <hr>
                                     <p>By signing up, I agree to Airbnb’s , Payments <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, <a href="#">Guest Refund Policy</a>, and <a href="#">Host Guarantee Terms</a>. </p>
                                 </div>
@@ -133,20 +133,23 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Sign up with <a href="#">Facebook</a>  or <a href="#">Google</a></p>
-                                    <div class="signup-or-separator">
-                                        <span class="h6 signup-or-separator--text">or</span>
-                                        <hr>
-                                    </div>
+                                    <!--<p>Sign up with <a href="#">Facebook</a>  or <a href="#">Google</a></p>-->
+                                    <!--<div class="signup-or-separator">-->
+                                        <!--<span class="h6 signup-or-separator&#45;&#45;text">or</span>-->
+                                        <!--<hr>-->
+                                    <!--</div>-->
                                     <form>
                                         <div class="form-group">
-                                            <input type="text" class="form-control-form " id="exampleInputEmaillog" placeholder="Full Name">
+                                            <input type="text" class="form-control-form " id="exampleInputEmaillog" placeholder="User Name">
                                         </div>
                                         <div class="form-group">
                                             <input type="email" class="form-control-form " id="exampleInputEmaillog" placeholder="Email">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control-form " id="exampleInputPasswordpas" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control-form " id="exampleInputPasswordpas" placeholder="Confirm Password">
                                         </div>
 
                                         <div class="row">
@@ -157,7 +160,7 @@
                                                         I’d like to receive coupons and inspiration
                                                     </label>
                                                 </div>
-                                                <p>By signing up, I agree to NextDoc , Payments <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, <a href="#">Guest Refund Policy</a>, and <a href="#">Host Guarantee Terms</a>. </p>
+
                                             </div>
                                         </div>
                                         <button type="submit" class="btn-lgin">Signup</button>
@@ -227,24 +230,340 @@
 </div>
 <!-- end navbar and login dialog -->
 
-<!--doctor list-->
-<div class="row">
-    <div class="searchable-container">
-        <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-            <div class="info-block block-info clearfix">
-                <div class="square-box pull-left">
-                    <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+<div id="exTab3" style="display: none;" class="container">
+    <div class="container">
+        <div class="row menu-tab">
+            <ul  class="nav nav-pills">
+                <li class="active">
+                    <a  href="#1b" data-toggle="tab">List Doctors</a>
+                </li>
+                <li><a href="#2b" data-toggle="tab">Oppointment</a>
+                </li>
+                <li><a href="#3b" data-toggle="tab">Prof le</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="tab-content clearfix">
+        <div class="tab-pane active" id="1b">
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+
+                        </div>
+                    </div>
                 </div>
-                <h5>Company Name</h5>
-                <h4>Name: Tyreese Burn</h4>
-                <p>Title: Manager</p>
-                <span>Phone: 555-555-5555</span>
-                <span>Email: sample@company.com</span>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="2b">
+
+        </div>
+        <div class="tab-pane" id="3b">
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class=" pull-left">
+                                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ" width="120" height="120" style="border-radius: 100% ;margin-right: 15px;">
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                            <input  type="file" value="Change Avatar">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!--end doctor list-->
+<div id="exTab4" class="container">
+    <div class="container">
+        <div class="row menu-tab">
+            <ul  class="nav nav-pills">
+                <li class="active">
+                    <a  href="#1a" data-toggle="tab">List Doctors</a>
+                </li>
+                <li><a href="#2a" data-toggle="tab">Oppointment</a>
+                </li>
+                <li><a href="#3a" data-toggle="tab">Prof le</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="tab-content clearfix">
+        <div class="tab-pane active" id="1a">
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="2a">
+
+        </div>
+        <div class="tab-pane" id="3a">
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class=" pull-left">
+                                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ" width="120" height="120" style="border-radius: 100% ;margin-right: 15px;">
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                            <input  type="file" value="Change Avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h3>Designer:Kho Khac Thanh</h3>
+                <h4>Coder:Vu Hong Phu</h4>
+                <h4>App Androi:Truong Dai Ngoc</h4>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript" src="javascripts/jquery.min.js"></script>
 <script src="javascripts/bootstrap.min.js"></script>
 </body>

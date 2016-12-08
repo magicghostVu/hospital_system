@@ -265,7 +265,9 @@
 }
 .info-block
 {
-    border-right:5px solid #E6E6E6;margin-bottom:25px
+    border-right:5px solid #E6E6E6;
+    margin-bottom:25px;
+    margin-top: 25px;
 }
 .info-block .square-box
 {
@@ -281,3 +283,64 @@
 }
 
 /*end doctors list*/
+
+
+/*begin tab*/
+body {
+    padding : 10px ;
+
+}
+
+#exTab1 .tab-content {
+    color : white;
+    background-color: #428bca;
+    padding : 5px 15px;
+}
+
+#exTab2 h3 {
+    color : white;
+    background-color: #428bca;
+    padding : 5px 15px;
+}
+
+/* remove border radius for the tab */
+.nav-pills{
+    padding: 10px 15%;
+}
+#exTab1 .nav-pills > li > a {
+    border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+
+#exTab3 .nav-pills > li > a {
+    border-radius: 4px 4px 0 0 ;
+}
+
+#exTab3 .tab-content {
+    padding : 5px 15px;
+}
+.items:hover{
+    background: hsla(0, 0%, 80%, 0.89);
+}
+.menu-tab{
+    width: 60%;
+    margin-left: 20%;
+}
+.tab-pane{
+    height: 450px;
+    overflow: auto;
+    width: 100%;
+}
+.item-doctor{
+    margin-left: 0;
+    margin-right: 0;
+}
+/*footer*/
+footer{
+    margin-top: 30px;
+    background: #1db9ec;
+}
+
+
+
