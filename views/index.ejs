@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="stylesheets/toastr.min.css">
 
     <script src="javascripts/socket.io.js"></script>
-    <script src="javascripts/socket.handle.js"></script>
+
     <script type="text/javascript" src="javascripts/jquery.min.js"></script>
     <script src="javascripts/angular.min.js"></script>
     <script src="javascripts/toastr.min.js"></script>
 
     <script src="javascripts/app_ng.js"></script>
 
+
+
+    <!--set socket handle here because of they access in to some global scope-->
+    <script src="javascripts/socket.handle.js"></script>
 </head>
 <body ng-app="app">
 
@@ -326,162 +330,13 @@
         </div>
     </div>
 </div>
-<div id="exTab4" class="container">
-    <div class="container">
-        <div class="row menu-tab">
-            <ul  class="nav nav-pills">
-                <li class="active">
-                    <a  href="#1a" data-toggle="tab">List Doctors</a>
-                </li>
-                <li><a href="#2a" data-toggle="tab">Oppointment</a>
-                </li>
-                <li><a href="#3a" data-toggle="tab">Prof le</a>
-                </li>
-            </ul>
-        </div>
-    </div>
 
+<!--patient content begin-->
+<patient-content ng-controller="patientContentController" >
 
-    <div class="tab-content clearfix">
-        <div class="tab-pane active" id="1a">
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                            </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
+</patient-content>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                            </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                            </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                            </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                            </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                            </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                            </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane" id="2a">
-
-        </div>
-        <div class="tab-pane" id="3a">
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class=" pull-left">
-                                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ" width="120" height="120" style="border-radius: 100% ;margin-right: 15px;">
-                            </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                            <input  type="file" value="Change Avatar">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--patient content end-->
 
 
 <footer>

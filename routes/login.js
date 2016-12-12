@@ -22,10 +22,10 @@ router.post('/', function(req, res, next) {
             User.comparePassword(password, user.password).then(function (isMatch) {
                 var token = md5(username + '' + Date.now());
                 User.updateToken(username, token).then(function (user) {
-                    console.log("user"+ user);
+                    console.log("user+ login 25 line"+ user);
                     res.send({
                         token: token,
-                        type: user._type
+                        _type: user._type
                     });
                 }, function (err) {
                     res.send(err);

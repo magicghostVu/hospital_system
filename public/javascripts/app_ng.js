@@ -6,6 +6,8 @@
 var global_info;
 var authenControllerScope;
 var headerScope;
+var patientContentScope;
+
 
 var app=angular.module('app', []);
 
@@ -37,6 +39,10 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
         console.log($scope.username+" "+$scope.password);
         $scope.login($scope.username, $scope.password).then(function(res){
             //handle UI logic... etc here
+            //handle each type of user
+
+
+
 
             global_info=res;
             console.log(res);
@@ -49,8 +55,33 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
             });
 
             //emit some data to receive data to build UI
-            socketPatient.emit("get_data",global_info);
+            if(global_info._type==="patient"){
+                console.log('patient login');
+                /*// update UI patient
+                patientContentScope.$apply(function(){
+                    patientContentScope.patientLogin=true;
+                });*/
+                console.log(global_info);
 
+                //emit data to get data back to build UI
+                socketPatient.emit("get_data_for_patient",global_info);
+
+            }else if(global_info._type==='doctor'){
+
+
+
+                console.log('doctor login');
+            }else if(global_info._type==='staff'){
+
+
+
+                console.log('staff login');
+            }else if(global_info._type==='lab_doctor'){
+
+
+
+                console.log('lab_doctor login');
+            }
 
             toastr.success('Login Successful!');
             toastr.optionsOverride = 'positionclass:toastr-bottom-right';
@@ -60,6 +91,9 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
     }
 
 });
+
+controller_authen.$inject=["$scope", "$http"];
+
 
 app.directive("myModal",function() {
     return {
@@ -95,5 +129,30 @@ var header=app.directive('myHeader', function(){
     }
 });
 
-controller_authen.$inject=["$scope", "$http"];
+app.directive('patientContent', function(){
+    return {
+        restrict: "E",
+        templateUrl: 'templates/content-patient.html',
+        link : function(scope, e, attr){
+            // resgi
+        }
+    }
+});
+
+var patientContentController=app.controller('patientContentController', function($scope){
+    patientContentScope=$scope;
+    $scope.patientLogin=false;
+    $scope.listDoctors=[];
+    $scope.Session={};
+    $scope.profile={};
+    $scope.receiveData=function(data){
+        this.patientLogin=true;
+        this.listDoctors=data.listDoctors;
+
+
+    }
+
+});
+
 console.log("ng run");
+

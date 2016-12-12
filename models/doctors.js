@@ -65,8 +65,9 @@ module.exports.getAllDoctorDetails = function () {
 };
 
 
+/*
 Doctor.getAllDoctorDetails().then(function (doctors) {
     console.log(doctors);
 }, function (err) {
     console.log(err);
-});
+});*/

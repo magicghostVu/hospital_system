@@ -124,6 +124,32 @@ module.exports.createUser = function (newUser) {
         });
     });
 };
+
+
+
+var authenticateToken= function(token){
+    return new Promise(function(resolve, reject){
+        var query= {
+          token: token
+        };
+        User.find(query).then(function(users){
+            if(users.length==0){
+                reject({
+                    msg: "token is invalid"
+                });
+            }else{
+                resolve(users[0]);
+            }
+        }, function(err){
+
+            // almost never run over there
+            console.log('model/users 140 '+JSON.stringify(err));
+        });
+    });
+};
+
+
+module.exports.authenticateToken=authenticateToken;
 /*
 User.find({}).then(function (data) {
     console.log(data);

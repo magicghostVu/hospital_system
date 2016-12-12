@@ -43,16 +43,47 @@ io.on('connection', function(socket){
 
 var patientChannel=io.of('/patient');
 patientChannel.on('connection', function(socket){
-    console.log(socket.id+" connected");
-    socket.on("get_data", function(data){
-       // check information
-        //if OK then send back data
-        console.log(data);
-        
+    console.log("client "+socket.id+" connected");
+
+
+    /*this event will send all the data to build UI for patient
+    * include list doctors, Session (activity), profile
+    *
+    * */
+    socket.on('get_data_for_patient', function(data){
+        var id= socket.id;
+        console.log("www 49 "+ JSON.stringify(data));
+        require('../models/users').authenticateToken(data.token).then(function(user){
+            // get List Doctors
+            require('../models/doctors').getAllDoctorDetails().then(function(_data){
+                var back_data={};
+                // TODO : get Session and Profile
+                console.log("www 54 "+_data);
+
+
+
+                back_data.listDoctors=_data;
+                patientChannel.to(id).emit('data_build_UI', back_data);
+            }, function(err){
+                console.log('www 57 '+ JSON.stringify(err));
+            });
+
+        }, function(err){
+
+        });
+
     });
 
-});
+    /*socket.on("get_data", function(data){
+       // check information
+        //if OK then send back data
+        // check token
 
+        console.log("www 52 "+JSON.stringify(data));
+        
+    });*/
+
+});
 
 
 /**
