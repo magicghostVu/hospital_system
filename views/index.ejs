@@ -5,12 +5,16 @@
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
     <link rel="stylesheet" href="stylesheets/style.css">
+
     <script src="javascripts/socket.io.js"></script>
-    <script src="javascripts/angular.min.js"></script>
     <script src="javascripts/socket.handle.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+    <script src="javascripts/angular.min.js"></script>
+
     <script src="javascripts/app_ng.js"></script>
+
 </head>
-<body>
+<body ng-app="app">
 
 <!--begin navbar and login dialog-->
 <div class="blue-bg-nav">
@@ -42,7 +46,7 @@
                 </header>
                 <section class="at-login-form">
                     <!-- MODAL LOGIN -->
-                    <div class="modal fade" id="at-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div my-modal ng-controller="au_ctrl" class="modal fade" id="at-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -59,10 +63,10 @@
                                     <!--</div>-->
                                     <form>
                                         <div class="form-group">
-                                            <input type="email" class="form-control-form " id="exampleInputEmaillog" placeholder="Email">
+                                            <input ng-model="username" class="form-control-form " id="exampleInputEmaillog" placeholder="Email">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control-form " id="exampleInputPasswordpas" placeholder="Password">
+                                            <input ng-model="password" type="password" class="form-control-form " id="exampleInputPasswordpas" placeholder="Password">
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -76,7 +80,7 @@
                                                 <p class="frgt-pswd"   data-toggle="modal" data-dismiss="modal"  data-target="#at-reset-pswd">	Forgot Password ?</p>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn-lgin">Login</button>
+                                        <button ng-click="handleLogin()" class="btn-lgin" onsubmit="return false">Login</button>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -551,7 +555,7 @@
             <div class="col-md-6">
                 <h3>Designer:Kho Khac Thanh</h3>
                 <h4>Coder:Vu Hong Phu</h4>
-                <h4>App Androi:Truong Dai Ngoc</h4>
+                <h4>App Android:Truong Dai Ngoc</h4>
             </div>
             <div class="col-md-3"></div>
         </div>
@@ -564,7 +568,7 @@
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+
 <script src="javascripts/bootstrap.min.js"></script>
 </body>
 </html>

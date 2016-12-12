@@ -1,8 +1,5 @@
 /**
  * Created by magic_000 on 07/12/2016.
  */
+var socketPatient=io("/patient");
 
-(function(){
-    var socket=io();
-    var sock_2=io('/slash');
-})();
