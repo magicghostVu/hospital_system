@@ -31,8 +31,7 @@ var UserSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
-        bcrypt: true
+        required: true
     },
     _type: {
         type: String
@@ -89,15 +88,12 @@ module.exports.updateToken = function (username, token) {
 * */
 module.exports.comparePassword = function (candidatePassword, hash) {
     return new Promise(function(resolve, reject){
-        bcrypt.compare(candidatePassword, hash).then(function (isMatch) {
+        var isMatch = bcryptjs.compareSync(candidatePassword, hash);
+        if (isMatch) {
             resolve(isMatch);
-        }, function (err) {
-            // console.log("bcy: " + err);
-            reject(err);
-        });
-    }, function (err) {
-        // console.log("compare pass: " + err);
-        reject(err);
+        } else {
+            reject(isMatch);
+        }
     });
 };
 
@@ -109,36 +105,21 @@ module.exports.createUser = function (newUser) {
         
         User.getUserByUserName(newUser.username).then(function (users) {
 
-            // explain ???
-
-            // reject immediately
-            if (users.length == 0) {
-                resolve(user)
-            } else {
-                reject({
-                    msg: "username is not available."
-                });
-            }
+            reject({
+                msg: "username is not available."
+            });
         }, function (err) {
 
+            var salt = bcryptjs.genSaltSync(10);
+            var hashPassword = bcryptjs.hashSync(newUser.password, salt);
 
+            newUser.password = hashPassword;
 
-            // if err.msg != undefined ....
-
-            // wtf ??? why ??
-            bcrypt.hash(newUser.password, 10).then(function (hash) {
-
-                // ser hashed password
-                newUser.password = hash;
-
-                newUser.save().then(function (user) {
-                    resolve(user);
-                }, function (err) {
-                    reject(err);
-                });
+            newUser.save().then(function (user) {
+                resolve(user);
+            }, function (err) {
+                reject(err);
             });
-            // console.log(err);
-            // reject(err);
         });
     });
 };

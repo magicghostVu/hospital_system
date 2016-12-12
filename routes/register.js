@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
     // form validation
     req.checkBody('username', 'Name field is required').notEmpty();
     req.checkBody('email', 'Email field is required').notEmpty();
-    req.checkBody('type', 'Type field is required').notEmpty();
+    req.checkBody('_type', 'Type field is required').notEmpty();
     req.checkBody('password', 'Password field is required').notEmpty();
     req.checkBody('confirm_password', 'Password do not match').equals(password);
 

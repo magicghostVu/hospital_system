@@ -20,25 +20,17 @@ router.post('/', function(req, res, next) {
             var user = users[0];
             console.log("running");
             User.comparePassword(password, user.password).then(function (isMatch) {
-                console.log("isMatch : " + isMatch);
-                if (isMatch) {
-                    console.log('login successful');
-                    var token = md5(username + '' + Date.now());
-                    User.updateToken(username, token).then(function (user) {
-                        console.log("user"+ user);
-                    }, function (err) {
-                        res.send(err);
-                    });
+                var token = md5(username + '' + Date.now());
+                User.updateToken(username, token).then(function (user) {
+                    console.log("user"+ user);
                     res.send({
-                        token: token
+                        token: token,
+                        type: user._type
                     });
-                } else {
-                    res.send({
-                        msg: "Invalid password"
-                    })
-                }
-            }, function (err) {
-                console.log("login: " + err);
+                }, function (err) {
+                    res.send(err);
+                });
+            }, function (isMatch) {
                 res.send({
                     msg: "wrong username or password"
                 });
