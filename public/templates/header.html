@@ -1,0 +1,25 @@
+<header class="header-tp" ng-controller="header_controller">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <form class="form-inline">
+                    <a  href="#" class="btn-blu mrgn-top" data-toggle="modal" data-target="#at-helping">Help</a>
+                    <ul class="nav navbar-nav navbar-right bdr">
+                        <li><a href="#" data-toggle="modal" data-target="#at-login" ng-show="!isLogin">Sign in</a></li>
+                        <li ><a href="#" data-toggle="modal" data-target="#at-signup" ng-show="!isLogin">Sign Up</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#at-login" ng-show="isLogin">{{username}}</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#at-login" ng-show="isLogin">Logout</a></li>
+                    </ul>
+                </form>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+</header>
