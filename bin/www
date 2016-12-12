@@ -48,7 +48,7 @@ patientChannel.on('connection', function(socket){
        // check information
         //if OK then send back data
         console.log(data);
-
+        
     });
 
 });

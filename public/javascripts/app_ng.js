@@ -50,6 +50,8 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
 
             //emit some data to receive data to build UI
             socketPatient.emit("get_data",global_info);
+
+
             toastr.success('Login Successful!');
             toastr.optionsOverride = 'positionclass:toastr-bottom-right';
         }, function(err){
@@ -67,8 +69,6 @@ app.directive("myModal",function() {
             scope.dismiss= function(){
                 console.log('run hide modal');
                 console.log($(element.children()[0]).modal('hide'));
-
-
             };
         }
 
@@ -94,7 +94,6 @@ var header=app.directive('myHeader', function(){
         }
     }
 });
-
 
 controller_authen.$inject=["$scope", "$http"];
 console.log("ng run");

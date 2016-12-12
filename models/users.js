@@ -12,7 +12,7 @@ var bcryptjs = require('bcryptjs');
 
 mongoose.Promise = global.Promise;
 var uri = 'mongodb://localhost/hospital';
-//mongoose.connect(uri);
+//mongoose.connect(uri);+
 
 var UserSchema = mongoose.Schema({
     username: {
@@ -117,6 +117,7 @@ module.exports.createUser = function (newUser) {
 
             newUser.save().then(function (user) {
                 resolve(user);
+                // :TODO create doctor, lab_doc,... if type == doctor (or lab_doc),...
             }, function (err) {
                 reject(err);
             });
