@@ -24,7 +24,6 @@ router.post('/', function(req, res, next) {
                 if (isMatch) {
                     console.log('login successful');
                     var token = md5(username + '' + Date.now());
-
                     User.updateToken(username, token).then(function (user) {
                         console.log("user"+ user);
                     }, function (err) {

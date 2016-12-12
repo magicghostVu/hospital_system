@@ -1,12 +1,18 @@
 /**
  * Created by NarX on 12/6/16.
  */
+
+
+/*
+* Remember that when use Promise, only resolve when you finish something
+*
+* */
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcryptjs = require('bcryptjs');
 
 mongoose.Promise = global.Promise;
 var uri = 'mongodb://localhost/hospital';
-// mongoose.connect(uri);
+//mongoose.connect(uri);
 
 var UserSchema = mongoose.Schema({
     username: {
@@ -38,6 +44,8 @@ var UserSchema = mongoose.Schema({
 
 var User = module.exports = mongoose.model('User', UserSchema);
 
+
+// always resolve at least 1 users
 module.exports.getUserByUserName = function (username) {
     var query = { username : username };
     return new Promise(function (resolve, reject) {
@@ -100,6 +108,10 @@ module.exports.createUser = function (newUser) {
     return new Promise(function (resolve, reject) {
         
         User.getUserByUserName(newUser.username).then(function (users) {
+
+            // explain ???
+
+            // reject immediately
             if (users.length == 0) {
                 resolve(user)
             } else {
@@ -108,6 +120,12 @@ module.exports.createUser = function (newUser) {
                 });
             }
         }, function (err) {
+
+
+
+            // if err.msg != undefined ....
+
+            // wtf ??? why ??
             bcrypt.hash(newUser.password, 10).then(function (hash) {
 
                 // ser hashed password
