@@ -32,7 +32,10 @@
 {
     color:#fff!important;
 }
-
+.header-tp .bdr li a.user
+{
+    color: #000000 !important;
+}
 .header-tp .pddr
 {
     padding-top:5px;
@@ -107,7 +110,11 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#4999be', end
     text-decoration: none;
 }
 .nav > li > a{
-    padding: 10px 20px;
+    padding: 8px 20px;
+}
+.nav > li > a.user{
+    font-size: 16px;
+    font-family: "Bernard MT Condensed";
 }
 btn:hover{
     color: #fff;
@@ -154,6 +161,30 @@ a:hover{
 {
     margin: 10px 0px;
 }
+/*######################## banner ##################################*/
+.banner{
+    background:url("../images/banner.jpg")no-repeat center;
+    height: 200px;
+}
+.banner-left{
+    float: left;
+    margin-left: 26%;
+}
+.banner-left > h1{
+    text-transform: uppercase;
+    font-size: 45px;
+    color: #fff;
+}
+.banner-right{
+    float: right;
+    margin-right: 25%;
+
+}
+.banner-right > img{
+    width: 300px;
+    height: 195px;
+}
+
 
 /*######################## LOGIN/SIGNUP PAGE START ##################################*/
 .at-login-form .btn-fb
@@ -353,7 +384,12 @@ a:hover{
 }
 .info-block .square-box
 {
-    width:100px;min-height:110px;margin-right:22px;text-align:center!important;background-color:#676767;padding:20px 0
+    min-height: 180px;
+    height:180px;
+    margin-right:22px;
+    text-align:center!important;
+    background-color:#676767;
+    padding:20px 0
 }
 .info-block.block-info
 {
@@ -363,7 +399,34 @@ a:hover{
 {
     background-color:#20819e;color:#FFF
 }
+.pull-left{
+    width: 20%;
+    float: left!important;
+}
+.pull-right{
+    width: 65%;
+    float: left!important;
 
+}
+.pull-right > h4{
+    font-size: 24px;
+    color: #09a4d2;
+}
+.pull-right > dl > dd.name{
+    font-size: 18px;
+    font-weight: bold;
+    color: #ed1b2f;
+}
+.pull-right > dl > dt{
+    float: left;
+    width: 30%;
+}
+.pull-right > dl > dd{
+    float: left;
+    width: 70%;
+}
+
+.p
 /*end doctors list*/
 
 
@@ -387,7 +450,43 @@ body {
 
 /* remove border radius for the tab */
 .nav-pills{
-    padding: 10px 15%;
+    padding: 10px 0;
+}
+.nav-pills>li.tab>a{
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #6B6B6B;
+    background-color: #fff;
+}
+.nav-pills>li.active>a{
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color:  #ed1b2f;
+    background-color: #fff;
+}
+.nav-pills>li.tab>a:focus{
+    color: #ed1b2f;
+    background-color: #fff;
+}
+.nav-pills>li.tab>a:hover{
+    color: #ed1b2f;
+    background-color: #fff;
+}
+.nav-pills>li{
+    margin: 0 10px;
+}
+.nav-pills > .logo > .lg{
+    margin-left: 7px;
+    text-transform: uppercase;
+    font-size: 27px;
+    font-family: Jokerman;
+}
+.nav-pills > .logo > img{
+    width:50px;
+    margin-bottom: 10px;
+    height: 50px;
 }
 #exTab1 .nav-pills > li > a {
     border-radius: 0;
@@ -406,11 +505,11 @@ body {
     background: hsla(0, 0%, 80%, 0.89);
 }
 .menu-tab{
-    width: 60%;
-    margin-left: 20%;
+
+    margin-left: 10%;
 }
 .tab-pane{
-    height: 450px;
+    height: 1000px;
     overflow: auto;
     width: 100%;
 }
@@ -421,8 +520,57 @@ body {
 /*footer*/
 footer{
     margin-top: 30px;
-    background: #1db9ec;
+    background: #333;
 }
+.footer-tab > h3{
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 22px;
+}
+.footer{
+    padding-top: 40px;
+    color: #fff;
+    width: 55%;
+    border-bottom: 1px solid #232323;
+}
+.footer-tab > ul > li >a{
+    font-size: 16px;
+    font-weight: 700;
+    color: #d6d6d6;
+    text-decoration: none;
+    margin: 14px 0;
+    display: inline-block;
+}
+.footer-tab > ul{
+    padding: 0;
+    list-style: none;
+}
+.footer-tab > ul >li{
+    text-decoration: none;
+}
+footer> .end{
+    position: relative;
+    line-height: 70px;
+    font-weight: 400;
+    font-style: italic;
+    color: #FFF;
+    width: 55%;
+    margin: 0 auto;
+}
+footer > .end > a >img{
+    height:40px;
 
 
-
+}
+footer > .end > a {
+    font-family: Jokerman;
+    text-transform: uppercase;
+    font-size: 14px;
+    position: absolute;
+    right: 20px;
+    top: 0px;
+}
+/*form profile*/
+#myform table tr td{
+    padding: 7px 5px;
+}

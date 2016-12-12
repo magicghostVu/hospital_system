@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Home page</title>
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
@@ -178,6 +178,7 @@
     <div class="container">
         <div class="row menu-tab">
             <ul  class="nav nav-pills">
+
                 <li class="active">
                     <a  href="#1b" data-toggle="tab">List Doctors</a>
                 </li>
@@ -337,20 +338,161 @@
 </patient-content>
 
 <!--patient content end-->
+<script type="text/javascript">
 
+    function readURL(input, thumbimage) {
+        if (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#thumbimage").attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+        else { // Sử dụng cho IE
+            $("#thumbimage").attr('src', input.value);
+
+        }
+        $("#thumbimage").show();
+        $('.filename').text($("#uploadfile").val());
+        $('.Choicefile').css('background', '#C4C4C4');
+        $('.Choicefile').css('cursor', 'default');
+        $(".removeimg").show();
+        $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
+
+    }
+    $(document).ready(function () {
+        var html = '';
+        $('#edit').click(function () {
+            $('#edit').hide();
+            $('#ok').show();
+            $('#exit').show();
+            html = $('#myform').html();
+            var company = $('#myform>h5').text();
+            var name = $('#myform>h4').text().slice(6);
+            var title = $('#myform>p').text().slice(7);
+            var phone = $('#myform span').first().text().slice(7);
+            var email = $('#myform span').last().text().slice(7);
+            var html_after = '';
+            html_after += "<table cellpadding='10'>";
+
+
+            html_after += "<tr>";
+            html_after += "<td>";
+            html_after = html_after + "Company:";
+            html_after += "</td>";
+            html_after += "<td>";
+            html_after = html_after + "<input class='form-control' type='text' name='company' value='" + company + "'/>";
+            html_after += "</td>";
+            html_after += "</tr>";
+
+            html_after += "<tr>";
+            html_after += "<td>";
+            html_after = html_after + "Name:";
+            html_after += "</td>";
+            html_after += "<td>";
+            html_after = html_after + "<input class='form-control' type='text' name='name' value='" + name + "'/>";
+            html_after += "</td>";
+            html_after += "</tr>";
+
+            html_after += "<tr>";
+            html_after += "<td>";
+            html_after = html_after + "Title:";
+            html_after += "</td>";
+            html_after += "<td>";
+            html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
+            html_after += "</td>";
+            html_after += "</tr>";
+
+            html_after += "<tr>";
+            html_after += "<td>";
+            html_after = html_after + "Phone:";
+            html_after += "</td>";
+            html_after += "<td>";
+            html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
+            html_after += "</td>";
+            html_after += "</tr>";
+            html_after += "<tr>";
+            html_after += "<td>";
+            html_after = html_after + "Email:";
+            html_after += "</td>";
+            html_after += "<td>";
+            html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
+            html_after += "</td>";
+            html_after += "</tr>";
+
+            html_after += "</table>";
+            console.log(html_after);
+            $('#myform').html(html_after);
+        });
+        $('#exit').click(function () {
+            $('#ok').hide();
+            $('#exit').hide();
+            $('#myform').html(html);
+            $('#edit').show();
+        });
+
+        $('#demo').click(function () {
+            console.log($('#left1').css('height'));
+        });
+        $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
+            $("#uploadfile").click();
+
+        });
+        $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
+            $("#thumbimage").attr('src', '').hide();
+            $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
+            $(".removeimg").hide();
+            $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
+                $("#uploadfile").click();
+            });
+            $('.Choicefile').css('background', '#0877D8');
+            $('.Choicefile').css('cursor', 'pointer');
+            $(".filename").text("");
+        });
+    });
+</script>
 
 <footer>
-    <div class="container">
+    <div class="container footer">
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <h3>Designer:Kho Khac Thanh</h3>
-                <h4>Coder:Vu Hong Phu</h4>
-                <h4>App Android:Truong Dai Ngoc</h4>
+            <div class="col-md-3 footer-tab">
+                <h3>thành viên</h3>
+                <ul>
+                    <li><a href="/">Thông tin nhóm</a></li>
+                    <li><a href="/">Các thành viên</a></li>
+                    <li><a href="/">Hoạt động</a></li>
+
+                </ul>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-3 footer-tab">
+                <h3>tư vấn</h3>
+                <ul>
+                    <li><a href="/">Bác sĩ</a></li>
+                    <li><a href="/">Tâm lý</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-tab">
+                <h3>thắc mắc</h3>
+                <ul>
+                    <li><a href="/">Chăm sóc khách hàng</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-3 footer-tab">
+                <h3>is hotpital</h3>
+                <ul>
+                    <li><a href="/">Giới thiệu IS Hotpital</a></li>
+                    <li><a href="/">Hệ thống</a></li>
+
+                </ul>
+            </div>
+
         </div>
 
+    </div>
+    <div class="end">
+        <p>© 2016 IS Hotpital. All rights reserved.</p>
+        <a href="/"><img src="images/logo.png">IS Hotpitall</a>
     </div>
 
 </footer>
