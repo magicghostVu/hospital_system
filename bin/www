@@ -57,13 +57,21 @@ patientChannel.on('connection', function(socket){
             // get List Doctors
             require('../models/doctors').getAllDoctorDetails().then(function(_data){
                 var back_data={};
-                // TODO : get Session and Profile
-                console.log("www 54 "+_data);
-
-
-
                 back_data.listDoctors=_data;
-                patientChannel.to(id).emit('data_build_UI', back_data);
+                // get Session
+                require('../models/sessions').getSessionsByUsername(user.username)
+                    .then(function(sessions){
+                        back_data.sessions=sessions;
+                        console.log("www 65 "+ JSON.stringify(back_data));
+
+                        //TODO: get profile of patient, fix me
+
+
+                        patientChannel.to(id).emit('data_build_UI', back_data);
+                    }, function(err){
+                        console.log("www 68"+ JSON.stringify(err));
+                    });
+                //patientChannel.to(id).emit('data_build_UI', back_data);
             }, function(err){
                 console.log('www 57 '+ JSON.stringify(err));
             });
