@@ -37,7 +37,8 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
 
             //emit some data to receive data to build UI
             socketPatient.emit("get_data",global_info);
-
+            toastr.success('Login Successful!');
+            toastr.optionsOverride = 'positionclass:toastr-bottom-right';
         }, function(err){
             // login wrong
         });
