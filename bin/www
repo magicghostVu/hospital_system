@@ -44,10 +44,10 @@ io.on('connection', function(socket){
 var patientChannel=io.of('/patient');
 patientChannel.on('connection', function(socket){
     console.log(socket.id+" connected");
-    patientChannel.on("get_data", function(data){
+    socket.on("get_data", function(data){
        // check information
         //if OK then send back data
-
+        console.log(data);
 
     });
 
