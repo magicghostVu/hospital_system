@@ -1,5 +1,5 @@
 <header class="header-tp" ng-controller="header_controller">
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar   navbar-static-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -13,8 +13,8 @@
                 <form class="form-inline">
                     <a  href="#" class="btn-blu mrgn-top" data-toggle="modal" data-target="#at-helping">Help</a>
                     <ul class="nav navbar-nav navbar-right bdr">
-                        <li><a href="#" data-toggle="modal" data-target="#at-login" ng-show="!isLogin">Sign in</a></li>
-                        <li ><a href="#" data-toggle="modal" data-target="#at-signup" ng-show="!isLogin">Sign Up</a></li>
+                        <li><a class="btn red" id="btn1_home_index_login" href="#" data-toggle="modal" data-target="#at-login" ng-show="!isLogin">Sign in</a></li>
+                        <li ><a class="btn blue" id="lnk1_home_index_register" href="#" data-toggle="modal" data-target="#at-signup" ng-show="!isLogin">Sign Up</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#at-login" ng-show="isLogin">{{username}}</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#at-login" ng-show="isLogin">Logout</a></li>
                     </ul>
