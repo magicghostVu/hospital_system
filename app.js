@@ -7,7 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-var uri = 'mongodb://localhost/hospital';
+// var uri = 'mongodb://localhost/hospital';
+var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";
 mongoose.Promise = global.Promise;
 mongoose.connect(uri);
 
