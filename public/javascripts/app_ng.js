@@ -146,14 +146,14 @@ var patientContentController=app.controller('patientContentController', function
     $scope.listDoctors=[];
     $scope.sessions=[];
     $scope.profile={};
-    $scope.notification=[];
+    $scope.notifications=[];
     $scope.request={};
 
     $scope.receiveData=function(data){
         this.patientLogin=true;
         this.listDoctors=data.listDoctors;
         this.sessions=data.sessions;
-
+        this.notifications=data.notifications;
         this.profile = data.profile;
     }
 

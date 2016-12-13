@@ -58,7 +58,7 @@ patientChannel.on('connection', function(socket){
     * */
     socket.on('get_data_for_patient', function(data){
         var id= socket.id;
-        console.log("www 57"+ JSON.stringify(data));
+        console.log("www 61"+ JSON.stringify(data));
         require('../models/users').authenticateToken(data.token).then(function(user){
             // get List Doctors
             require('../models/doctors').getAllDoctorDetails().then(function(_data){
@@ -81,10 +81,8 @@ patientChannel.on('connection', function(socket){
                         }
                         Promise.all(allPromise).then(function (doctors) {
                             //console.log(doctors[0].fullName);
-
-                            for (j in sessions){
-                                sessions[j].username_doctor=doctors[j].fullname;
-
+                            for (k in sessions){
+                                sessions[k].username_doctor=doctors[k].fullname;
                             }
                             //TODO: get profile
 
@@ -93,8 +91,18 @@ patientChannel.on('connection', function(socket){
                                 var patient = patients[0];
 
                                 back_data.profile = patient;
-
+                                console.log(patient);
                                 patientChannel.to(id).emit('data_build_UI', back_data);
+                                //TODO : get notification
+                                require('../models/notifications')
+                                    .getNotificationByUsername(user.username)
+                                    .then(function (notis) {
+                                        console.log("www 103 "+ JSON.stringify(notis));
+                                    }, function (err) {
+                                        console.log("www 106"+ JSON.stringify(err));
+                                    });
+
+
                             }, function (err) {
                                 console.log("www 99: " + JSON.stringify(err));
                             });
@@ -102,34 +110,12 @@ patientChannel.on('connection', function(socket){
                             console.log(" www 95" + JSON.stringify(err));
                         });
 
-                        //
-                        /*var allPromiseGetFullnameDoctor=[];
-                        for(idx in sessions){
-                            allPromiseGetFullnameDoctor.push(require('../models/doctors')
-                                .getDoctorDetailByUserName(sessions[idx].username_doctor));
-                        }
-                        Promise.all(allPromiseGetFullnameDoctor).then(function (allDoctor) {
-                            for(j in allDoctor){
-                                sessions[j].username_doctor=allDoctor[j].fullname;
-                            }
-                            back_data.sessions=sessions;
-                            patientChannel.to(id).emit('data_build_UI', back_data);
-                            console.log(JSON.stringify(back_data));
-                        }, function (err) {
-
-                        });
-                        console.log("www 85 "+ JSON.stringify(back_data));*/
-
-                        //TODO: get profile of patient, fix me
-
-
-
                     }, function(err){
                         console.log("www 68"+ JSON.stringify(err));
                     });
                 //patientChannel.to(id).emit('data_build_UI', back_data);
             }, function(err){
-                console.log('www 57 '+ JSON.stringify(err));
+                console.log('www 120 '+ JSON.stringify(err));
             });
 
         }, function(err){

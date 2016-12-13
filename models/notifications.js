@@ -30,13 +30,15 @@ var NotificationSchema= mongoose.Schema({
 
 
 var Notification= module.exports= mongoose.model("Notification", NotificationSchema);
+
 var getNotificationByUsername=function (username) {
   return new Promise(function (resolve, reject) {
      var query= {
-         username: username
+         username: username,
+         seen: false
      };
      Notification.find(query).then(function (notis) {
-         //console.log(notis);
+         console.log(notis);
          resolve(notis);
      },function (err) {
          reject(err);
@@ -44,7 +46,9 @@ var getNotificationByUsername=function (username) {
   });
 };
 
+module.exports.getNotificationByUsername= getNotificationByUsername;
 //console.log('jhbfvbfkj');
+
 
 /*
 getNotificationByUsername('hoangvuong').then(function (data) {

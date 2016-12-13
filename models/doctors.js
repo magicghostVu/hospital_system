@@ -8,8 +8,8 @@ mongoose.Promise = global.Promise;
 var User = require('./users');
 
 var ObjectId = mongoose.Schema.Types.ObjectId;
-// var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";
-// mongoose.connect(uri);
+/*var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";
+mongoose.connect(uri);*/
 
 var DoctorSchema = mongoose.Schema({
     username: {
@@ -75,7 +75,7 @@ module.exports.getAllDoctorDetails = function () {
                    msg: "Can't get doctors list"
                });
            } else
-            resolve(doctors);
+                resolve(doctors);
        }, function (err) {
            console.log("f: doctorsjs, l: 57" + JSON.stringify(err));
            reject(err);
@@ -84,8 +84,7 @@ module.exports.getAllDoctorDetails = function () {
 };
 
 
-/*
-Doctor.getAllDoctorDetails().then(function (doctors) {
+/*Doctor.getAllDoctorDetails().then(function (doctors) {
     console.log(doctors);
 }, function (err) {
     console.log(err);
