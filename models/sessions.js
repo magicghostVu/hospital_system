@@ -2,8 +2,8 @@
  * Created by magic_000 on 12/12/2016.
  */
 
-var mongoose= require('mongoose');
-mongoose.Promise= global.Promise;
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
 
 var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";

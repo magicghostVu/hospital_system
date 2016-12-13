@@ -157,7 +157,7 @@ module.exports.createUser = function (newUser) {
 
 
 
-var authenticateToken= function(token){
+module.exports.authenticateToken= function(token){
     return new Promise(function(resolve, reject){
         var query= {
           token: token
@@ -178,8 +178,6 @@ var authenticateToken= function(token){
     });
 };
 
-
-module.exports.authenticateToken=authenticateToken;
 /*
 User.find({}).then(function (data) {
     console.log(data);
