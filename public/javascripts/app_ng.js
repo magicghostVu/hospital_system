@@ -65,7 +65,7 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
                 //emit data to get data back to build UI
                 socketPatient.emit("get_data_for_patient",global_info);
 
-            }else if(global_info._type==='doctor'){
+            }else if(global_info._type ==='doctor'){
                 console.log(global_info);
 
                 //socketPatient
