@@ -4,6 +4,9 @@
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
+// var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";
+// mongoose.connect(uri);
+
 
 var PatientSchema = mongoose.Schema({
     username: {
@@ -31,6 +34,7 @@ module.exports.getPaitentByUserName = function (username) {
     
     return new Promise(function (resolve, reject) {
         Patient.find(query).then(function (patients) {
+            console.log(patients);
             if (patients.length == 0) {
                 reject({
                     msg: "patient doesn't exist"
@@ -48,3 +52,9 @@ module.exports.getPaitentByUserName = function (username) {
 module.exports.getPatientById = function (id, callback) {
     Patient.findById(id, callback);
 };
+
+// Patient.getPaitentByUserName("hoangvuong").then(function (patient) {
+//     console.log(patient);
+// }, function (err) {
+//     console.log(err);
+// });
