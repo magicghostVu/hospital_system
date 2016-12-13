@@ -34,10 +34,10 @@
                                 <h4>Bác sĩ {{doctor.faculty}}</h4>
                                 <dl>
                                     <dt>Full Name:</dt>
-                                    <dd class="name">{{doctor.fullName}}</dd>
+                                    <dd class="name">{{doctor.fullname | uppercase}}</dd>
                                     <dt>Có kinh nghiệm về:</dt>
                                     <dd>
-                                        <span ng-repeat="sick in doctor.list_recommend"> {{sick}}. </span>
+                                        <span ng-repeat="sick in doctor.list_recommend"> {{sick}}, </span>
                                     </dd>
                                     <dt>Email:</dt>
                                     <dd>{{doctor.email}}</dd>
