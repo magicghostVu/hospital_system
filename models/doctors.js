@@ -18,7 +18,7 @@ var DoctorSchema = mongoose.Schema({
         required: true,
         index: true
     },
-    fullName: {
+    fullname: {
         type: String
     },
     falcuty: {

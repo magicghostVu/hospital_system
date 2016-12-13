@@ -87,7 +87,7 @@ patientChannel.on('connection', function(socket){
                             //console.log(doctors[0].fullName);
 
                             for (j in sessions){
-                                sessions[j].username_doctor=doctors[j].fullName;
+                                sessions[j].username_doctor=doctors[j].fullname;
 
                             }
                             patientChannel.to(id).emit('data_build_UI', back_data);
