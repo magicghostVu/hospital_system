@@ -2,13 +2,16 @@
  * Created by magic_000 on 13/12/2016.
  */
 var mongoose= require('mongoose');
-mongoose.Promise=global.Promise;
+mongoose.Promise = global.Promise;
 
 /*var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";
 mongoose.connect(uri);*/
 
 var NotificationSchema= mongoose.Schema({
     username:{
+        type: String
+    },
+    username_doctor: {
         type: String
     },
     content: {
@@ -18,6 +21,9 @@ var NotificationSchema= mongoose.Schema({
         type: Boolean
     },
     date:{
+        type: String
+    },
+    time: {
         type: String
     }
 });
@@ -39,3 +45,10 @@ var getNotificationByUsername=function (username) {
 };
 
 //console.log('jhbfvbfkj');
+
+/*
+getNotificationByUsername('hoangvuong').then(function (data) {
+    console.log(data);
+}, function (err) {
+    console.log(err);
+});*/
