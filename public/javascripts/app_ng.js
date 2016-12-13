@@ -66,10 +66,10 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
                 socketPatient.emit("get_data_for_patient",global_info);
 
             }else if(global_info._type ==='doctor'){
-                console.log(global_info);
-
-                socketDoctor.emit("emit_data_for_doctor", global_info);
+                // console.log(global_info);
                 console.log('doctor login');
+
+                socketDoctor.emit("get_data_for_doctor", global_info);
             }else if(global_info._type==='staff'){
 
 
@@ -99,7 +99,7 @@ app.directive("myModal",function() {
         templateUrl: "templates/modal-login.html",
         link: function(scope, element, attr){
             scope.dismiss= function(){
-                console.log('run hide modal');
+                // console.log('run hide modal');
                 $(element.children()[0]).modal('hide');
             };
         }
@@ -195,7 +195,7 @@ var doctorContentController = app.controller('doctorContentController', function
 
     $scope.receiveDoctorData = function (data) {
         this.doctorLogin = true;
-        // this.listRequests = data.listRequests;
+        this.listRequests = data.listRequests;
         // this.listPatients = data.listPatients;
         // this.profile = data.profile;
     }
