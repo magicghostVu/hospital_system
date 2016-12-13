@@ -54,29 +54,34 @@
                 <div class="banner-left"><h1>sessions</h1></div>
                 <div class="banner-right"><img src="images/sessions.png"></div>
             </div>
-            <div class="row item-session" >
+            <div class="row item-session" ng-repeat="session in sessions">
                 <div class="searchable-container">
                     <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
                         <div class="info-block block-info clearfix" style="padding-bottom:20px;border-bottom: 1px solid beige">
-                            <h4>Session 1</h4>
-                            <p>Ngày bắt đầu : 22/22/2016</p>
-                            <p>Description : abccbcbbcbcbbcbcbcbcbcbcbcbcbcbc</p>
-                            <p>Tình trạng : ạhdahsdhaskdh</p>
-                            <p>Kết quả : jkhjkhkjhjkhjhk</p>
-                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#activity1">
-                                Hoạt động 1
-                            </button>
-                            <div style="margin-top: 10px" id="activity1" class="collapse">
-                                <p>Người xác nhận: Dr.Vũ Hồng Phú</p>
-                                <p>Thời gian:22/12/2016 12:12:12</p>
-                                <p>Đã hoàn tất:Ok</p>
-                                <p>Kết quả : <a href=" http://google.com.vn">File kết quả</a></p>
-                                <p>Chi phí : 200USD</p>
-                                <p>Đã thanh toán : Chưa thanh toán</p>
+                            <h4>Session {{$index + 1}}</h4>
+                            <p>Ngày bắt đầu : {{session.begin_date}}</p>
+                            <p>Description : {{session.description}}</p>
+                            <p>Tình trạng : {{session.status}}</p>
+                            <p>Kết quả : {{session.result}}</p>
+                            <div ng-repeat="act in session.activities">
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target={{'#activity'+($index+1)+$parent.$index}}>
+                                    Hoạt động {$index+1}
+                                </button>
+                                <div style="margin-top: 10px" id={{'activity'+($index+1)+$parent.$index}} class="collapse">
+                                    <p>Người xác nhận: {{act.doctor_username_confirm}}</p>
+                                    <p>Ngày: {{act.date}}</p>
+                                    <p>Giờ :{{act.time}} </p>
+                                    <p>Đã hoàn tất: {{act.done}}</p>
+                                    <p>Kết quả : <a href=" http://google.com.vn">File kết quả</a></p>
+                                    <p>Chi phí : {{act.cost}}</p>
+                                    <p>Đã thanh toán : {{act.paid}}</p>
+                                </div>
+                                <br/>
+                                <br/>
                             </div>
-                            <br/>
-                            <br/>
-                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#activity2">
+
+
+                            <!--<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#activity2">
                                 Hoạt động 2
                             </button>
                             <div style="margin-top: 10px" id="activity2" class="collapse">
@@ -86,13 +91,13 @@
                                 <p>Kết quả : <a href=" http://google.com.vn">File kết quả</a></p>
                                 <p>Chi phí : 200USD</p>
                                 <p>Đã thanh toán : Chưa thanh toán</p>
-                            </div>
+                            </div>-->
 
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row item-session">
+            <!--<div class="row item-session">
                 <div class="searchable-container">
                     <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
                         <div class="info-block block-info clearfix" style="padding-bottom:20px;border-bottom: 1px solid beige;">
@@ -129,7 +134,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <div class="tab-pane" id="3a">
             <div class="banner">
