@@ -69,9 +69,8 @@ patientChannel.on('connection', function(socket){
                 // get Session and doctor detail foreach session
                 require('../models/sessions').getSessionsByUsername(user.username)
                     .then(function(sessions){
-                        //back_data.sessions=sessions;
                         back_data.sessions=sessions;
-                        //patientChannel.to(id).emit('data_build_UI', back_data);
+
                         var allPromise=[];
 
                         for (idx in sessions){
@@ -89,14 +88,19 @@ patientChannel.on('connection', function(socket){
                             }
                             //TODO: get profile
 
-                            require('../models/patients').get
+                            // console.log(user.username);
+                            require('../models/patients').getPaitentByUserName(user.username).then(function (patients) {
+                                var patient = patients[0];
 
-                            patientChannel.to(id).emit('data_build_UI', back_data);
+                                back_data.profile = patient;
 
+                                patientChannel.to(id).emit('data_build_UI', back_data);
+                            }, function (err) {
+                                console.log("www 99: " + JSON.stringify(err));
+                            });
                         }, function (err) {
-                            console.log(" www 95");
+                            console.log(" www 95" + JSON.stringify(err));
                         });
-
 
                         //
                         /*var allPromiseGetFullnameDoctor=[];
