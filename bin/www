@@ -21,8 +21,12 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
-// create socket.io instance and listen on server
+// create all the channel
 var io=require('socket.io')(server);
+var patientChannel=io.of('/patient');
+var doctorChannel=io.of('/doctor');
+
+
 //io.listen(server);
 console.log("socket is running");
 io.on('connection', function(socket){
@@ -41,33 +45,80 @@ io.on('connection', function(socket){
 
 });
 
-var patientChannel=io.of('/patient');
+//handle patient
 patientChannel.on('connection', function(socket){
-    console.log("client "+socket.id+" connected");
-
-
+    console.log("www 50 client "+socket.id+" connected");
     /*this event will send all the data to build UI for patient
     * include list doctors, Session (activity), profile
     *
     * */
     socket.on('get_data_for_patient', function(data){
         var id= socket.id;
-        console.log("www 49 "+ JSON.stringify(data));
+        console.log("www 57"+ JSON.stringify(data));
         require('../models/users').authenticateToken(data.token).then(function(user){
             // get List Doctors
             require('../models/doctors').getAllDoctorDetails().then(function(_data){
                 var back_data={};
                 back_data.listDoctors=_data;
-                // get Session
+
+
+                // get Session and doctor detail foreach session
                 require('../models/sessions').getSessionsByUsername(user.username)
                     .then(function(sessions){
+                        //back_data.sessions=sessions;
+
+
                         back_data.sessions=sessions;
-                        console.log("www 65 "+ JSON.stringify(back_data));
+                        //patientChannel.to(id).emit('data_build_UI', back_data);
+
+
+
+
+
+                        var allPromise=[];
+
+                        for (idx in sessions){
+                            console.log(sessions[idx].username_doctor +" www 81");
+                            allPromise.push(
+                                require('../models/doctors').getDoctorDetailByUserName(sessions[idx].username_doctor));
+
+                        }
+                        Promise.all(allPromise).then(function (doctors) {
+                            //console.log(doctors[0].fullName);
+
+                            for (j in sessions){
+                                sessions[j].username_doctor=doctors[j].fullname;
+
+                            }
+                            patientChannel.to(id).emit('data_build_UI', back_data);
+
+                        }, function (err) {
+                            console.log(" www 95");
+                        });
+
+
+                        //
+                        /*var allPromiseGetFullnameDoctor=[];
+                        for(idx in sessions){
+                            allPromiseGetFullnameDoctor.push(require('../models/doctors')
+                                .getDoctorDetailByUserName(sessions[idx].username_doctor));
+                        }
+                        Promise.all(allPromiseGetFullnameDoctor).then(function (allDoctor) {
+                            for(j in allDoctor){
+                                sessions[j].username_doctor=allDoctor[j].fullname;
+                            }
+                            back_data.sessions=sessions;
+                            patientChannel.to(id).emit('data_build_UI', back_data);
+                            console.log(JSON.stringify(back_data));
+                        }, function (err) {
+
+                        });
+                        console.log("www 85 "+ JSON.stringify(back_data));*/
 
                         //TODO: get profile of patient, fix me
 
 
-                        patientChannel.to(id).emit('data_build_UI', back_data);
+
                     }, function(err){
                         console.log("www 68"+ JSON.stringify(err));
                     });
@@ -81,15 +132,15 @@ patientChannel.on('connection', function(socket){
         });
 
     });
+});
 
-    /*socket.on("get_data", function(data){
-       // check information
-        //if OK then send back data
-        // check token
+//handle doctor
 
-        console.log("www 52 "+JSON.stringify(data));
-        
-    });*/
+doctorChannel.on('connection', function (socket) {
+    console.log('www 91 '+socket.id+ " connected");
+    socket.on('get_data_for_doctor', function (data) {
+
+    });
 
 });
 

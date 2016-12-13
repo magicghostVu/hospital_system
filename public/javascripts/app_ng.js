@@ -7,6 +7,8 @@ var global_info;
 var authenControllerScope;
 var headerScope;
 var patientContentScope;
+var doctorContentScope;
+
 
 
 var app=angular.module('app', []);
@@ -67,7 +69,9 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
                 socketPatient.emit("get_data_for_patient",global_info);
 
             }else if(global_info._type==='doctor'){
+                console.log(global_info);
 
+                //socketPatient
 
 
                 console.log('doctor login');
@@ -110,7 +114,7 @@ app.directive("myModal",function() {
 });
 
 
-var headrController=app.controller('header_controller', function($scope){
+var headerController=app.controller('header_controller', function($scope){
     headerScope=$scope;
     $scope.isLogin=false;
     $scope.username='';
@@ -143,12 +147,12 @@ var patientContentController=app.controller('patientContentController', function
     patientContentScope=$scope;
     $scope.patientLogin=false;
     $scope.listDoctors=[];
-    $scope.Session={};
+    $scope.sessions=[];
     $scope.profile={};
     $scope.receiveData=function(data){
         this.patientLogin=true;
         this.listDoctors=data.listDoctors;
-
+        this.sessions=data.sessions;
 
     }
 

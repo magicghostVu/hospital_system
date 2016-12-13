@@ -54,11 +54,11 @@ module.exports.getDoctorDetailByUserName = function (username) {
     return new Promise(function (resolve, reject) {
         Doctor.find(query).then(function (doctors) {
             if (doctors.length == 0) {
-                resolve(doctors);
-            } else {
                 reject({
                     msg: "Doctor doesn't existed"
-                })
+                });
+            } else {
+                resolve(doctors[0]);
             }
         }, function (err) {
             console.log("f: doctorsjs, l: 46" + JSON.stringify(err));

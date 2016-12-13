@@ -2,15 +2,12 @@
  * Created by magic_000 on 12/12/2016.
  */
 
-var mongoose= require('mongoose');
-mongoose.Promise= global.Promise;
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
 
 var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";
 //mongoose.connect(uri);
-
-
-var objectId= mongoose.Schema.Types.ObjectId;
 
 var sessionSchema= mongoose.Schema({
     description: {
@@ -19,6 +16,10 @@ var sessionSchema= mongoose.Schema({
     username: {
         type: String
     },
+    username_doctor:{
+        type: String
+    },
+
     status: {
         type: String
     },
@@ -59,8 +60,9 @@ sessions.find({}).then(function(sessions){
 });*/
 
 
+/*
 getSessionsByUsername("hoangvuong").then(function(_sessions){
     console.log(JSON.stringify(_sessions));
 }, function(err){
     console.log("sessions 65"+ JSON.stringify(err));
-});
+});*/
