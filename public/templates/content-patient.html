@@ -1,4 +1,4 @@
-<div id="exTab4" class="container-all" ng-show="patientLogin">
+<div id="exTab4" style="display: none" class="container-all" ng-show="patientLogin">
     <div class="container">
         <div class="row menu-tab">
             <ul class="nav nav-pills">
@@ -34,7 +34,7 @@
                                 <h4>Bác sĩ {{doctor.faculty}}</h4>
                                 <dl>
                                     <dt>Full Name:</dt>
-                                    <dd class="name">{{doctor.fullName}}</dd>
+                                    <dd class="name">{{doctor.fullname}}</dd>
                                     <dt>Có kinh nghiệm về:</dt>
                                     <dd>
                                         <span ng-repeat="sick in doctor.list_recommend"> {{sick}}. </span>
@@ -261,12 +261,11 @@
         (function () {
             var html = '';
             $('#edit').click(function () {
-                patientContentScope.$apply(function () {
                     $('#edit').hide();
                     $('#ok').show();
                     $('#exit').show();
                     html = $('#myform').html();
-
+                    console.log('abc');
                     var username = $('#myform>h5').text().slice(10);
                     var fullname = $('#myform>h4').text().slice(10);
                     var phone = $('#myform span').first().text().slice(7);
@@ -311,9 +310,7 @@
                     html_after += "</tr>";
 
                     html_after += "</table>";
-                    console.log(html_after);
                     $('#myform').html(html_after);
-                });
             });
 
             $('#exit, #ok').click(function () {
