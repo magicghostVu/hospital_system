@@ -14,7 +14,10 @@
     <script src="javascripts/toastr.min.js"></script>
 
     <script src="javascripts/app_ng.js"></script>
-
+    <script type="text/javascript"
+            src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script>
+    <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <script src="javascripts/bootstrap-material-datetimepicker.js"></script>
 
 
     <!--set socket handle here because of they access in to some global scope-->
@@ -42,19 +45,25 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">×</span></button>
                                 </div>
                                 <div class="modal-body">
                                     <!--<button class="btn-fb"> <i class="fa fa-fw fa-facebook pull-left" aria-hidden="true"></i>-->
-                                        <!--Signup with Facebook	</button> <br>-->
+                                    <!--Signup with Facebook	</button> <br>-->
                                     <!--<button class="btn-gp"> <i class="fa fa-fw fa-google-plus pull-left" aria-hidden="true"></i>-->
-                                        <!--Signup with Google	</button> <br>-->
+                                    <!--Signup with Google	</button> <br>-->
                                     <!--<div class="signup-or-separator">-->
-                                        <!--<span class="h6 signup-or-separator&#45;&#45;text">or</span>-->
-                                        <!--<hr>-->
+                                    <!--<span class="h6 signup-or-separator&#45;&#45;text">or</span>-->
+                                    <!--<hr>-->
                                     <!--</div>-->
-                                    <button type="submit" class="btn-lgin" data-toggle="modal"  data-dismiss="modal" data-target="#at-signup-filling">Signup with Email</button> <hr>
-                                    <p>By signing up, I agree to Airbnb’s , Payments <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, <a href="#">Guest Refund Policy</a>, and <a href="#">Host Guarantee Terms</a>. </p>
+                                    <button type="submit" class="btn-lgin" data-toggle="modal" data-dismiss="modal"
+                                            data-target="#at-signup-filling">Signup with Email
+                                    </button>
+                                    <hr>
+                                    <p>By signing up, I agree to Airbnb’s , Payments <a href="#">Terms of Service</a>,
+                                        <a href="#">Privacy Policy</a>, <a href="#">Guest Refund Policy</a>, and <a
+                                                href="#">Host Guarantee Terms</a>. </p>
                                 </div>
                                 <div class="modal-footer">
                                     <div class="row">
@@ -62,7 +71,9 @@
                                             <p class="ta-l">Already a Member? </p>
                                         </div>
                                         <div class="col-md-4 col-md-offset-2">
-                                            <button class="btn-gst"  data-toggle="modal"  data-dismiss="modal" data-target="#at-login">Login</button>
+                                            <button class="btn-gst" data-toggle="modal" data-dismiss="modal"
+                                                    data-target="#at-login">Login
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -70,30 +81,36 @@
                         </div>
                     </div>
                     <!-- MODAL SIGNUP FORM FILLING -->
-                    <div class="modal fade" id="at-signup-filling" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal fade" id="at-signup-filling" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">×</span></button>
                                 </div>
                                 <div class="modal-body">
                                     <!--<p>Sign up with <a href="#">Facebook</a>  or <a href="#">Google</a></p>-->
                                     <!--<div class="signup-or-separator">-->
-                                        <!--<span class="h6 signup-or-separator&#45;&#45;text">or</span>-->
-                                        <!--<hr>-->
+                                    <!--<span class="h6 signup-or-separator&#45;&#45;text">or</span>-->
+                                    <!--<hr>-->
                                     <!--</div>-->
                                     <form>
                                         <div class="form-group">
-                                            <input type="text" class="form-control-form " id="exampleInputEmaillog" placeholder="User Name">
+                                            <input type="text" class="form-control-form " id="exampleInputEmaillog"
+                                                   placeholder="User Name">
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" class="form-control-form " id="exampleInputEmaillog" placeholder="Email">
+                                            <input type="email" class="form-control-form " id="exampleInputEmaillog"
+                                                   placeholder="Email">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control-form " id="exampleInputPasswordpas" placeholder="Password">
+                                            <input type="password" class="form-control-form "
+                                                   id="exampleInputPasswordpas" placeholder="Password">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control-form " id="exampleInputPasswordpas" placeholder="Confirm Password">
+                                            <input type="password" class="form-control-form "
+                                                   id="exampleInputPasswordpas" placeholder="Confirm Password">
                                         </div>
 
                                         <div class="row">
@@ -116,7 +133,9 @@
                                             <p class="ta-l">Already a Member? </p>
                                         </div>
                                         <div class="col-md-4 col-md-offset-2">
-                                            <button class="btn-gst"  data-toggle="modal"  data-dismiss="modal" data-target="#at-login">Login</button>
+                                            <button class="btn-gst" data-toggle="modal" data-dismiss="modal"
+                                                    data-target="#at-login">Login
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -125,18 +144,22 @@
                     </div>
                     <!-- MODAL SIGNUP FORM FILLING -->
                     <!-- MODAL FORGOT PASSWORD -->
-                    <div class="modal fade" id="at-reset-pswd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal fade" id="at-reset-pswd" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">×</span></button>
                                 </div>
                                 <div class="modal-body">
                                     <form>
-                                        <p>	Enter the email address associated with your account, and we’ll email you a link to reset your password. </p>
+                                        <p> Enter the email address associated with your account, and we’ll email you a
+                                            link to reset your password. </p>
                                         <div class="form-group">
 
-                                            <input type="email" class="form-control-form " id="exampleInputEmaillog" placeholder="Email">
+                                            <input type="email" class="form-control-form " id="exampleInputEmaillog"
+                                                   placeholder="Email">
                                         </div>
                                     </form>
                                 </div>
@@ -150,18 +173,22 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">×</span></button>
                                 </div>
                                 <div class="modal-body">
                                     <form>
                                         <div class="form-group">
-                                            <input type="text" class="form-control-form " id="exampleInputEmaillog" placeholder="Enter Your Searches ">
+                                            <input type="text" class="form-control-form " id="exampleInputEmaillog"
+                                                   placeholder="Enter Your Searches ">
                                         </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
                                     <div class="row">
-                                        <button class="btn-gst"  data-toggle="modal"  data-dismiss="modal" >Send areset Link</button>
+                                        <button class="btn-gst" data-toggle="modal" data-dismiss="modal">Send areset
+                                            Link
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -174,17 +201,17 @@
 </div>
 <!-- end navbar and login dialog -->
 
-<div id="exTab3" style="display: none;" class="container">
+<div id="exTab3" style="display: none" class="bs">
     <div class="container">
         <div class="row menu-tab">
-            <ul  class="nav nav-pills">
-
-                <li class="active">
-                    <a  href="#1b" data-toggle="tab">List Doctors</a>
+            <ul class="nav nav-pills">
+                <li class="logo"><img src="images/logo.png"><span class="lg">is hospital</span></li>
+                <li class="active tab">
+                    <a href="#1b" data-toggle="tab">List Requests </a>
                 </li>
-                <li><a href="#2b" data-toggle="tab">Oppointment</a>
+                <li class="tab"><a href="#2b" data-toggle="tab">List Patient</a>
                 </li>
-                <li><a href="#3b" data-toggle="tab">Prof le</a>
+                <li class="tab"><a href="#3b" data-toggle="tab">Prof le</a>
                 </li>
             </ul>
         </div>
@@ -193,115 +220,108 @@
 
     <div class="tab-content clearfix">
         <div class="tab-pane active" id="1b">
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+            <div class="banner">
+                <div class="banner-left"><h1>list doctocs</h1></div>
+                <div class="banner-right"><img src="images/bacsi.png" width="300px" height="195px"></div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="bhoechie-tab-container">
+                        <div class="col-md-3  bhoechie-tab-menu">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item active text-center">
+                                    <h4 class="glyphicon glyphicon-user"></h4><br/>patien 1
+                                </a>
+                                <a href="#" class="list-group-item  text-center">
+                                    <h4 class="glyphicon glyphicon-user"></h4><br/>patien 2
+                                </a>
+                                <a href="#" class="list-group-item  text-center">
+                                    <h4 class="glyphicon glyphicon-user"></h4><br/>patien 3
+                                </a>
+                                <a href="#" class="list-group-item text-center">
+                                    <h4 class="glyphicon glyphicon-user"></h4><br/>patien 4
+                                </a>
+                                <a href="#" class="list-group-item text-center">
+                                    <h4 class="glyphicon glyphicon-user"></h4><br/>patien 5
+                                </a>
                             </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
+                        </div>
+                        <div class="col-md-9  bhoechie-tab">
+                            <!-- flight section -->
+                            <div class="bhoechie-tab-content active">
+                                <center>
+                                    <h2 style="margin-top: 0;color:#55518a">Patient's information</h2>
+                                    <div class="date">
+                                        <div class="row">
+                                            <p>Chúng tôi trình bày Resilient Distributed Datasets (RDDs) , khái niệm
+                                                trừu tượng để cho lập trình viên thực hiện tính toán thường xuyên trong
+                                                bộ nhớ trên cụm lớn với việc chấp nhận sai sót. RDDs được thúc đẩy bởi
+                                                hai loại ứng dụng mô hình điện toán hiện hành xử lý kém hiệu quả : thuật
+                                                toán lặp lại và công cụ khai phá dữ liệu tương tác. Trong cả hai trường
+                                                hợp, giữ cho dữ liệu trong bộ nhớ có thể cải thiện hiệu suất một bậc. Để
+                                                đạt được khả năng chịu lỗi một cách hiệu quả, RDDs cung cấp một hình
+                                                thức chia sẻ bộ nhớ, dựa trên biến đổi theo cụm lơn chứ không phải là
+                                                biến đổi nhỏ lẻ phân mảnh. Tuy nhiên, chúng tôi cho thấy rằng RDDs được
+                                                biểu hiện đầy đủ để chụp các tính toán lớn, bao gồm cả mô hình lập trình
+                                                chuyên ngành gần đây như Pregel, và các ứng dụng mới có không có mô
+                                                hình. Chúng tôi đã thực hiện RDDs trong một hệ thống gọi là Spark, mà
+                                                chúng tôi đánh giá thông qua một loạt các ứng dụng người dùng và điểm
+                                                chuẩn.</p>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h2>Chọn lịch khám</h2>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-control-wrapper">
+                                                    <input type="text" id="date-format"
+                                                           class="form-control floating-label"
+                                                           placeholder="Begin Date Time">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-0">
+                                                <code>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                                                    <script>$('#date-format').bootstrapMaterialDatePicker({format: 'dddd DD MMMM YYYY - HH:mm'});</script>
+                                                </code>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <button class="btn btn-success"> đặt lịch</button>
+                                        </div>
+
+                                    </div>
+                                </center>
                             </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            <!-- train section -->
+                            <div class="bhoechie-tab-content">
+                                <center>
+                                    <h2 style="margin-top: 0;color:#55518a">Patient's information</h2>
+                                    <h3 style="margin-top: 0;color:#55518a">Train Reservation</h3>
+                                </center>
                             </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+
+                            <!-- hotel search -->
+                            <div class="bhoechie-tab-content">
+                                <center>
+                                    <h2 style="margin-top: 0;color:#55518a">Patient's information</h2>
+                                    <h3 style="margin-top: 0;color:#55518a">Hotel Directory</h3>
+                                </center>
                             </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            <div class="bhoechie-tab-content">
+                                <center>
+                                    <h2 style="margin-top: 0;color:#55518a">Patient's information</h2>
+                                    <h3 style="margin-top: 0;color:#55518a">Restaurant Diirectory</h3>
+                                </center>
                             </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            <div class="bhoechie-tab-content">
+                                <center>
+                                    <h2 style="margin-top: 0;color:#55518a">Patient's information</h2>
+                                    <h3 style="margin-top: 0;color:#55518a">Credit Card</h3>
+                                </center>
                             </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                            </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
                         </div>
                     </div>
                 </div>
@@ -311,19 +331,35 @@
 
         </div>
         <div class="tab-pane" id="3b">
+            <div class="banner">
+                <div class="banner-left"><h1>profile</h1></div>
+                <div class="banner-right"><img src="images/profile.png"></div>
+            </div>
             <div class="row item-doctor">
                 <div class="searchable-container">
                     <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
                         <div class="info-block block-info clearfix">
                             <div class=" pull-left">
-                                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ" width="120" height="120" style="border-radius: 100% ;margin-right: 15px;">
+                                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ"
+                                     width="120" height="120" style="border-radius: 100% ;margin-right: 15px;">
                             </div>
-                            <h5>Company Name</h5>
-                            <h4>Name: Tyreese Burn</h4>
-                            <p>Title: Manager</p>
-                            <span>Phone: 555-555-5555</span>
-                            <span>Email: sample@company.com</span>
-                            <input  type="file" value="Change Avatar">
+                            <form id="myform" action="" method="post" enctype="multipart/form-data">
+                                <h5>Company Name</h5>
+                                <h4>Name: Tyreese Burn</h4>
+                                <p>Title: Manager</p>
+                                <span>Phone: 555-555-5555</span>
+                                <br/>
+                                <span>Email: sample@company.com</span>
+                                <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
+                            </form>
+                            <input id="edit" class="btn-success" style="margin: 10px 10px" type="button" name="edit"
+                                   value="Sửa thông tin"/>
+                            <input id="ok" class="btn-success" style="display:none;float: left;margin-right: 10px"
+                                   type="button" name="ok" value="Chấp nhận"/>
+                            <input id="exit" class="btn-danger" style="display:none;float: left" type="button"
+                                   name="exit" value="Hủy"/>
+
+
                         </div>
                     </div>
                 </div>
@@ -333,7 +369,7 @@
 </div>
 
 <!--patient content begin-->
-<patient-content ng-controller="patientContentController" >
+<patient-content ng-controller="patientContentController">
 
 </patient-content>
 
@@ -449,9 +485,19 @@
             $('.Choicefile').css('cursor', 'pointer');
             $(".filename").text("");
         });
+
+        $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+            e.preventDefault();
+            $(this).siblings('a.active').removeClass("active");
+            $(this).addClass("active");
+            var index = $(this).index();
+            $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+            $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+        });
+
+
     });
 </script>
-
 
 
 <!--conten-1 begin-->
@@ -557,7 +603,7 @@
     </div>
     <div class="end">
         <p>© 2016 IS Hotpital. All rights reserved.</p>
-        <a href="/"><img src="images/logo.png">IS Hotpitall</a>
+        <a href="/"><img src="images/logo.png">IS Hospitall</a>
     </div>
 
 </footer>
@@ -568,5 +614,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 
 <script src="javascripts/bootstrap.min.js"></script>
+
 </body>
 </html>

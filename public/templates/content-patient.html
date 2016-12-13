@@ -35,7 +35,7 @@
                                 <dl>
                                     <dt>Full Name:</dt>
                                     <dd class="name">{{doctor.fullName}}</dd>
-                                    <dt>Có kinh nghiệm về</dt>
+                                    <dt>Có kinh nghiệm về:</dt>
                                     <dd>
                                         <span ng-repeat="sick in doctor.list_recommend"> {{sick}}. </span>
                                     </dd>
@@ -186,7 +186,7 @@
 
                                 <form action="" method="post" enctype="multipart/form-data">
                                     <label for="description"><h3>Description:</h3></label>
-                                    <textarea id="description" class="form-control" style="width:80%;margin: 0 20px;" cols="10" rows="7"
+                                    <textarea id="description" class="form-control" style="width:80%;margin: 0 20px;resize: none " cols="10" rows="7"
                                               placeholder="Your descriptoin "></textarea>
                                     <h3>Image</h3>
                                     <div>
