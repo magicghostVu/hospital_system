@@ -21,7 +21,7 @@
         <div class="tab-pane active" id="1a">
             <div class="banner">
                 <div class="banner-left"><h1>list doctocs</h1></div>
-                <div class="banner-right"><img src="images/bacsi.png"></div>
+                <div class="banner-right"><img src="images/bacsi.png" width="300px" height="195px"></div>
             </div>
             <div class="row item-doctor" ng-repeat="doctor in listDoctors">
                 <div class="searchable-container">
@@ -134,7 +134,7 @@
         <div class="tab-pane" id="3a">
             <div class="banner">
                 <div class="banner-left"><h1>profile</h1></div>
-                <div class="banner-right"><img src="images/bacsi.png"></div>
+                <div class="banner-right"><img src="images/profile.png"></div>
             </div>
             <div class="row item-doctor">
                 <div class="searchable-container">
@@ -170,7 +170,63 @@
         <div class="tab-pane" id="4a">
             <div class="banner">
                 <div class="banner-left"><h1>notifacation</h1></div>
-                <div class="banner-right"><img src="images/sessions.png"></div>
+                <div class="banner-right"><img src="images/insacation.png"></div>
+            </div>
+            <div class="row" style="margin: 40px 0px">
+                <div class="container">
+                    <div class="col-md-5">
+                        <div style="width: 95%" id="left1">
+                            <div class="form-group">
+
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <label for="description"><h3>Description:</h3></label>
+                                    <textarea id="description" class="form-control" style="width:80%;margin: 0 20px;" cols="10" rows="7"
+                                              placeholder="Your descriptoin "></textarea>
+                                    <h3>Image</h3>
+                                    <div>
+                                        <div id="myfileupload">
+                                            <input type="file" id="uploadfile" name="ImageUpload"
+                                                   onchange="readURL(this);"/>
+                                            <!--      Name  mà server request về sẽ là ImageUpload-->
+                                        </div>
+                                        <div id="thumbbox">
+                                            <img height="150" width="150" alt="Thumb image" id="thumbimage"
+                                                 style="display: none"/>
+                                            <a class="removeimg" href="javascript:"></a></div>
+                                    </div>
+                                    <input class="btn-success"
+                                           style="width: 100px;height: 35px;border-radius: 5px;margin: 20px 0px;"
+                                           type="submit" name="submit" value="Submit">
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div style="" id="right1">
+                            <div class="notification">
+                                <h3>Notification</h3>
+                                <ul>
+                                    <li>
+                                        <button type="button" class="notification-id" data-toggle="collapse" data-target="#activity5">
+                                            Thông báo kết quả khám bệnh ngày 12/12/2016
+                                        </button>
+                                        <div style="margin-top: 10px" id="activity5" class="collapse">
+                                            <p>Người xác nhận: Dr.Vũ Hồng Phú</p>
+                                            <p>Thời gian:22/12/2016 12:12:12</p>
+                                            <p>Đã hoàn tất:Ok</p>
+                                            <p>Kết quả : <a href=" http://google.com.vn">File kết quả</a></p>
+                                            <p>Chi phí : 200USD</p>
+                                            <p>Đã thanh toán : Chưa thanh toán</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>

@@ -1,3 +1,7 @@
+
+/*body{
+    background-color: #c3c3c3;
+}*/
 .header-tp .navbar {
     position: relative;
     min-height: 50px;
@@ -181,8 +185,8 @@ a:hover{
 
 }
 .banner-right > img{
-    width: 300px;
-    height: 195px;
+   /* width: 300px;
+    height: 195px;*/
 }
 
 
@@ -429,7 +433,36 @@ a:hover{
 .p
 /*end doctors list*/
 
+/* begin notification*/
+ .notification{
+    border-left: 2px solid #1280b3;
+}
+.notification > h3{
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
 
+    background: url("../images/title.jpg") no-repeat center;
+    line-height: 40px;
+}
+.notification > ul{
+    margin-top: 20px;
+    padding: 0;
+}
+.notification > ul > li{
+    list-style:hebrew;
+    border-right: 2px solid #1280b3;
+    margin-bottom: 5px;
+
+}
+.notification-id{
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background-color: #fff;
+}
+
+/* end notification*/
 /*begin tab*/
 body {
     /*padding : 10px ;*/
@@ -570,6 +603,137 @@ footer > .end > a {
     right: 20px;
     top: 0px;
 }
+/* end footer*/
+
+/*conten-1 begin*/
+
+.banner-sign{
+    background: url("../images/banner1.jpg")no-repeat center;
+    height: 398px;
+}
+.banner-sign-content{
+    height: 342px;
+    width: 50%;
+    float: left;
+    padding-top: 46px;
+}
+.banner-sign-content span{
+    display: block;
+    text-transform: uppercase;
+    line-height: 50px;
+    text-align: center;
+    color: #FFF;
+}
+.banner-sign-content p >span:first-child{
+
+    font-size: 24px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+.banner-sign-content span:nth-child(2){
+    font-size: 36px;
+    font-weight: 400;
+    ;
+}
+.banner-sign-content span:nth-child(3){
+    font-size: 36px;
+    font-weight: 300;
+
+}
+.banner-sign-content span:nth-child(4){
+    font-size: 22px;
+    margin-top: 10px;
+    font-weight: 400;
+    font-style: italic;
+
+}
+.banner-sign-content span:nth-child(5){
+
+    display: block;
+    line-height: 5px;
+    font-size: 16px;
+    text-transform: none;
+    font-style: normal;
+    font-weight: 700;
+}
+.hot-line{
+    margin-top: 30px;
+    text-align: center;
+    border-radius: 50px;
+    background:url("../images/hotline.png") repeat-x ;
+}
+
+.hot-line > h1{
+    font-weight: 700;
+    font-size: 40px;
+    color: #FFF;
+    line-height: 60px;
+}
+.banner-sign-feature{
+    width: 50%;
+    float: right;
+    margin-top: -30px;
+    height: 428px;
+    position: relative;
+    background: url(../images/banner-cauhoi.png) right top no-repeat;
+}
+/*.pulse:hover{
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}*/
+.pulse{
+    display: inline-block;
+    background: url(../images/banner-icon.png) right top no-repeat;
+    width: 468px;
+    height: 500px;
+}
+/*.animated{
+     -webkit-animation-duration: 1s;
+     animation-duration: 1s;
+     -webkit-animation-fill-mode: both;
+     animation-fill-mode: both;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+ }*/
+.question{
+    background-color: #fff;
+    margin-top: 30px;
+}
+.question .title{
+    height: 60px;
+    margin-top: -25px;
+    background: url("../images/title.jpg")no-repeat center;
+}
+.title > h1{
+   line-height: 60px;
+    font-size: 22px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+}
+.question-tab > h2{
+    font-size: 26px;
+    color: #0f0f0f;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.question-tab > ul{
+    padding: 0;
+}
+.question-tab > ul > li{
+    font-size: 16px;
+    list-style: none;
+}
+    /*conten-1 end*/
+
+
+
 /*form profile*/
 #myform table tr td{
     padding: 7px 5px;
