@@ -48,6 +48,8 @@ router.post('/edit', function (req, res, next) {
                     res.send(err);
                 });
             });
+        }, function (err) {
+            res.send(err);
         });
     }
 });
