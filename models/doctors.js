@@ -18,7 +18,7 @@ var DoctorSchema = mongoose.Schema({
         required: true,
         index: true
     },
-    fullname: {
+    fullName: {
         type: String
     },
     falcuty: {
@@ -58,7 +58,7 @@ module.exports.getDoctorDetailByUserName = function (username) {
                     msg: "Doctor doesn't existed"
                 });
             } else {
-                resolve(doctors);
+                resolve(doctors[0]);
             }
         }, function (err) {
             console.log("f: doctorsjs, l: 46" + JSON.stringify(err));
