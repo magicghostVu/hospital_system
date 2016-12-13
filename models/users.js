@@ -14,6 +14,8 @@ mongoose.Promise = global.Promise;
 var uri = 'mongodb://localhost/hospital';
 //mongoose.connect(uri);+
 
+var Doctor = require('./doctors');
+
 var UserSchema = mongoose.Schema({
     username: {
         type: String,
@@ -56,6 +58,7 @@ module.exports.getUserByUserName = function (username) {
             else
                 resolve(users);
         }, function (err) {
+            console.log("m: users, l: 59:" + JSON.stringify(err));
             reject(err);
         });
   });  
@@ -68,16 +71,16 @@ module.exports.updateToken = function (username, token) {
     var query = { username : username };
     return new Promise(function (resolve, reject) {
         User.find(query).then(function (users) {
-            current_user = users[0];
+            var current_user = users[0];
             current_user.token = token;
             current_user.save().then(function (user) {
                 resolve(user);
             }, function (err) {
-                console.log("save token: " + err);
+                console.log("save token: " + JSON.stringify(err));
                 reject(err);
             });
         }, function (err) {
-            console.log("update token : " + err);
+            console.log("update token : " + JSON.stringify(err));
             reject(err);
         })
     });
@@ -116,8 +119,22 @@ module.exports.createUser = function (newUser) {
             newUser.password = hashPassword;
 
             newUser.save().then(function (user) {
-                resolve(user);
                 // :TODO create doctor, lab_doc,... if type == doctor (or lab_doc),...
+                
+                if (user._type === 'doctor') {
+                    var newDoctor = new Doctor({
+                        username: user.username,
+                        email: user.email
+                    });
+                    newDoctor.save().then(function(doctor) {
+                        resolve(doctor);
+                    },function(err) {
+                        console.log(err);
+                    });
+                    
+                }
+                resolve(user);
+                console.log(err);
             }, function (err) {
                 reject(err);
             });

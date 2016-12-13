@@ -25,10 +25,29 @@ var DoctorSchema = mongoose.Schema({
         type: ObjectId,
         ref: 'falcuties'
     },
+    email: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        unique: true,
+        required: 'Email address is required',
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
+    },
     list_recommend: []
 });
 
 var Doctor = module.exports = mongoose.model('Doctor', DoctorSchema);
+
+module.exports.createDoctorInfo = function(newDoctor) {
+    return new Promise(function(resolve, reject) {
+        newDoctor.save().then(function(doctor) {
+            resolve(doctor);
+        }, function(err) {
+            console.log("m: doctor, l 38 :" + JSON.stringify(err));
+            reject(err);
+        });
+    });
+};
 
 module.exports.getDoctorDetailByUserName = function (username) {
     var query = { username: username};
