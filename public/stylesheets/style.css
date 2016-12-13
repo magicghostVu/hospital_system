@@ -552,7 +552,29 @@ body {
 }
 
 /*tab list request*/
+/*profile-docter begin*/
+.item-doctor{
+    margin-top: 40px;
+}
+.profile-docter-title > h2{
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 60px;
+    background: url("../images/title.jpg")no-repeat center;
+}
+.profile-docter-left > img{
+    border-radius: 7%;
+    box-shadow: 0px 2px 10px 0px #428bca;
+    width: 240px;
+    height: 270px;
+}
+.profile-docter-right{
+    margin-top: 40px;
+}
 
+/*profile-docter end*/
 /*  bhoechie tab */
 .bhoechie-tab{
     min-height: 400px;
