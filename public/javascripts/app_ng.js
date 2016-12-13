@@ -37,17 +37,14 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
         });
     }
     $scope.handleLogin=function(){
-        console.log('clicked');
+        // console.log('clicked');
         console.log($scope.username+" "+$scope.password);
         $scope.login($scope.username, $scope.password).then(function(res){
             //handle UI logic... etc here
             //handle each type of user
 
-
-
-
             global_info=res;
-            console.log(res);
+            // console.log(res);
             $scope.dismiss();
 
             // headerScope do something here, fix me
@@ -63,7 +60,7 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
                 patientContentScope.$apply(function(){
                     patientContentScope.patientLogin=true;
                 });*/
-                console.log(global_info);
+                // console.log(global_info);
 
                 //emit data to get data back to build UI
                 socketPatient.emit("get_data_for_patient",global_info);
@@ -106,7 +103,7 @@ app.directive("myModal",function() {
         link: function(scope, element, attr){
             scope.dismiss= function(){
                 console.log('run hide modal');
-                console.log($(element.children()[0]).modal('hide'));
+                $(element.children()[0]).modal('hide');
             };
         }
 
@@ -143,8 +140,7 @@ app.directive('patientContent', function(){
     }
 });
 
-var patientContentController=app.controller('patientContentController', function($scope){
-
+var patientContentController=app.controller('patientContentController', function($scope, $http){
     patientContentScope=$scope;
     $scope.patientLogin=false;
     $scope.listDoctors=[];
@@ -158,7 +154,27 @@ var patientContentController=app.controller('patientContentController', function
         this.listDoctors=data.listDoctors;
         this.sessions=data.sessions;
 
+        this.profile = data.profile;
     }
+
+    $scope.update_profile = function (fullname, mobile_phone, email) {
+        var req = {
+            token: global_info.token,
+            fullname: fullname,
+            mobile_phone: mobile_phone,
+            email: email
+        };
+
+        return new Promise(function (resolve, reject) {
+            $http.post('patient/edit', req).then(function (res) {
+                console.log(res);
+                resolve(res);
+            }, function (err) {
+                console.log(err);
+                reject(err);
+            });
+        });
+    };
 
 });
 

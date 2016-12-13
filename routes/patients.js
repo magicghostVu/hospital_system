@@ -12,12 +12,12 @@ var Patient = require('../models/patients');
 * */
 router.post('/edit', function (req, res, next) {
     var token = req.body.token;
-    var username = req.body.username;
     var fullname = req.body.fullname;
     var email = req.body.email;
     var mobile_phone = req.body.mobile_phone;
 
     req.checkBody('token', 'Token is required').notEmpty();
+    req.checkBody('fullname', 'Full Name is required').notEmpty();
 
     var errors = req.validationErrors();
 
@@ -25,7 +25,6 @@ router.post('/edit', function (req, res, next) {
         res.send({
             errors: errors,
             token: token,
-            username: username,
             fullname: fullname,
             email: email,
             mobile_phone: mobile_phone
@@ -33,8 +32,7 @@ router.post('/edit', function (req, res, next) {
     } else {
         User.authenticateToken(token).then(function (user) {
             Patient.getPaitentByUserName(user.username).then(function (patients) {
-                patient_update = patients[0];
-                patient_update.username = username;
+                var patient_update = patients[0];
                 patient_update.email = email;
                 patient_update.fullname = fullname;
                 patient_update.mobile_phone = mobile_phone;

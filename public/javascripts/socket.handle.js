@@ -8,7 +8,6 @@ var socket=io();
 var socketPatient=io("/patient");
 socketPatient.on('data_build_UI', function(data){
 
-    console.log(data.sessions);
     patientContentScope.$apply(function(){
         patientContentScope.receiveData(data);
     });
