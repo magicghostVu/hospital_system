@@ -144,11 +144,15 @@ app.directive('patientContent', function(){
 });
 
 var patientContentController=app.controller('patientContentController', function($scope){
+
     patientContentScope=$scope;
     $scope.patientLogin=false;
     $scope.listDoctors=[];
     $scope.sessions=[];
     $scope.profile={};
+    $scope.notification=[];
+    $scope.request={};
+
     $scope.receiveData=function(data){
         this.patientLogin=true;
         this.listDoctors=data.listDoctors;

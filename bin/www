@@ -25,6 +25,10 @@ var server = http.createServer(app);
 var io=require('socket.io')(server);
 var patientChannel=io.of('/patient');
 var doctorChannel=io.of('/doctor');
+var staffChanel = io.of('staff');
+var servicesDoctorChanel= io.of('/services_doctor');
+
+
 
 
 //io.listen(server);
@@ -66,15 +70,8 @@ patientChannel.on('connection', function(socket){
                 require('../models/sessions').getSessionsByUsername(user.username)
                     .then(function(sessions){
                         //back_data.sessions=sessions;
-
-
                         back_data.sessions=sessions;
                         //patientChannel.to(id).emit('data_build_UI', back_data);
-
-
-
-
-
                         var allPromise=[];
 
                         for (idx in sessions){
@@ -90,6 +87,10 @@ patientChannel.on('connection', function(socket){
                                 sessions[j].username_doctor=doctors[j].fullname;
 
                             }
+                            //TODO: get profile
+
+                            require('../models/patients').get
+
                             patientChannel.to(id).emit('data_build_UI', back_data);
 
                         }, function (err) {
