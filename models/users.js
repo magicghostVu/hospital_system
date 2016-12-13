@@ -15,6 +15,7 @@ var uri = 'mongodb://localhost/hospital';
 //mongoose.connect(uri);+
 
 var Doctor = require('./doctors');
+var Patient = require('./patients');
 
 var UserSchema = mongoose.Schema({
     username: {
@@ -55,10 +56,11 @@ module.exports.getUserByUserName = function (username) {
                 reject({
                     msg: "user doesn't exists."
                 });
-            else
+            else {
                 resolve(users);
+            }
         }, function (err) {
-            console.log("m: users, l: 59:" + JSON.stringify(err));
+            console.log("users 59: " + JSON.stringify(err));
             reject(err);
         });
   });  
@@ -126,12 +128,23 @@ module.exports.createUser = function (newUser) {
                         username: user.username,
                         email: user.email
                     });
+
                     newDoctor.save().then(function(doctor) {
                         resolve(doctor);
                     },function(err) {
                         console.log(err);
                     });
-                    
+                } else if (user._type === 'patient') {
+                    var newPatient = new Patient({
+                        username: user.username,
+                        email: user.email
+                    });
+
+                    newPatient.save().then(function (patient) {
+                        resolve(patient);
+                    }, function (err) {
+                        console.log(err);
+                    });
                 }
                 resolve(user);
                 console.log(err);
