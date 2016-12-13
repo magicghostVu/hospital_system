@@ -19,6 +19,10 @@ var sessionSchema= mongoose.Schema({
     username: {
         type: String
     },
+    username_doctor:{
+        type: String
+    },
+
     status: {
         type: String
     },
@@ -59,8 +63,9 @@ sessions.find({}).then(function(sessions){
 });*/
 
 
+/*
 getSessionsByUsername("hoangvuong").then(function(_sessions){
     console.log(JSON.stringify(_sessions));
 }, function(err){
     console.log("sessions 65"+ JSON.stringify(err));
-});
+});*/

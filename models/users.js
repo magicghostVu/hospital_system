@@ -11,8 +11,8 @@ var mongoose = require('mongoose');
 var bcryptjs = require('bcryptjs');
 
 mongoose.Promise = global.Promise;
-var uri = 'mongodb://localhost/hospital';
-//mongoose.connect(uri);+
+var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";
+//mongoose.connect(uri);
 
 var Doctor = require('./doctors');
 

@@ -59,13 +59,14 @@
                     <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
                         <div class="info-block block-info clearfix" style="padding-bottom:20px;border-bottom: 1px solid beige">
                             <h4>Session {{$index + 1}}</h4>
+                            <p>Bác sĩ phụ trách: {{session.username_doctor}} </p>
                             <p>Ngày bắt đầu : {{session.begin_date}}</p>
                             <p>Description : {{session.description}}</p>
                             <p>Tình trạng : {{session.status}}</p>
                             <p>Kết quả : {{session.result}}</p>
                             <div ng-repeat="act in session.activities">
                                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target={{'#activity'+($index+1)+$parent.$index}}>
-                                    Hoạt động {$index+1}
+                                    Hoạt động {{$index+1}}
                                 </button>
                                 <div style="margin-top: 10px" id={{'activity'+($index+1)+$parent.$index}} class="collapse">
                                     <p>Người xác nhận: {{act.doctor_username_confirm}}</p>
