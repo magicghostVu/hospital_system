@@ -17,6 +17,8 @@ var users = require('./routes/users');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var patient = require('./routes/patients');
+var upfile= require('./routes/uploadFile');
+
 
 var app = express();
 
@@ -57,6 +59,17 @@ app.use('/login', login);
 app.use('/register', register);
 app.use('/patient', patient);
 
+
+
+
+//set up multer upload file
+
+var multer=require('multer')
+var upload= multer({dest: './public/images'}).single('file');
+app.use(upload);
+
+
+app.use('/api', upfile);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

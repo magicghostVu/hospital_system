@@ -145,7 +145,7 @@ var patientContentController=app.controller('patientContentController', function
     $scope.profile={};
     $scope.notifications=[];
     $scope.request={};
-
+    $scope.requestDescription="";
     $scope.receiveData=function(data){
         this.patientLogin=true;
         this.listDoctors=data.listDoctors;
@@ -172,6 +172,14 @@ var patientContentController=app.controller('patientContentController', function
             });
         });
     };
+
+    $scope.sendRequest= function () {
+        // TODO: send file image first to get back img ID
+        // $http send file to server ...
+        // then emit description to server
+        console.log(this.requestDescription);
+
+    }
 
 });
 
