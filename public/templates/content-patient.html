@@ -214,17 +214,13 @@
                             <div class="notification">
                                 <h3>Notification</h3>
                                 <ul>
-                                    <li>
-                                        <button type="button" class="notification-id" data-toggle="collapse" data-target="#activity5">
-                                            Thông báo kết quả khám bệnh ngày 12/12/2016
+                                    <li ng-repeat="noti in notifications">
+                                        <button type="button" class="notification-id" data-toggle="collapse" data-target={{'#noti'+$index}}>
+                                            {{noti.content}}
                                         </button>
-                                        <div style="margin-top: 10px" id="activity5" class="collapse">
-                                            <p>Người xác nhận: Dr.Vũ Hồng Phú</p>
-                                            <p>Thời gian:22/12/2016 12:12:12</p>
-                                            <p>Đã hoàn tất:Ok</p>
-                                            <p>Kết quả : <a href=" http://google.com.vn">File kết quả</a></p>
-                                            <p>Chi phí : 200USD</p>
-                                            <p>Đã thanh toán : Chưa thanh toán</p>
+                                        <div style="margin-top: 10px" id={{'noti'+$index}} class="collapse">
+                                            <p>Người xác nhận: {{noti.username_doctor}}</p>
+                                            <p>Thời gian {{noti.date}}, {{noti.time}} </p>
                                         </div>
                                     </li>
                                 </ul>

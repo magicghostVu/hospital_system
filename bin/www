@@ -91,22 +91,31 @@ patientChannel.on('connection', function(socket){
 
                                 back_data.profile = patient;
                                 console.log(patient);
-                                patientChannel.to(id).emit('data_build_UI', back_data);
+
                                 //TODO : get notification
                                 require('../models/notifications')
                                     .getNotificationByUsername(user.username)
                                     .then(function (notis) {
                                         console.log("www 103 "+ JSON.stringify(notis));
+                                        back_data.notifications=notis;
+
+                                        //let allPromise=[];
+
+
+
+                                        //console.log(back_data.notifications);
+                                        patientChannel.to(id).emit('data_build_UI', back_data);
+
                                     }, function (err) {
                                         console.log("www 106"+ JSON.stringify(err));
                                     });
 
 
                             }, function (err) {
-                                console.log("www 99: " + JSON.stringify(err));
+                                console.log("www 107: " + JSON.stringify(err));
                             });
                         }, function (err) {
-                            console.log(" www 95" + JSON.stringify(err));
+                            console.log(" www 110" + JSON.stringify(err));
                         });
 
                     }, function(err){

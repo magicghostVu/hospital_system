@@ -10,9 +10,10 @@ var socket=io();
 var socketPatient=io("/patient");
 socketPatient.on('data_build_UI', function(data){
 
-    console.log(data.notifications);
+    //console.log(data);
 
     patientContentScope.$apply(function(){
+        //console.log(data);
         patientContentScope.receiveData(data);
     });
 });
