@@ -68,9 +68,7 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
             }else if(global_info._type ==='doctor'){
                 console.log(global_info);
 
-                //socketPatient
-
-
+                socketDoctor.emit("emit_data_for_doctor", global_info);
                 console.log('doctor login');
             }else if(global_info._type==='staff'){
 
@@ -94,7 +92,6 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
 });
 
 controller_authen.$inject=["$scope", "$http"];
-
 
 app.directive("myModal",function() {
     return {
@@ -135,7 +132,7 @@ app.directive('patientContent', function(){
         restrict: "E",
         templateUrl: 'templates/content-patient.html',
         link : function(scope, e, attr){
-            // resgi
+
         }
     }
 });
@@ -155,7 +152,7 @@ var patientContentController=app.controller('patientContentController', function
         this.sessions=data.sessions;
         this.notifications=data.notifications;
         this.profile = data.profile;
-    }
+    };
 
     $scope.update_profile = function (fullname, mobile_phone, email) {
         var req = {
@@ -178,5 +175,30 @@ var patientContentController=app.controller('patientContentController', function
 
 });
 
-console.log("ng run");
 
+app.directive('doctorContent', function () {
+    return {
+        restrict: "E",
+        templateUrl: 'templates/content-doctor.html',
+        link: function (scope, e, attr) {
+
+        }
+    }
+});
+
+var doctorContentController = app.controller('doctorContentController', function($scope) {
+    doctorContentScope = $scope;
+    $scope.doctorLogin = false;
+    $scope.listRequests = [];
+    $scope.listPatients = [];
+    $scope.profile = {};
+
+    $scope.receiveDoctorData = function (data) {
+        this.doctorLogin = true;
+        // this.listRequests = data.listRequests;
+        // this.listPatients = data.listPatients;
+        // this.profile = data.profile;
+    }
+});
+
+console.log("ng run");

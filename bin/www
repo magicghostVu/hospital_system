@@ -30,7 +30,6 @@ var servicesDoctorChanel= io.of('/services_doctor');
 
 
 
-
 //io.listen(server);
 console.log("socket is running");
 io.on('connection', function(socket){
@@ -130,6 +129,8 @@ patientChannel.on('connection', function(socket){
 doctorChannel.on('connection', function (socket) {
     console.log('www 91 '+socket.id+ " connected");
     socket.on('get_data_for_doctor', function (data) {
+        var id = socket.id;
+        console.log("www 134"+ JSON.stringify(data));
 
     });
 
