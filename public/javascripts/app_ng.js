@@ -214,16 +214,15 @@ var doctorContentController = app.controller('doctorContentController', function
     $scope.receiveDoctorData = function (data) {
         this.doctorLogin = true;
         this.listRequests = data.listRequests;
+        this.profile = data.profile;
 
+        // set default class each eletment in loop
         for (i in this.listRequests) {
             if (i == 0)
                 this.listRequestElement[i] = "active";
             else
                 this.listRequestElement[i] = "inactive";
         }
-        // this.listPatients = data.listPatients;
-        // this.profile = data.profile;
-
     }
 
     $scope.sendAppointment=function (index) {
@@ -241,19 +240,15 @@ var doctorContentController = app.controller('doctorContentController', function
     $scope.update_profile = function (fullname, mobile_phone, email) {
         var req = {
             token: global_info.token,
-            fullname: fullname,
-            mobile_phone: mobile_phone,
-            email: email
+            fullname: this.profile,
+            mobile_phone: this.profile.mobile_phone,
+            email: this.profile.email
         };
 
-        return new Promise(function (resolve, reject) {
-            $http.post('doctor/edit', req).then(function (res) {
-                console.log(res);
-                resolve(res);
-            }, function (err) {
-                console.log(err);
-                reject(err);
-            });
+        $http.post('doctor/edit', req).then(function (res) {
+            console.log(res);
+        }, function (err) {
+            console.log(err);
         });
     };
 });
@@ -272,28 +267,47 @@ var staffContentController = app.controller('staffContentController', function (
     staffContentScope = $scope;
     $scope.staffLogin = false;
     $scope.listRequests = [];
-
+    $scope.profile = {};
     $scope.listRequestElement = [];
-
-    $scope.updateActiveElement = function (index) {
-        for (k in this.listRequestElement) {
-            if (k == index)
-                this.listRequestElement[k] = "active";
-            this.listRequestElement[k] = "";
-        }
-    };
 
     $scope.receiveStaffData = function (data) {
         this.staffLogin = true;
-        console.log(data.listRequests);
         this.listRequests = data.listRequests;
+        this.profile = data.profile;
 
+        // set default
         for (i in this.listRequests) {
-            if (i == 0)
-                this.listRequestElement.push("active");
-            this.listRequestElement.push("");
+            if (i == 0) {
+                this.listRequestElement[i] = "active";
+            } else {
+                this.listRequestElement[i] = "inactive";
+            }
         }
     }
+
+    $scope.updateActiveElement = function (index) {
+        for (k in this.listRequestElement) {
+            if (k == index) {
+                this.listRequestElement[k] = "active";
+            } else {
+                this.listRequestElement[k] = "inactive";
+            }
+        }
+    };
+
+    $scope.update_profile = function(fullname, email, mobile_phone) {
+        var req = {
+            fullname: this.profile.fullname,
+            email: this.profile.email,
+            mobile_phone: this.profile.mobile_phone,
+        }
+
+        $http.post('staff/edit', req).then(function (res) {
+            console.log(res);
+        }, function(err) {
+            console.log(err);
+        })
+    };
 });
 
 console.log("ng run");

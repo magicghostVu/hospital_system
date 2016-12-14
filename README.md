@@ -1,4 +1,4 @@
-## Hospital System
+## Hospital System (Single Page Application - Realtime)
 
 ------
 
@@ -27,4 +27,4 @@
 `http://localhost:3000`
 
 
-![wireframe-lab-doctor](/wireframe/lab_dotor_home.png)
+- [Check out our app at Smart-hospital](http://shospital.herokuapp.com)
