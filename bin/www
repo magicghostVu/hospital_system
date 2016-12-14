@@ -26,7 +26,10 @@ var io = require('socket.io')(server);
 var patientChannel = io.of('/patient');
 var doctorChannel = io.of('/doctor');
 var staffChanel = io.of('staff');
-var servicesDoctorChanel = io.of('/services_doctor');
+
+
+
+var servicesDoctorChanel= io.of('/services_doctor');
 
 
 //io.listen(server);
@@ -46,6 +49,7 @@ io.on('connection', function (socket) {
     });
 
 });
+
 
 //handle patient
 patientChannel.on('connection', function (socket) {
@@ -72,7 +76,6 @@ patientChannel.on('connection', function (socket) {
                 var back_data = {};
                 back_data.listDoctors = _data;
 
-
                 // get Session and doctor detail foreach session
                 require('../models/sessions').getSessionsByUsername(user.username)
                     .then(function (sessions) {
@@ -80,8 +83,9 @@ patientChannel.on('connection', function (socket) {
 
                         var allPromise = [];
 
-                        for (idx in sessions) {
-                            console.log(sessions[idx].username_doctor + " www 81");
+
+                        for (idx in sessions){
+                            console.log(sessions[idx].username_doctor +" www 88");
                             allPromise.push(
                                 require('../models/doctors').getDoctorDetailByUserName(sessions[idx].username_doctor));
 
@@ -98,39 +102,39 @@ patientChannel.on('connection', function (socket) {
                                 var patient = patients[0];
 
                                 back_data.profile = patient;
-                                console.log(patient);
+                                console.log("www90" + JSON.stringify(patient));
 
                                 //TODO : get notification
                                 require('../models/notifications')
                                     .getNotificationByUsername(user.username)
                                     .then(function (notis) {
-                                        console.log("www 103 " + JSON.stringify(notis));
-                                        back_data.notifications = notis;
 
+                                        console.log("www 99 "+ JSON.stringify(notis));
+                                        back_data.notifications=notis;
+                                        
                                         //let allPromise=[];
-
-
                                         //console.log(back_data.notifications);
                                         patientChannel.to(id).emit('data_build_UI', back_data);
-
                                     }, function (err) {
-                                        console.log("www 106" + JSON.stringify(err));
+                                        console.log("www 119"+ JSON.stringify(err));
+
                                     });
 
-
                             }, function (err) {
-                                console.log("www 107: " + JSON.stringify(err));
+                                console.log("www 112: " + JSON.stringify(err));
                             });
                         }, function (err) {
-                            console.log(" www 110" + JSON.stringify(err));
+                            console.log(" www 114" + JSON.stringify(err));
                         });
 
-                    }, function (err) {
-                        console.log("www 68" + JSON.stringify(err));
+
+                    }, function(err){
+                        console.log("www 118"+ JSON.stringify(err));
                     });
                 //patientChannel.to(id).emit('data_build_UI', back_data);
-            }, function (err) {
-                console.log('www 120 ' + JSON.stringify(err));
+            }, function(err){
+                console.log('www 122 '+ JSON.stringify(err));
+
             });
 
         }, function (err) {
@@ -156,17 +160,20 @@ patientChannel.on('connection', function (socket) {
     });
 });
 
-//handle doctor
+// handle doctor
 
 doctorChannel.on('connection', function (socket) {
 
     console.log('www 139 ' + socket.id + " connected");
     socket.on('get_data_for_doctor', function (data) {
 
+
         console.log("www 141: " + JSON.stringify(data));
         var id = socket.id;
-        console.log("www 134" + JSON.stringify(data));
 
+
+
+        // authenticate user
         require('../models/users').authenticateToken(data.token).then(function (doctor) {
 
             //save socket id to push notification
@@ -177,13 +184,24 @@ doctorChannel.on('connection', function (socket) {
                 console.log("www 163" + JSON.stringify(err));
             });
 
-            require('../models/waiting_requests').getWaitingRequestByDoctor(doctor.username).then(function (wating_requests) {
-                var back_data = {};
-                back_data.listRequests = wating_requests;
+            require('../models/doctors').getDoctorDetailByUserName(doctor.username).then(function (_doctor) {
 
-                doctorChannel.to(id).emit('data_build_UI', back_data);
+                var response_data = {};
+
+                response_data.profile = _doctor;
+
+                require('../models/waiting_requests').getWaitingRequestByDoctor(_doctor.username)
+                    .then(function (waiting_requests) {
+
+                        response_data.listRequests = waiting_requests;
+
+                        doctorChannel.to(id).emit('data_build_UI', response_data);
+
+                    }, function (err) {
+                        console.log(err);
+                    })
             }, function (err) {
-                console.log("www 149: " + JSON.stringify(err));
+                console.log(err);
             });
         }, function (err) {
             console.log(err);
@@ -205,6 +223,18 @@ doctorChannel.on('connection', function (socket) {
         });
     });
 
+});
+
+// handle staff channel
+
+staffChanel.on('connection', function (socket) {
+    console.log("www 169 connected: " +socket);
+    socket.on('get_data_for_staff', function (data) {
+        console.log("www 171 " + socket.id);
+        var id = socket.id;
+        var back_data = {};
+        staffChanel.to(id).emit('data_build_UI', back_data);
+    });
 });
 
 

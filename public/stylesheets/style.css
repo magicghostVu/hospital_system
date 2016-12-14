@@ -582,7 +582,7 @@ body {
 .tab-pane {
     min-height: 450px;
     max-height: 950px;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     width: 100%;
 }
 
@@ -1299,16 +1299,17 @@ footer > .end > a {
 
 /*dropdown staff*/
 .dropbtn {
-    background-color: #4CAF50;
+    background-color: #51c7eb;
     color: white;
-    padding: 16px;
-    font-size: 16px;
+    padding: 10px;
+    font-size: 14px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+    background-color: #99e49c;
 }
 
 #myInput {
@@ -1318,12 +1319,13 @@ footer > .end > a {
     background-repeat: no-repeat;
     font-size: 16px;
     padding: 14px 20px 12px 45px;
-    border: none;
+
 }
 
 .dropdown {
     position: relative;
     display: inline-block;
+
 }
 
 .dropdown-content {
