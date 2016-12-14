@@ -140,17 +140,24 @@ doctorChannel.on('connection', function (socket) {
         // authenticate user
         require('../models/users').authenticateToken(data.token).then(function (doctor) {
             // console.log("www 141: " + JSON.stringify(doctor));
+            require('../models/doctors').getDoctorDetailByUserName(doctor.username).then(function (_doctor) {
 
-            // get List Request By Doctor
-            require('../models/waiting_requests').getWaitingRequestByDoctor(doctor.username)
-                .then(function (waiting_requests) {
-                    console.log(waiting_requests);
-                    var back_data = {};
+                var response_data = {};
 
-                    back_data.listRequests = waiting_requests;
+                response_data.profile = _doctor;
 
-                    var allPromise = [];
+                require('../models/waiting_requests').getWaitingRequestByDoctor(_doctor.username)
+                    .then(function (waiting_requests) {
 
+                        response_data.listRequests = waiting_requests;
+
+                        require('../models/sessions').getActiveSessionByDoctor(_doctor.username)
+                    }, function (err) {
+                        console.log(err);
+                    })
+            }, function (err) {
+                console.log(err);
+            });
                     // require('../models/sessions').getActiveSessionByDoctor(doctor.username).then(function (sessions) {
                     //
                     //     console.log("www 154: " + JSON.stringify(back_data));

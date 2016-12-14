@@ -23,51 +23,36 @@
             </div>
             <div class="clearfix"></div>
             <div class="container">
-                <div class="row">
+                <div class="row" style="margin-bottom: 40px">
                     <div class="bhoechie-tab-container">
                         <div class="col-md-3  bhoechie-tab-menu">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item active text-center">
-                                    <h4 class="glyphicon glyphicon-user"></h4><br/>patien 1
+                            <div class="list-group" ng-repeat="request in listRequests">
+                                <a href="#" class="list-group-item text-center" id={{'user_request'+($index+1)}}>
+                                    <h4 class="glyphicon glyphicon-user"></h4><br/>{{request.username}}
                                 </a>
-                                <a href="#" class="list-group-item  text-center">
-                                    <h4 class="glyphicon glyphicon-user"></h4><br/>patien 2
-                                </a>
-                                <a href="#" class="list-group-item  text-center">
-                                    <h4 class="glyphicon glyphicon-user"></h4><br/>patien 3
-                                </a>
-                                <a href="#" class="list-group-item text-center">
-                                    <h4 class="glyphicon glyphicon-user"></h4><br/>patien 4
-                                </a>
-                                <a href="#" class="list-group-item text-center">
-                                    <h4 class="glyphicon glyphicon-user"></h4><br/>patien 5
-                                </a>
+                                <!--<a href="#" class="list-group-item  text-center">-->
+                                    <!--<h4 class="glyphicon glyphicon-user"></h4><br/>patien 2-->
+                                <!--</a>-->
+                                <!--<a href="#" class="list-group-item  text-center">-->
+                                    <!--<h4 class="glyphicon glyphicon-user"></h4><br/>patien 3-->
+                                <!--</a>-->
+                                <!--<a href="#" class="list-group-item text-center">-->
+                                    <!--<h4 class="glyphicon glyphicon-user"></h4><br/>patien 4-->
+                                <!--</a>-->
+                                <!--<a href="#" class="list-group-item text-center">-->
+                                    <!--<h4 class="glyphicon glyphicon-user"></h4><br/>patien 5-->
+                                <!--</a>-->
                             </div>
                         </div>
 
                         <!--Request's Details-->
-                        <div class="col-md-9  bhoechie-tab">
-
-                            <!-- flight section -->
-                            <div class="bhoechie-tab-content active">
+                        <div class="col-md-9  bhoechie-tab" ng-repeat="request in listRequests">
+                            <div class="bhoechie-tab-content" id={{'request_'+($index+1)}}>
                                 <center>
-                                    <h2 style="margin-top: 0;color:#55518a">Patient's information</h2>
+                                    <h2 style="margin-top: 0;color:#55518a">{{request.username | uppercase}}'s information</h2>
                                     <div class="date">
                                         <div class="row">
-                                            <p>Chúng tôi trình bày Resilient Distributed Datasets (RDDs) , khái niệm
-                                                trừu tượng để cho lập trình viên thực hiện tính toán thường xuyên trong
-                                                bộ nhớ trên cụm lớn với việc chấp nhận sai sót. RDDs được thúc đẩy bởi
-                                                hai loại ứng dụng mô hình điện toán hiện hành xử lý kém hiệu quả : thuật
-                                                toán lặp lại và công cụ khai phá dữ liệu tương tác. Trong cả hai trường
-                                                hợp, giữ cho dữ liệu trong bộ nhớ có thể cải thiện hiệu suất một bậc. Để
-                                                đạt được khả năng chịu lỗi một cách hiệu quả, RDDs cung cấp một hình
-                                                thức chia sẻ bộ nhớ, dựa trên biến đổi theo cụm lơn chứ không phải là
-                                                biến đổi nhỏ lẻ phân mảnh. Tuy nhiên, chúng tôi cho thấy rằng RDDs được
-                                                biểu hiện đầy đủ để chụp các tính toán lớn, bao gồm cả mô hình lập trình
-                                                chuyên ngành gần đây như Pregel, và các ứng dụng mới có không có mô
-                                                hình. Chúng tôi đã thực hiện RDDs trong một hệ thống gọi là Spark, mà
-                                                chúng tôi đánh giá thông qua một loạt các ứng dụng người dùng và điểm
-                                                chuẩn.</p>
+                                            <p>Descriptions : {{request.description}}</p>
                                             <h4 style="float: left">Image :</h4> <img style="float: left" src="" height="150px" width="150px" alt="img" />
                                         </div>
                                         <div class="row">
@@ -97,53 +82,27 @@
                                 </center>
                             </div>
 
-                            <div class="bhoechie-tab-content active">
-                                <center>
-                                    <h2 style="margin-top: 0;color:#55518a">Patient's information</h2>
-                                    <div class="date">
-                                        <div class="row">
-                                            <p>Chúng tôi trình bày Resilient Distributed Datasets (RDDs) , khái niệm
-                                                trừu tượng để cho lập trình viên thực hiện tính toán thường xuyên trong
-                                                bộ nhớ trên cụm lớn với việc chấp nhận sai sót. RDDs được thúc đẩy bởi
-                                                hai loại ứng dụng mô hình điện toán hiện hành xử lý kém hiệu quả : thuật
-                                                toán lặp lại và công cụ khai phá dữ liệu tương tác. Trong cả hai trường
-                                                hợp, giữ cho dữ liệu trong bộ nhớ có thể cải thiện hiệu suất một bậc. Để
-                                                đạt được khả năng chịu lỗi một cách hiệu quả, RDDs cung cấp một hình
-                                                thức chia sẻ bộ nhớ, dựa trên biến đổi theo cụm lơn chứ không phải là
-                                                biến đổi nhỏ lẻ phân mảnh. Tuy nhiên, chúng tôi cho thấy rằng RDDs được
-                                                biểu hiện đầy đủ để chụp các tính toán lớn, bao gồm cả mô hình lập trình
-                                                chuyên ngành gần đây như Pregel, và các ứng dụng mới có không có mô
-                                                hình. Chúng tôi đã thực hiện RDDs trong một hệ thống gọi là Spark, mà
-                                                chúng tôi đánh giá thông qua một loạt các ứng dụng người dùng và điểm
-                                                chuẩn.</p>
-                                            <h4 style="float: left">Image :</h4> <img style="float: left" src="" height="150px" width="150px" alt="img" />
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h2>Chọn lịch khám</h2>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-control-wrapper">
-                                                    <input type="text" id="date-format"
-                                                           class="form-control floating-label"
-                                                           placeholder="Begin Date Time">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-0">
-                                                <code>
+                            <!--&lt;!&ndash; patient2 section &ndash;&gt;-->
+                            <!--<div class="bhoechie-tab-content">-->
+                                    <!--<h2 style="margin-top: 0;color:#55518a">Patient's information</h2>-->
+                                    <!--<h3 style="margin-top: 0;color:#55518a">Train Reservation</h3>-->
+                            <!--</div>-->
 
-                                                    <script>$('#date-format').bootstrapMaterialDatePicker({format: 'dddd DD MMMM YYYY - HH:mm'});</script>
-                                                </code>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <button class="btn btn-success"> đặt lịch</button>
-                                        </div>
-                                    </div>
-                                </center>
-                            </div>
+                            <!--&lt;!&ndash; patient3 search &ndash;&gt;-->
+                            <!--<div class="bhoechie-tab-content">-->
+                                    <!--<h2 style="margin-top: 0;color:#55518a">Patient's information</h2>-->
+                                    <!--<h3 style="margin-top: 0;color:#55518a">Hotel Directory</h3>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;patient4 &ndash;&gt;-->
+                            <!--<div class="bhoechie-tab-content">-->
+                                    <!--<h2 style="margin-top: 0;color:#55518a">Patient's information</h2>-->
+                                    <!--<h3 style="margin-top: 0;color:#55518a">Restaurant Diirectory</h3>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;patient4 &ndash;&gt;-->
+                            <!--<div class="bhoechie-tab-content">-->
+                                    <!--<h2 style="margin-top: 0;color:#55518a">Patient's information</h2>-->
+                                    <!--<h3 style="margin-top: 0;color:#55518a">Credit Card</h3>-->
+                            <!--</div>-->
                         </div>
 
                     </div>
@@ -155,30 +114,86 @@
                 <div class="banner-left"><h1>list patient</h1></div>
                 <div class="banner-right"><img src="images/bacsi.png" width="300px" height="195px"></div>
             </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                            </div>
-                            <div class="pull-right">
-                                <h4>Bệnh nhân bệnh j j j </h4>
-                                <dl>
-                                    <dt>Full Name:</dt>
-                                    <dd class="name">Nguyện văn A</dd>
-                                    <dt>Bệnh cần chữa trị:</dt>
-                                    <dd>
-                                        <span > jhuihih. </span>
-                                    </dd>
-                                    <dt>Email:</dt>
-                                    <dd>bbhgh@hbhb</dd>
-                                </dl>
+            <div class="clearfix"></div>
+
+
+                <div class="container list-patient" >
+                    <div class="row">
+                        <h2>activity</h2>
+                        <div class="col col-sm-4 list-patient-left">
+                            <ul class="nav nav-tabs nav-stacked text-center" role="tablist">
+                                <li role="presentation" class="active"><a class="glyphicon glyphicon-user" href="#patient1" aria-controls="patient1" role="tab" data-toggle="tab">Nguyễn Văn A</a></li>
+                                <li role="presentation"><a class="glyphicon glyphicon-user" href="#patient2" aria-controls="patient2" role="tab" data-toggle="tab">Nguyễn Văn B</a></li>
+                                <li role="presentation"><a class="glyphicon glyphicon-user" href="#patient3" aria-controls="patient3" role="tab" data-toggle="tab">Nguyễn Văn C</a></li>
+                            </ul>
+                        </div>
+                        <div class="col col-sm-8 list-patient-right">
+                            <div class="row tab-content">
+                                <div role="tabpanel" class="tab-pane fade active in" id="patient1">
+                                    <ul class="patient-tab">
+                                        <li ><a  href="javascript:void(0)" onclick="openCity('pt1')">Activity 1</a></li>
+                                        <li ><a href="javascript:void(0)" onclick="openCity('pt2')">Activity 2</a></li>
+                                        <li><a href="javascript:void(0)" onclick="openCity('pt3')">Activity 3</a></li>
+                                    </ul>
+
+                                    <div id="pt1" class=" activity form-group">
+                                        <p><b>Ngày bắt đầu :</b>14/12/2016</p>
+                                        <p><b>Description :</b> Chúng tôi trình bày Resilient Distributed Datasets (RDDs) , khái niệm
+                                            trừu tượng để cho lập trình viên thực hiện tính toán thường xuyên trong
+                                            bộ nhớ trên cụm lớn với việc chấp nhận sai sót. RDDs được thúc đẩy bởi</p>
+                                        <p><b>Tình trạng :</b> Chúng tôi trình bày Resilient Distributed Datasets (RDDs) , khái niệm
+                                            trừu tượng để cho lập trình viên thực hiện tính toán thường xuyên trong
+                                            bộ nhớ trên cụm lớn với việc chấp nhận sai sót. RDDs được thúc đẩy bởi</p>
+                                        <p><b>Kết quả :</b>Chúng tôi trình bày Resilient Distributed Datasets (RDDs) , khái niệm
+                                            trừu tượng để cho lập trình viên thực hiện tính toán thường xuyên trong
+                                            bộ nhớ trên cụm lớn với việc chấp nhận sai sót. RDDs được thúc đẩy bởi</p>
+                                        <p><b>Cập nhật:</b><span><textarea style="resize: none" cols="3" rows="5" class="form-control"></textarea></span></p>
+                                    </div>
+
+                                    <div id="pt2" class="activity">
+                                        <h2>Paris</h2>
+                                        <p>Paris is the capital of France.</p>
+                                    </div>
+
+                                    <div id="pt3" class="activity">
+                                        <h2>Tokyo</h2>
+                                        <p>Tokyo is the capital of Japan.</p>
+                                    </div>
+
+                                    <script>
+                                        openCity("pt1");
+                                        function openCity(cityName) {
+                                            var i;
+                                            /*$('.patient-tab li:first-child a').hover();*/
+                                            var x = document.getElementsByClassName("activity");
+                                            for (i = 0; i < x.length; i++) {
+                                                x[i].style.display = "none";
+                                            }
+                                            document.getElementById(cityName).style.display = "block";
+                                        }
+                                    </script>
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane fade" id="patient2">
+
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="patient3">
+
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <ul class="list-inline patient-bt">
+                            <li><button type="button" class="btn1 btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn1 btn-default next-step">Next</button></li>
+                            <li><button type="button" class="btn1 btn-primary ">Save</button></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+
+
+
         </div>
         <div class="tab-pane" id="3b">
             <div class="banner">
@@ -224,123 +239,155 @@
     </div>
 </div>
 <script>
-    function readURL(input, thumbimage) {
-        if (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $("#thumbimage").attr('src', e.target.result);
+    $(document).ready(function () {
+
+        $(".next-step").click(function (e) {
+
+            var $active = $('.nav-tabs li.active');
+            $active.next().removeClass('disabled');
+            nextTab($active);
+
+        });
+        $(".prev-step").click(function (e) {
+
+            var $active = $('.nav-tabs li.active');
+            prevTab($active);
+
+        });
+
+        function readURL(input, thumbimage) {
+            if (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#thumbimage").attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
             }
-            reader.readAsDataURL(input.files[0]);
-        }
-        else { // Sử dụng cho IE
-            $("#thumbimage").attr('src', input.value);
+            else { // Sử dụng cho IE
+                $("#thumbimage").attr('src', input.value);
+
+            }
+            $("#thumbimage").show();
+            $('.filename').text($("#uploadfile").val());
+            $('.Choicefile').css('background', '#C4C4C4');
+            $('.Choicefile').css('cursor', 'default');
+            $(".removeimg").show();
+            $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
 
         }
-        $("#thumbimage").show();
-        $('.filename').text($("#uploadfile").val());
-        $('.Choicefile').css('background', '#C4C4C4');
-        $('.Choicefile').css('cursor', 'default');
-        $(".removeimg").show();
-        $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
+        //$(document).ready(function () {
 
-    }
-    //$(document).ready(function () {
+        var setId = function () {
+            console.log($('#request_1'));
+            $('#request_1').addClass("active");
+            $('#user_request1').addClass("active");
+        };
 
-    (function () {
-        var html_doctor = '';
-        $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
-            e.preventDefault();
-            $(this).siblings('a.active').removeClass("active");
-            $(this).addClass("active");
-            var index = $(this).index();
-            $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-            $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-        });
-        $('#edit_doctor').click(function () {
-            $('#edit_doctor').hide();
-            $('#ok_doctor').show();
-            $('#exit_doctor').show();
-            html_doctor = $('#myform_doctor').html();
-            var name = $('#myform_doctor>h4').text().slice(6);
-            var title = $('#myform_doctor>p').text().slice(7);
-            var phone = $('#myform_doctor span').first().text().slice(7);
-            var email = $('#myform_doctor span').last().text().slice(7);
-            var html_after = '';
-            html_after += "<table id='table-profile' cellpadding='10' cellspacing='10'>";
-
-
-            html_after += "<tr>";
-            html_after += "<td style='height: 55px'>";
-            html_after = html_after + "Name:";
-            html_after += "</td>";
-            html_after += "<td>";
-            html_after = html_after + "<input class='form-control' type='text' name='name' value='" + name + "'/>";
-            html_after += "</td>";
-            html_after += "</tr>";
-
-            html_after += "<tr>";
-            html_after += "<td style='height: 55px'>";
-            html_after = html_after + "Title:";
-            html_after += "</td>";
-            html_after += "<td>";
-            html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
-            html_after += "</td>";
-            html_after += "</tr>";
-
-            html_after += "<tr>";
-            html_after += "<td style='height: 55px'> ";
-            html_after = html_after + "Phone:";
-            html_after += "</td>";
-            html_after += "<td>";
-            html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
-            html_after += "</td>";
-            html_after += "</tr>";
-
-            html_after += "<tr>";
-            html_after += "<td style='height: 55px'>";
-            html_after = html_after + "Email:";
-            html_after += "</td>";
-            html_after += "<td>";
-            html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
-            html_after += "</td>";
-            html_after += "</tr>";
-
-            html_after += "<tr>";
-            html_after += "<td style='height: 55px'>";
-            html_after = html_after + "Image:";
-            html_after += "</td>";
-            html_after += "<td>";
-            html_after = html_after + "<input class='form-control' type='file' name='image'/>";
-            html_after += "</td>";
-            html_after += "</tr>";
-
-            html_after += "</table>";
-            $('#myform_doctor').html(html_after);
-        });
-        $('#exit_doctor').click(function () {
-            $('#ok_doctor').hide();
-            $('#exit_doctor').hide();
-            $('#myform_doctor').html(html_doctor);
-            $('#edit_doctor').show();
-        });
-
-        $('#demo').click(function () {
-            console.log($('#left1').css('height'));
-        });
-        $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
-            $("#uploadfile").click();
-
-        });
-        $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
-            $("#thumbimage").attr('src', '').hide();
-            $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
-            $(".removeimg").hide();
-            $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
-                $("#uploadfile").click();
+        doctorContentScope.$apply(setId());
+        (function () {
+            var html_doctor = '';
+            console.log('running');
+            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+                e.preventDefault();
+                $(this).siblings('a.active').removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
             });
-            $('.Choicefile').css('background', '#0877D8');
-            $('.Choicefile').css('cursor', 'pointer');
-            $(".filename").text("");
-        });
-    })();
+            $('#edit_doctor').click(function () {
+                $('#edit_doctor').hide();
+                $('#ok_doctor').show();
+                $('#exit_doctor').show();
+                html_doctor = $('#myform_doctor').html();
+                var name = $('#myform_doctor>h4').text().slice(6);
+                var title = $('#myform_doctor>p').text().slice(7);
+                var phone = $('#myform_doctor span').first().text().slice(7);
+                var email = $('#myform_doctor span').last().text().slice(7);
+                var html_after = '';
+                html_after += "<table id='table-profile' cellpadding='10' cellspacing='10'>";
+
+
+                html_after += "<tr>";
+                html_after += "<td style='height: 55px'>";
+                html_after = html_after + "Name:";
+                html_after += "</td>";
+                html_after += "<td>";
+                html_after = html_after + "<input class='form-control' type='text' name='name' value='" + name + "'/>";
+                html_after += "</td>";
+                html_after += "</tr>";
+
+                html_after += "<tr>";
+                html_after += "<td style='height: 55px'>";
+                html_after = html_after + "Title:";
+                html_after += "</td>";
+                html_after += "<td>";
+                html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
+                html_after += "</td>";
+                html_after += "</tr>";
+
+                html_after += "<tr>";
+                html_after += "<td style='height: 55px'> ";
+                html_after = html_after + "Phone:";
+                html_after += "</td>";
+                html_after += "<td>";
+                html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
+                html_after += "</td>";
+                html_after += "</tr>";
+
+                html_after += "<tr>";
+                html_after += "<td style='height: 55px'>";
+                html_after = html_after + "Email:";
+                html_after += "</td>";
+                html_after += "<td>";
+                html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
+                html_after += "</td>";
+                html_after += "</tr>";
+
+                html_after += "<tr>";
+                html_after += "<td style='height: 55px'>";
+                html_after = html_after + "Image:";
+                html_after += "</td>";
+                html_after += "<td>";
+                html_after = html_after + "<input class='form-control' type='file' name='image'/>";
+                html_after += "</td>";
+                html_after += "</tr>";
+
+                html_after += "</table>";
+                $('#myform_doctor').html(html_after);
+            });
+            $('#exit_doctor').click(function () {
+                $('#ok_doctor').hide();
+                $('#exit_doctor').hide();
+                $('#myform_doctor').html(html_doctor);
+                $('#edit_doctor').show();
+            });
+
+            $('#demo').click(function () {
+                console.log($('#left1').css('height'));
+            });
+            $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
+                $("#uploadfile").click();
+
+            });
+            $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
+                $("#thumbimage").attr('src', '').hide();
+                $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
+                $(".removeimg").hide();
+                $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
+                    $("#uploadfile").click();
+                });
+                $('.Choicefile').css('background', '#0877D8');
+                $('.Choicefile').css('cursor', 'pointer');
+                $(".filename").text("");
+            });
+        })();
+    });
+    function nextTab(elem) {
+        $(elem).next().find('a[data-toggle="tab"]').click();
+    }
+    function prevTab(elem) {
+        $(elem).prev().find('a[data-toggle="tab"]').click();
+    }
+
 </script>

@@ -5,6 +5,7 @@ var logger = require('morgan');
 var expressValidator = require('express-validator');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer=require('multer');
 
 var mongoose = require('mongoose');
 // var uri = 'mongodb://localhost/hospital';
@@ -19,6 +20,7 @@ var register = require('./routes/register');
 var patient = require('./routes/patients');
 var doctor = require('./routes/doctors');
 var notify = require('./routes/notifications');
+var upfile= require('./routes/uploadFile');
 
 var app = express();
 
@@ -60,6 +62,14 @@ app.use('/register', register);
 app.use('/patient', patient);
 app.use('/doctor', doctor);
 app.use('/notify', notify);
+
+
+
+//set up multer upload file
+var upload= multer({dest: './public/images'}).single('file');
+app.use(upload);
+
+app.use('/api', upfile);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

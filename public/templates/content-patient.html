@@ -183,9 +183,9 @@
                         <div style="width: 95%" id="left1">
                             <div class="form-group">
 
-                                <form action="" method="post" enctype="multipart/form-data">
+                                <form  enctype="multipart/form-data">
                                     <label for="description"><h3>Description:</h3></label>
-                                    <textarea id="description" class="form-control" style="width:80%;margin: 0 20px;resize: none " cols="10" rows="7"
+                                    <textarea ng-model="requestDescription" id="description" class="form-control" style="width:80%;margin: 0 20px;resize: none " cols="10" rows="7"
                                               placeholder="Your descriptoin "></textarea>
                                     <h3>Image</h3>
                                     <div>
@@ -199,9 +199,9 @@
                                                  style="display: none"/>
                                             <a class="removeimg" href="javascript:"></a></div>
                                     </div>
-                                    <input class="btn-success"
+                                    <input class="btn-success" ng-click="sendRequest()"
                                            style="width: 100px;height: 35px;border-radius: 5px;margin: 20px 0px;"
-                                           type="submit" name="submit" value="Submit">
+                                           type="button" name="submit" value="Submit" onsubmit="return false" {{}}>
                                 </form>
 
                             </div>
@@ -261,7 +261,7 @@
                 $('#ok').show();
                 $('#exit').show();
                 html = $('#myform').html();
-                var username = $('#myform>h5').text().slide(10);
+                var username = $('#myform>h5').text().slice(10);
                 var fullname = $('#myform>h4').text().slice(10);
                 var phone = $('#myform span').first().text().slice(7);
                 var email = $('#myform span').last().text().slice(7);
