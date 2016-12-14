@@ -7,7 +7,6 @@ mongoose.Promise = global.Promise;
 // var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";
 // mongoose.connect(uri);
 
-
 var PatientSchema = mongoose.Schema({
     username: {
         type: String

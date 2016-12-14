@@ -1,8 +1,7 @@
 /**
  * Created by NarX on 12/14/16.
  */
-var express = require('express');
-var router = express.Router();
+var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
