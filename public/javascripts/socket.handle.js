@@ -8,6 +8,7 @@ var socket = io();
 
 // patient namespace
 var socketPatient = io("/patient");
+ng_socket_patient=socketPatient
 socketPatient.on('data_build_UI', function (data) {
 
     // console.log(data);
@@ -43,6 +44,7 @@ socketDoctor.on('setup_appointment_ss', function (data) {
 
 
 var socketStaff = io('/staff');
+ng_socket_staff=socketStaff
 socketStaff.on('data_build_UI', function (data) {
 
     console.log(data);
