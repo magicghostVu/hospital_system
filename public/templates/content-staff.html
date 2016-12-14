@@ -28,7 +28,8 @@
 
                         <div class="col-md-3  bhoechie-tab-menu" style="height: 410px;">
                             <div class="list-group">
-                                <a href="#" class="list-group-item text-center" ng-repeat="req in listRequests">
+                                <a href="#" class="list-group-item text-center" ng-click="updateActiveElement($index)"
+                                   ng-class="listRequestElement[$index]" ng-repeat="req in listRequests">
                                     <h4 class="glyphicon glyphicon-user"></h4><br/>{{req.username}}
                                 </a>
                             </div>
@@ -38,7 +39,8 @@
                         <div class="col-md-9  bhoechie-tab">
 
                             <!-- patient section -->
-                            <div class="bhoechie-tab-content" ng-repeat="req in listRequests">
+                            <div class="bhoechie-tab-content" ng-repeat="req in listRequests"
+                                 ng-class="listRequestElement[$index]">
                                 <center>
                                     <h2 style="margin-top: 0;color:#55518a">{{req.username | uppercase}}'s information</h2>
                                     <div class="date">
