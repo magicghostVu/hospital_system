@@ -13,8 +13,10 @@ socketPatient.on('data_build_UI', function(data){
     // console.log(data);
 
     patientContentScope.$apply(function(){
-        console.log("call apply");
+        console.log(data.profile);
         patientContentScope.receivePatientData(data);
+
+
     });
 });
 

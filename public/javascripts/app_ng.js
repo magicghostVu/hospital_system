@@ -138,6 +138,7 @@ var patientContentController=app.controller('patientContentController', function
     $scope.notifications=[];
     $scope.request={};
     $scope.requestDescription="";
+    $scope.profileDisplay=true;
     $scope.receivePatientData=function(data){
         this.patientLogin=true;
         this.listDoctors=data.listDoctors;
@@ -146,22 +147,23 @@ var patientContentController=app.controller('patientContentController', function
         this.profile = data.profile;
     };
 
-    $scope.update_profile = function (fullname, mobile_phone, email) {
+    $scope.updateDisplayProfileToFix=function () {
+        this.profileDisplay=!this.profileDisplay;
+    };
+
+    $scope.update_profile = function () {
         var req = {
             token: global_info.token,
-            fullname: fullname,
-            mobile_phone: mobile_phone,
-            email: email
+            fullname: $scope.profile.fullname,
+            mobile_phone: $scope.profile.mobile_phone,
+            email: $scope.profile.email
         };
 
-        return new Promise(function (resolve, reject) {
-            $http.post('patient/edit', req).then(function (res) {
-                console.log(res);
-                resolve(res);
-            }, function (err) {
-                console.log(err);
-                reject(err);
-            });
+        $http.post('patient/edit', req).then(function (res) {
+            $scope.updateDisplayProfileToFix();
+            toastr.success("Update Successful");
+        }, function (err) {
+            console.log(err);
         });
     };
 
