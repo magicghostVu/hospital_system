@@ -24,6 +24,10 @@ var WaitingSchema=mongoose.Schema({
 
 var WaitingRequest = module.exports = mongoose.model("Waiting_request", WaitingSchema);
 
+
+/*
+* Return List of waiting request by a patient
+* */
 module.exports.getWaitingRequestByUserName = function (username) {
     return new Promise(function (resolve, reject) {
         var query={
@@ -38,11 +42,20 @@ module.exports.getWaitingRequestByUserName = function (username) {
     });
 };
 
+/*
+* Return List of waiting request of doctor
+* */
 module.exports.getWaitingRequestByDoctor = function (_doctorname) {
     return new Promise(function (resolve, reject) {
         var query = { doctorname: _doctorname };
         WaitingRequest.find(query).then(function (waiting_requests) {
-            resolve(waiting_requests);
+            if (waiting_requests.length == 0) {
+                reject({
+                    msg: "There are no request"
+                });
+            } else {
+                resolve(waiting_requests);
+            }
         }, function (err) {
             console.log(err);
             reject(err);
@@ -50,6 +63,9 @@ module.exports.getWaitingRequestByDoctor = function (_doctorname) {
     });
 };
 
+/*
+* Return list of all waiting request will show in staff pages
+* */
 module.exports.getAllWaitingRequest = function () {
     return new Promise(function (resolve, reject) {
         WaitingRequest.find({}).then(function (waiting_requests) {

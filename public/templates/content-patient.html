@@ -1,4 +1,4 @@
-<div id="exTab4" style="display: none" class="container-all" ng-show="patientLogin">
+<div id="exTab4" style="display: block" class="container-all" ng-show="patientLogin">
     <div class="container">
         <div class="row menu-tab">
             <ul class="nav nav-pills">
@@ -113,16 +113,17 @@
                                 <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ">
                             </div>
                             <div class="col-md-6 profile-docter-right">
-                                <form id="myform_doctor" action="" method="post" enctype="multipart/form-data">
+                                <form id="myform" action="" method="post" enctype="multipart/form-data">
 
-                                    <h4><b>Name:</b> <strong style="color:#ed1b2f; font-size: 22px">Tyreese
-                                        Burn</strong></h4></br>
-                                    <p><b>Title:</b> Manager</p></br>
-                                    <span><b>Phone:</b> 555-555-5555</span></br>
+                                    <h4><b>User name:</b> <strong style="color:#ed1b2f; font-size: 22px">{{profile.username}}</strong>
+                                    </h4></br>
+                                    <p><b>Full name:</b> {{profile.fullname}}</p></br>
+                                    <span><b>Phone:</b> {{profile.mobile_phone}}</span></br>
                                     <br/>
-                                    <span><b>Email:</b> <i>sample@company.com</i></span></br>
+                                    <span><b>Email:</b> <i>{{profile.email}}</i></span></br>
                                     <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
                                 </form>
+
                                 <input id="edit_doctor" class="btn btn-success" style="margin-top: 20px" type="button"
                                        name="edit"
                                        value="Sửa thông tin"/>
@@ -134,7 +135,6 @@
                                        name="exit" value="Hủy"/>
                             </div>
                             <div class="col-md-1"></div>
-
                         </div>
                     </div>
                 </div>
@@ -230,7 +230,6 @@
                 $('.Choicefile').css('cursor', 'default');
                 $(".removeimg").show();
                 $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
-
             }
             //$(document).ready(function () {
             (function () {
@@ -240,21 +239,19 @@
                     $('#ok').show();
                     $('#exit').show();
                     html = $('#myform').html();
-                    var company = $('#myform>h5').text();
-                    var name = $('#myform>h4').text().slice(6);
-                    var title = $('#myform>p').text().slice(7);
+                    var username = $('#myform>h5').text().slice(10);
+                    var fullname = $('#myform>h4').text().slice(10);
                     var phone = $('#myform span').first().text().slice(7);
                     var email = $('#myform span').last().text().slice(7);
                     var html_after = '';
                     html_after += "<table cellpadding='10'>";
 
-
                     html_after += "<tr>";
                     html_after += "<td>";
-                    html_after = html_after + "Company:";
+                    html_after = html_after + "User name:";
                     html_after += "</td>";
                     html_after += "<td>";
-                    html_after = html_after + "<input class='form-control' type='text' name='company' value='" + company + "'/>";
+                    html_after = html_after + "<input id='input_username' disabled class='form-control' type='text' name='company' value='" + username + "'/>";
                     html_after += "</td>";
                     html_after += "</tr>";
 
@@ -263,16 +260,24 @@
                     html_after = html_after + "Name:";
                     html_after += "</td>";
                     html_after += "<td>";
-                    html_after = html_after + "<input class='form-control' type='text' name='name' value='" + name + "'/>";
+                    html_after = html_after + "<input id='input_fullname' class='form-control' type='text' name='name' value='" + fullname + "'/>";
                     html_after += "</td>";
                     html_after += "</tr>";
 
                     html_after += "<tr>";
                     html_after += "<td>";
-                    html_after = html_after + "Title:";
+                    html_after = html_after + "Phone:";
                     html_after += "</td>";
                     html_after += "<td>";
-                    html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
+                    html_after = html_after + "<input id='input_phone' class='form-control' type='text' name='phone' value='" + phone + "'/>";
+                    html_after += "</td>";
+                    html_after += "</tr>";
+                    html_after += "<tr>";
+                    html_after += "<td>";
+                    html_after = html_after + "Email:";
+                    html_after += "</td>";
+                    html_after += "<td>";
+                    html_after = html_after + "<input id='input_email' class='form-control' type='text' name='email' value='" + email + "'/>";
                     html_after += "</td>";
                     html_after += "</tr>";
 
@@ -324,7 +329,13 @@
                 });
             })();
 
-            //});
+            var update_profile = function () {
+                var fullname = $('#input_fullname').val(),
+                    phone = $('#input_phone').val(),
+                    email = $('#input_email').val();
+
+                patientContentScope.update_profile(fullname, phone, email);
+            };
         </script>
     </div>
 </div>

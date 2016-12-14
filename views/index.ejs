@@ -5,26 +5,26 @@
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
     <link rel="stylesheet" href="stylesheets/style.css">
-
-
     <link rel="stylesheet" href="stylesheets/toastr.min.css">
 
+    <!--load socket lib-->
     <script src="javascripts/socket.io.js"></script>
 
-
+    <!--load jqeuery-->
     <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+
+    <!--load angularjs-->
     <script src="javascripts/angular.min.js"></script>
+    <!--load flash toastr-->
+
     <script src="javascripts/toastr.min.js"></script>
+    <script src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script>
+    <script src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
 
-
-    <script src="javascripts/app_ng.js"></script>
-    <script type="text/javascript"
-            src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script>
-    <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
     <script src="javascripts/bootstrap-material-datetimepicker.js"></script>
     <script src="javascripts/modernizr.custom.js"></script>
 
-
+    <script src="javascripts/app_ng.js"></script>
     <!--set socket handle here because of they access in to some global scope-->
     <script src="javascripts/socket.handle.js"></script>
 </head>
@@ -39,7 +39,6 @@
                 <!--header begin-->
                 <my-header></my-header>
                 <!--header end-->
-
 
                 <section class="at-login-form">
                     <!-- MODAL LOGIN -->
@@ -309,9 +308,9 @@
                                             <div class="col-md-5">
                                                 <label for="text_dropdown">Doctor's name:</label>
                                                 <input class="form-control" type="text" value=""
-                                                                         name="" id="text_dropdown"
-                                                                         placeholder="Doctor's name"
-                                                                         style="display: none"/></div>
+                                                       name="" id="text_dropdown"
+                                                       placeholder="Doctor's name"
+                                                       style="display: none"/></div>
                                             <script>
                                                 $('#myDropdown a').click(function () {
 
@@ -500,306 +499,87 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-        </div>
-    </div>
-    <script>
-        function readURL(input, thumbimage) {
-            if (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $("#thumbimage").attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-            else { // Sử dụng cho IE
-                $("#thumbimage").attr('src', input.value);
-
-            }
-            $("#thumbimage").show();
-            $('.filename').text($("#uploadfile").val());
-            $('.Choicefile').css('background', '#C4C4C4');
-            $('.Choicefile').css('cursor', 'default');
-            $(".removeimg").show();
-            $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
-
-        }
-        //$(document).ready(function () {
-        (function () {
-            var html_staff = '';
-            $('#edit_staff').click(function () {
-                $('#edit_staff').hide();
-                $('#ok_staff').show();
-                $('#exit_staff').show();
-                html_staff = $('#myform_staff').html();
-                var company = $('#myform_staff>h5').text();
-                var name = $('#myform_staff>h4').text().slice(6);
-                var title = $('#myform_staff>p').text().slice(7);
-                var phone = $('#myform_staff span').first().text().slice(7);
-                var email = $('#myform_staff span').last().text().slice(7);
-                var html_after = '';
-                html_after += "<table cellpadding='10'>";
-
-
-                html_after += "<tr>";
-                html_after += "<td style='height: 55px;'>";
-                html_after = html_after + "Name:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='name' value='" + name + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-
-                html_after += "<tr>";
-                html_after += "<td style='height: 55px;'>";
-                html_after = html_after + "Title:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-
-                html_after += "<tr>";
-                html_after += "<td style='height: 55px;'>";
-                html_after = html_after + "Phone:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-                html_after += "<tr>";
-                html_after += "<td style='height: 55px;'>";
-                html_after = html_after + "Email:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-
-                html_after += "</table>";
-                console.log(html_after);
-                $('#myform_staff').html(html_after);
-            });
-            $('#exit_staff').click(function () {
-                $('#ok_staff').hide();
-                $('#exit_staff').hide();
-                $('#myform_staff').html(html_staff);
-                $('#edit_staff').show();
-            });
-
-            $('#demo').click(function () {
-                console.log($('#left1').css('height'));
-            });
-            $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
-                $("#uploadfile").click();
-
-            });
-            $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
-                $("#thumbimage").attr('src', '').hide();
-                $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
-                $(".removeimg").hide();
-                $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
-                    $("#uploadfile").click();
-                });
-                $('.Choicefile').css('background', '#0877D8');
-                $('.Choicefile').css('cursor', 'pointer');
-                $(".filename").text("");
-            });
-        })();
-
-        //});
-    </script>
-</div>
-<!--patient content begin-->
-<patient-content ng-controller="patientContentController">
-
-</patient-content>
-<!--patient content end-->
-
-<!--doctor content begin-->
-<doctor-content ng-controller="doctorContentController">
-
-</doctor-content>
-
-<!--doctor content end-->
-<!--conten-1 begin-->
-<div class="banner-sign">
-    <div class="container clearfix" style="width: 50%">
-        <div class="banner-sign-content">
-            <p>
-                <span>dịch vụ</span>
-                <span>chăm sóc khách hàng</span>
-                <span>is hospital</span>
-                <span>liên hệ với chúng tôi</span>
-                <span>(Từ 6h - đến 22h tất cả các ngày trong tuần)</span>
-
-            </p>
-            <div class="hot-line">
-
-                <h1><b class="glyphicon glyphicon-headphones"></b> 19001001</h1>
             </div>
         </div>
-        <div class="banner-sign-feature">
-            <div class="pulse animated"></div>
-        </div>
     </div>
-</div>
+    <!--patient content begin-->
+    <patient-content ng-controller="patientContentController">
 
-<div class="question">
-    <div class="container">
-        <div class="title">
-            <h1>câu hỏi thường gặp</h1>
-        </div>
-        <div class="question-content">
-            <div class="row">
-                <div class="col-md-4 question-tab">
-                    <h2>tài khoản cá nhân</h2>
-                    <ul>
-                        <li>Cách tạo tài khoản</li>
-                        <li>Quên mật khẩu</li>
-                        <li>Xem hồ sơ</li>
-                    </ul>
-                </div>
-                <div class="col-md-4 question-tab">
-                    <h2>tình trạng bệnh</h2>
-                    <ul>
-                        <li>Dấu hiệu khi mắc bệnh</li>
-                        <li>Cách phòng tránh</li>
+    </patient-content>
+    <!--patient content end-->
 
-                    </ul>
-                </div>
-                <div class="col-md-4 question-tab">
-                    <h2>đội ngũ bác sĩ</h2>
-                    <ul>
-                        <li>Thông tin các bác sĩ</li>
-                        <li>Lời khuyên từ bác sĩ</li>
+    <!--doctor content begin-->
+    <doctor-content ng-controller="doctorContentController">
 
-                    </ul>
+    </doctor-content>
+    <!--doctor content end-->
+
+    <!--staff content begin-->
+    <staff-content ng-controller="staffContentController">
+
+    </staff-content>
+    <!--staff content end-->
+
+
+    <!--conten-1 begin-->
+    <div class="banner-sign">
+        <div class="container clearfix" style="width: 50%">
+            <div class="banner-sign-content">
+                <p>
+                    <span>dịch vụ</span>
+                    <span>chăm sóc khách hàng</span>
+                    <span>is hospital</span>
+                    <span>liên hệ với chúng tôi</span>
+                    <span>(Từ 6h - đến 22h tất cả các ngày trong tuần)</span>
+
+                </p>
+                <div class="hot-line">
+
+                    <h1><b class="glyphicon glyphicon-headphones"></b> 19001001</h1>
                 </div>
+            </div>
+            <div class="banner-sign-feature">
+                <div class="pulse animated"></div>
             </div>
         </div>
     </div>
 
-</div>
+    <div class="question">
+        <div class="container">
+            <div class="title">
+                <h1>câu hỏi thường gặp</h1>
+            </div>
+            <div class="question-content">
+                <div class="row">
+                    <div class="col-md-4 question-tab">
+                        <h2>tài khoản cá nhân</h2>
+                        <ul>
+                            <li>Cách tạo tài khoản</li>
+                            <li>Quên mật khẩu</li>
+                            <li>Xem hồ sơ</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 question-tab">
+                        <h2>tình trạng bệnh</h2>
+                        <ul>
+                            <li>Dấu hiệu khi mắc bệnh</li>
+                            <li>Cách phòng tránh</li>
 
+                        </ul>
+                    </div>
+                    <div class="col-md-4 question-tab">
+                        <h2>đội ngũ bác sĩ</h2>
+                        <ul>
+                            <li>Thông tin các bác sĩ</li>
+                            <li>Lời khuyên từ bác sĩ</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <!--conten-1 end-->
-<script>
-    function readURL(input, thumbimage) {
-        if (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $("#thumbimage").attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-        else { // Sử dụng cho IE
-            $("#thumbimage").attr('src', input.value);
-
-        }
-        $("#thumbimage").show();
-        $('.filename').text($("#uploadfile").val());
-        $('.Choicefile').css('background', '#C4C4C4');
-        $('.Choicefile').css('cursor', 'default');
-        $(".removeimg").show();
-        $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
-
-    }
-    //$(document).ready(function () {
-    (function () {
-        var html = '';
-        $('#edit').click(function () {
-            $('#edit').hide();
-            $('#ok').show();
-            $('#exit').show();
-            html = $('#myform').html();
-            var company = $('#myform>h5').text();
-            var name = $('#myform>h4').text().slice(6);
-            var title = $('#myform>p').text().slice(7);
-            var phone = $('#myform span').first().text().slice(7);
-            var email = $('#myform span').last().text().slice(7);
-            var html_after = '';
-            html_after += "<table cellpadding='10'>";
-
-
-            html_after += "<tr>";
-            html_after += "<td>";
-            html_after = html_after + "Company:";
-            html_after += "</td>";
-            html_after += "<td>";
-            html_after = html_after + "<input class='form-control' type='text' name='company' value='" + company + "'/>";
-            html_after += "</td>";
-            html_after += "</tr>";
-
-            html_after += "<tr>";
-            html_after += "<td>";
-            html_after = html_after + "Name:";
-            html_after += "</td>";
-            html_after += "<td>";
-            html_after = html_after + "<input class='form-control' type='text' name='name' value='" + name + "'/>";
-            html_after += "</td>";
-            html_after += "</tr>";
-
-            html_after += "<tr>";
-            html_after += "<td>";
-            html_after = html_after + "Title:";
-            html_after += "</td>";
-            html_after += "<td>";
-            html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
-            html_after += "</td>";
-            html_after += "</tr>";
-
-            html_after += "<tr>";
-            html_after += "<td>";
-            html_after = html_after + "Phone:";
-            html_after += "</td>";
-            html_after += "<td>";
-            html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
-            html_after += "</td>";
-            html_after += "</tr>";
-            html_after += "<tr>";
-            html_after += "<td>";
-            html_after = html_after + "Email:";
-            html_after += "</td>";
-            html_after += "<td>";
-            html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
-            html_after += "</td>";
-            html_after += "</tr>";
-
-            html_after += "</table>";
-            console.log(html_after);
-            $('#myform').html(html_after);
-        });
-        $('#exit').click(function () {
-            $('#ok').hide();
-            $('#exit').hide();
-            $('#myform').html(html);
-            $('#edit').show();
-        });
-
-        $('#demo').click(function () {
-            console.log($('#left1').css('height'));
-        });
-        $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
-            $("#uploadfile").click();
-
-        });
-        $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
-            $("#thumbimage").attr('src', '').hide();
-            $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
-            $(".removeimg").hide();
-            $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
-                $("#uploadfile").click();
-            });
-            $('.Choicefile').css('background', '#0877D8');
-            $('.Choicefile').css('cursor', 'pointer');
-            $(".filename").text("");
-        });
-    })();
-
-    //});
-</script>
 <!--footer-->
 <footer>
     <div class="container footer">
@@ -852,6 +632,5 @@
 <!-- Placed at the end of the document so the pages load faster -->
 
 <script src="javascripts/bootstrap.min.js"></script>
-
 </body>
 </html>

@@ -9,7 +9,7 @@ mongoose.Promise = global.Promise;
 var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";
 //mongoose.connect(uri);
 
-var sessionSchema= mongoose.Schema({
+var SessionSchema= mongoose.Schema({
     description: {
       type: String
     },
@@ -30,18 +30,19 @@ var sessionSchema= mongoose.Schema({
 });
 
 
-var sessions= mongoose.model("Session", sessionSchema);
+var Session = mongoose.model("Session", SessionSchema);
 
-module.exports= sessions;
+module.exports= Session;
 
-
-
-var getSessionsByUsername=function(username){
+/*
+* Return sessions belong to a patient
+* */
+module.exports.getSessionsByUsername = function(username){
   return new Promise(function(resolve, reject){
       var query={
           username: username
-      }
-      sessions.find(query).then(function(_sessions){
+      };
+      Session.find(query).then(function(_sessions){
           resolve(_sessions);
       }, function(err){
           console.log("sesssions 46"+ JSON.stringify(err));
@@ -50,8 +51,26 @@ var getSessionsByUsername=function(username){
   });
 };
 
-module.exports.getSessionsByUsername=getSessionsByUsername;
-
+module.exports.getActiveSessionByDoctor = function (doctorname) {
+    return new Promise(function (resolve, reject) {
+        var query = {
+            username_doctor: doctorname,
+            status: "active"
+        };
+        Session.find(query).then(function (sessions) {
+            if (sessions.length == 0) {
+                reject({
+                    msg: "Found no sessions"
+                });
+            } else {
+                resolve(sessions);
+            }
+        }, function (err) {
+            console.log("session 63: " + JSON.stringify(err));
+            reject(err);
+        });
+    });
+};
 /*
 sessions.find({}).then(function(sessions){
     console.log(JSON.stringify(sessions));
