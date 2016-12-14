@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html>
+        <head>
+            <title>Home page</title>
+            <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+            <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+            <link rel="stylesheet" href="stylesheets/style.css">
+
+            <script src="javascripts/socket.io.js"></script>
+            <script src="javascripts/socket.handle.js"></script>
+            <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+            <script src="javascripts/angular.min.js"></script>
+
+            <script src="javascripts/app_ng.js"></script>
+
+        </head>
+<body ng-app="app">
+
+<!--begin navbar and login dialog-->
+<div class="blue-bg-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <header class="header-tp">
+                    <nav class="navbar navbar-default navbar-static-top">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <form class="form-inline">
+                                    <a href="#" class="btn-blu mrgn-top" data-toggle="modal" data-target="#at-helping">Help</a>
+                                    <ul class="nav navbar-nav navbar-right bdr">
+                                        <li><a href="#" data-toggle="modal" data-target="#at-login">Sign in</a></li>
+                                        <li><a href="#" data-toggle="modal" data-target="#at-signup">Sign Up</a></li>
+                                    </ul>
+                                </form>
+                            </div><!--/.nav-collapse -->
+                        </div>
+                    </nav>
+                </header>
+                <section class="at-login-form">
+                    <!-- MODAL LOGIN -->
+                    <div my-modal ng-controller="au_ctrl" class="modal fade" id="at-login" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">×</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!--<button class="btn-fb"> <i class="fa fa-fw fa-facebook pull-left" aria-hidden="true"></i>-->
+                                    <!--Login with Facebook	</button> <br>-->
+                                    <!--<button class="btn-gp"> <i class="fa fa-fw fa-google-plus pull-left" aria-hidden="true"></i>-->
+                                    <!--Login with Google	</button> <br>-->
+                                    <!--<div class="signup-or-separator">-->
+                                    <!--<span class="h6 signup-or-separator&#45;&#45;text">or</span>-->
+                                    <!--<hr>-->
+                                    <!--</div>-->
+                                    <form>
+                                        <div class="form-group">
+                                            <input ng-model="username" class="form-control-form "
+                                                   id="exampleInputEmaillog" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <input ng-model="password" type="password" class="form-control-form "
+                                                   id="exampleInputPasswordpas" placeholder="Password">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Remember me
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-md-offset-2">
+                                                <p class="frgt-pswd" data-toggle="modal" data-dismiss="modal"
+                                                   data-target="#at-reset-pswd"> Forgot Password ?</p>
+                                            </div>
+                                        </div>
+                                        <button ng-click="handleLogin()" class="btn-lgin" onsubmit="return false">
+                                            Login
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="ta-l">Don't have an account ? </p>
+                                        </div>
+                                        <div class="col-md-4 col-md-offset-2">
+                                            <button class="btn-gst" data-toggle="modal" data-dismiss="modal"
+                                                    data-target="#at-signup">Sign Up
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MODAL LOGIN ENDS -->
+                    <!-- MODAL SIGNUP -->
+                    <div class="modal fade" id="at-signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">×</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!--<button class="btn-fb"> <i class="fa fa-fw fa-facebook pull-left" aria-hidden="true"></i>-->
+                                    <!--Signup with Facebook	</button> <br>-->
+                                    <!--<button class="btn-gp"> <i class="fa fa-fw fa-google-plus pull-left" aria-hidden="true"></i>-->
+                                    <!--Signup with Google	</button> <br>-->
+                                    <!--<div class="signup-or-separator">-->
+                                    <!--<span class="h6 signup-or-separator&#45;&#45;text">or</span>-->
+                                    <!--<hr>-->
+                                    <!--</div>-->
+                                    <button type="submit" class="btn-lgin" data-toggle="modal" data-dismiss="modal"
+                                            data-target="#at-signup-filling">Signup with Email
+                                    </button>
+                                    <hr>
+                                    <p>By signing up, I agree to Airbnb’s , Payments <a href="#">Terms of Service</a>,
+                                        <a href="#">Privacy Policy</a>, <a href="#">Guest Refund Policy</a>, and <a
+                                                href="#">Host Guarantee Terms</a>. </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="ta-l">Already a Member? </p>
+                                        </div>
+                                        <div class="col-md-4 col-md-offset-2">
+                                            <button class="btn-gst" data-toggle="modal" data-dismiss="modal"
+                                                    data-target="#at-login">Login
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MODAL SIGNUP FORM FILLING -->
+                    <div class="modal fade" id="at-signup-filling" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">×</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!--<p>Sign up with <a href="#">Facebook</a>  or <a href="#">Google</a></p>-->
+                                    <!--<div class="signup-or-separator">-->
+                                    <!--<span class="h6 signup-or-separator&#45;&#45;text">or</span>-->
+                                    <!--<hr>-->
+                                    <!--</div>-->
+                                    <form>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control-form " id="exampleInputEmaillog"
+                                                   placeholder="User Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control-form " id="exampleInputEmaillog"
+                                                   placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control-form "
+                                                   id="exampleInputPasswordpas" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control-form "
+                                                   id="exampleInputPasswordpas" placeholder="Confirm Password">
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox">
+                                                        I’d like to receive coupons and inspiration
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn-lgin">Signup</button>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="ta-l">Already a Member? </p>
+                                        </div>
+                                        <div class="col-md-4 col-md-offset-2">
+                                            <button class="btn-gst" data-toggle="modal" data-dismiss="modal"
+                                                    data-target="#at-login">Login
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MODAL SIGNUP FORM FILLING -->
+                    <!-- MODAL FORGOT PASSWORD -->
+                    <div class="modal fade" id="at-reset-pswd" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">×</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <p> Enter the email address associated with your account, and we’ll email you a
+                                            link to reset your password. </p>
+                                        <div class="form-group">
+
+                                            <input type="email" class="form-control-form " id="exampleInputEmaillog"
+                                                   placeholder="Email">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MODAL HELP -->
+                    <div class="modal fade" id="at-helping" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">×</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control-form " id="exampleInputEmaillog"
+                                                   placeholder="Enter Your Searches ">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="row">
+                                        <button class="btn-gst" data-toggle="modal" data-dismiss="modal">Send areset
+                                            Link
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end navbar and login dialog -->
+
+<div id="exTab3" style="display: none;" class="container">
+    <div class="container">
+        <div class="row menu-tab">
+            <ul class="nav nav-pills">
+                <li class="active">
+                    <a href="#1b" data-toggle="tab">List Doctors</a>
+                </li>
+                <li><a href="#2b" data-toggle="tab">Oppointment</a>
+                </li>
+                <li><a href="#3b" data-toggle="tab">Prof le</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="tab-content clearfix">
+        <div class="tab-pane active" id="1b">
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="2b">
+
+        </div>
+        <div class="tab-pane" id="3b">
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class=" pull-left">
+                                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ"
+                                     width="120" height="120" style="border-radius: 100% ;margin-right: 15px;">
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                            <input type="file" value="Change Avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="exTab4" class="container">
+    <div class="container">
+        <div class="row menu-tab">
+            <ul class="nav nav-pills">
+                <li class="active">
+                    <a href="#1a" data-toggle="tab">List Doctors</a>
+                </li>
+                <li><a href="#2a" data-toggle="tab">Oppointment</a>
+                </li>
+                <li><a href="#3a" data-toggle="tab">Prof le</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="tab-content clearfix">
+        <div class="tab-pane tab-pane1 active" id="1a">
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="square-box pull-left">
+                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="2a">
+            <div class="row">
+                <div class="container">
+                    <div class="col-md-6">
+                        <div style="width: 95%;border: 1px solid #a39191">
+                            <div>
+                                <h3>Description</h3>
+                                <textarea style="margin: 0 115px;" cols="30" rows="10" placeholder="Text"></textarea>
+                                <label for="file">Upload Attachment</label>
+                                <input  style="height: 25px; border-radius: 6px;" type="file" id="file" name="file" value="Upload Attachment">
+
+
+                                <div>
+                                    <div id="myfileupload">
+                                        <input type="file" id="uploadfile" name="ImageUpload" onchange="readURL(this);" />
+                                        <!--      Name  mà server request về sẽ là ImageUpload-->
+
+                                    </div>
+                                    <div id="thumbbox">
+                                        <img height="100" width="100" alt="Thumb image" id="thumbimage" style="display: none" />
+                                        <a class="removeimg" href="javascript:" ></a></div>
+                                    <div id="boxchoice">
+                                        <a href="javascript:" class="Choicefile">Chọn file</a>
+                                        <p style="clear:both"></p>
+                                    </div>
+                                    <label class="filename"></label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="width: 95%;border: 1px solid #a39191">
+                            <div>
+                                <h3>Notification</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="tab-pane" id="3a">
+            <div class="row item-doctor">
+                <div class="searchable-container">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class=" pull-left">
+                                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ"
+                                     width="120" height="120" style="border-radius: 100% ;margin-right: 15px;">
+                            </div>
+                            <h5>Company Name</h5>
+                            <h4>Name: Tyreese Burn</h4>
+                            <p>Title: Manager</p>
+                            <span>Phone: 555-555-5555</span>
+                            <span>Email: sample@company.com</span>
+                            <input type="file" value="Change Avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function  readURL(input,thumbimage) {
+        if  (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
+            var  reader = new FileReader();
+            reader.onload = function (e) {
+                $("#thumbimage").attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+        else  { // Sử dụng cho IE
+            $("#thumbimage").attr('src', input.value);
+
+        }
+        $("#thumbimage").show();
+        $('.filename').text($("#uploadfile").val());
+        $('.Choicefile').css('background', '#C4C4C4');
+        $('.Choicefile').css('cursor', 'default');
+        $(".removeimg").show();
+        $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
+
+    }
+    $(document).ready(function () {
+        $(".Choicefile").bind('click', function  () { //Chọn file khi .Choicefile Click
+            $("#uploadfile").click();
+
+        });
+        $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
+            $("#thumbimage").attr('src', '').hide();
+            $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
+            $(".removeimg").hide();
+            $(".Choicefile").bind('click', function  () {//Tạo lại sự kiện click để chọn file
+                $("#uploadfile").click();
+            });
+            $('.Choicefile').css('background','#0877D8');
+            $('.Choicefile').css('cursor', 'pointer');
+            $(".filename").text("");
+        });
+    })
+</script>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h3>Designer:Kho Khac Thanh</h3>
+                <h4>Coder:Vu Hong Phu</h4>
+                <h4>App Android:Truong Dai Ngoc</h4>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="javascripts/bootstrap.min.js"></script>
+</body>
+</html>
+</title>
+</head>
+<body>
+
+</body>
+</html>
