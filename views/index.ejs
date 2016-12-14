@@ -4,25 +4,26 @@
     <title>Home page</title>
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
-
     <link rel="stylesheet" href="stylesheets/style.css">
-
-
     <link rel="stylesheet" href="stylesheets/toastr.min.css">
 
+    <!--load socket lib-->
     <script src="javascripts/socket.io.js"></script>
 
+    <!--load jqeuery-->
     <script type="text/javascript" src="javascripts/jquery.min.js"></script>
-    <script src="javascripts/angular.min.js"></script>
-    <script src="javascripts/toastr.min.js"></script>
 
-    <script src="javascripts/app_ng.js"></script>
-    <script type="text/javascript"
-            src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script>
-    <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <!--load angularjs-->
+    <script src="javascripts/angular.min.js"></script>
+    <!--load flash toastr-->
+
+    <script src="javascripts/toastr.min.js"></script>
+    <script src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script>
+    <script src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
     <script src="javascripts/bootstrap-material-datetimepicker.js"></script>
     <script src="javascripts/modernizr.custom.js"></script>
 
+    <script src="javascripts/app_ng.js"></script>
     <!--set socket handle here because of they access in to some global scope-->
     <script src="javascripts/socket.handle.js"></script>
 </head>
@@ -37,7 +38,6 @@
                 <!--header begin-->
                 <my-header></my-header>
                 <!--header end-->
-
 
                 <section class="at-login-form">
                     <!-- MODAL LOGIN -->
@@ -215,8 +215,15 @@
 <doctor-content ng-controller="doctorContentController">
 
 </doctor-content>
-
 <!--doctor content end-->
+
+<!--staff content begin-->
+<staff-content ng-controller="staffContentController">
+
+</staff-content>
+<!--staff content end-->
+
+
 <!--conten-1 begin-->
 <div class="banner-sign">
     <div class="container clearfix" style="width: 50%">
@@ -278,7 +285,121 @@
 </div>
 
 <!--conten-1 end-->
+<script>
+    function readURL(input, thumbimage) {
+        if (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#thumbimage").attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+        else { // Sử dụng cho IE
+            $("#thumbimage").attr('src', input.value);
 
+        }
+        $("#thumbimage").show();
+        $('.filename').text($("#uploadfile").val());
+        $('.Choicefile').css('background', '#C4C4C4');
+        $('.Choicefile').css('cursor', 'default');
+        $(".removeimg").show();
+        $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
+
+    }
+    //$(document).ready(function () {
+    (function () {
+        var html = '';
+        $('#edit').click(function () {
+            $('#edit').hide();
+            $('#ok').show();
+            $('#exit').show();
+            html = $('#myform').html();
+            var company = $('#myform>h5').text();
+            var name = $('#myform>h4').text().slice(6);
+            var title = $('#myform>p').text().slice(7);
+            var phone = $('#myform span').first().text().slice(7);
+            var email = $('#myform span').last().text().slice(7);
+            var html_after = '';
+            html_after += "<table cellpadding='10'>";
+
+
+            html_after += "<tr>";
+            html_after += "<td>";
+            html_after = html_after + "Company:";
+            html_after += "</td>";
+            html_after += "<td>";
+            html_after = html_after + "<input class='form-control' type='text' name='company' value='" + company + "'/>";
+            html_after += "</td>";
+            html_after += "</tr>";
+
+            html_after += "<tr>";
+            html_after += "<td>";
+            html_after = html_after + "Name:";
+            html_after += "</td>";
+            html_after += "<td>";
+            html_after = html_after + "<input class='form-control' type='text' name='name' value='" + name + "'/>";
+            html_after += "</td>";
+            html_after += "</tr>";
+
+            html_after += "<tr>";
+            html_after += "<td>";
+            html_after = html_after + "Title:";
+            html_after += "</td>";
+            html_after += "<td>";
+            html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
+            html_after += "</td>";
+            html_after += "</tr>";
+
+            html_after += "<tr>";
+            html_after += "<td>";
+            html_after = html_after + "Phone:";
+            html_after += "</td>";
+            html_after += "<td>";
+            html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
+            html_after += "</td>";
+            html_after += "</tr>";
+            html_after += "<tr>";
+            html_after += "<td>";
+            html_after = html_after + "Email:";
+            html_after += "</td>";
+            html_after += "<td>";
+            html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
+            html_after += "</td>";
+            html_after += "</tr>";
+
+            html_after += "</table>";
+            console.log(html_after);
+            $('#myform').html(html_after);
+        });
+        $('#exit').click(function () {
+            $('#ok').hide();
+            $('#exit').hide();
+            $('#myform').html(html);
+            $('#edit').show();
+        });
+
+        $('#demo').click(function () {
+            console.log($('#left1').css('height'));
+        });
+        $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
+            $("#uploadfile").click();
+
+        });
+        $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
+            $("#thumbimage").attr('src', '').hide();
+            $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
+            $(".removeimg").hide();
+            $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
+                $("#uploadfile").click();
+            });
+            $('.Choicefile').css('background', '#0877D8');
+            $('.Choicefile').css('cursor', 'pointer');
+            $(".filename").text("");
+        });
+    })();
+
+    //});
+</script>
 <!--footer-->
 <footer>
     <div class="container footer">

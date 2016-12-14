@@ -8,7 +8,7 @@ var authenControllerScope;
 var headerScope;
 var patientContentScope;
 var doctorContentScope;
-
+var staffContentScope;
 
 
 var app=angular.module('app', []);
@@ -72,14 +72,8 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
                 socketDoctor.emit("get_data_for_doctor", global_info);
             }else if(global_info._type==='staff'){
 
-
-
                 console.log('staff login');
-            }else if(global_info._type==='lab_doctor'){
-
-
-
-                console.log('lab_doctor login');
+                socketStaff.emit("get_data_for_staff", global_info);
             }
 
             toastr.success('Login Successful!');
@@ -107,14 +101,12 @@ app.directive("myModal",function() {
     }
 });
 
-
 var headerController=app.controller('header_controller', function($scope){
     headerScope=$scope;
     $scope.isLogin=false;
     $scope.username='';
-
-
 });
+
 var header=app.directive('myHeader', function(){
     return {
         restrict: "E",
@@ -146,7 +138,7 @@ var patientContentController=app.controller('patientContentController', function
     $scope.notifications=[];
     $scope.request={};
     $scope.requestDescription="";
-    $scope.receiveData=function(data){
+    $scope.receivePatientData=function(data){
         this.patientLogin=true;
         this.listDoctors=data.listDoctors;
         this.sessions=data.sessions;
@@ -194,7 +186,7 @@ app.directive('doctorContent', function () {
     }
 });
 
-var doctorContentController = app.controller('doctorContentController', function($scope) {
+var doctorContentController = app.controller('doctorContentController', function($scope, $http) {
     doctorContentScope = $scope;
     $scope.doctorLogin = false;
     $scope.listRequests = [];
@@ -226,6 +218,28 @@ var doctorContentController = app.controller('doctorContentController', function
             });
         });
     };
+});
+
+app.directive('staffContent', function () {
+    return {
+        restrict: "E",
+        templateUrl: 'templates/content-staff.html',
+        link: function (scope, e, attr) {
+
+        }
+    }
+});
+
+var staffContentController = app.controller('staffContentController', function ($scope, $http) {
+    staffContentScope = $scope;
+    $scope.staffLogin = false;
+    $scope.listRequests = [];
+
+    $scope.receiveStaffData = function (data) {
+        this.staffLogin = true;
+        this.listRequests = data.listRequests;
+
+    }
 });
 
 console.log("ng run");

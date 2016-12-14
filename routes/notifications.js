@@ -8,7 +8,7 @@ var FCM = require('fcm-push');
 router.post('/send', function (req, res, next) {
     var serverKey = "AAAAtbX1V6g:APA91bFl0IlGkXjEINIIG_-mh4LHitRRj8dAS1Af4HDp5DiYUwlla1Oskqd_15GNERWMbY4S1FXKAOSgM6hZfT_zcvt_xNnjd3-mUiUvDUGKhnmuJZCsaUD0xjIghvIW8OYBzbSnAgiWJ1VBPvR0MfhROCPQLi5QYQ";
 
-    var token = 'exNhy93zyqg:APA91bEWlOhOtvZA8sDn53sJMqW_ms6FeJRNQkTOynPeZGSvKXhL93xMt2KLVtAab60raaf5s1qZFnT1fx370B_tOUvpYfr6aRKEQccB5SlcKZIP5E7IIIIbNE9ob1xfMhNXdIc6X1O-';
+    var token = 'cHlEWtEY6zc:APA91bFKbvVpLc3_6BDYHSV6QJVY3Q5baPQeRQmvaHLxe-EI2PTv0zzq9LJsDW7pytaa5aaidnZZ92tJ0lDQ2e1_IGEp1xGk4Syw5h4JPerFiEhlz81wzz4Tvwa8yv9oQhSDyvGo-L7i';
     var fcm = new FCM(serverKey);
 
     var notify = req.body.message;
