@@ -130,10 +130,12 @@
                         <div class="col col-sm-8 list-patient-right">
                             <div class="row tab-content">
                                 <div role="tabpanel" class="tab-pane fade active in" id="patient1">
-                                    <ul class="patient-tab">
-                                        <li ><a  href="javascript:void(0)" onclick="openCity('pt1')">Activity 1</a></li>
-                                        <li ><a href="javascript:void(0)" onclick="openCity('pt2')">Activity 2</a></li>
-                                        <li><a href="javascript:void(0)" onclick="openCity('pt3')">Activity 3</a></li>
+                                    <ul class="patient-tab row">
+                                        <li class=""><a  href="javascript:void(0)" onclick="openCity('pt1')">Activity 1</a></li>
+                                        <li class=""><a href="javascript:void(0)" onclick="openCity('pt2')">Activity 2</a></li>
+                                        <li class=""><a href="javascript:void(0)" onclick="openCity('pt3')">Activity 3</a></li>
+                                        <li class=""><a href="javascript:void(0)" onclick="openCity('pt-create')">Create Activity</a></li>
+
                                     </ul>
 
                                     <div id="pt1" class=" activity form-group">
@@ -147,7 +149,7 @@
                                         <p><b>Kết quả :</b>Chúng tôi trình bày Resilient Distributed Datasets (RDDs) , khái niệm
                                             trừu tượng để cho lập trình viên thực hiện tính toán thường xuyên trong
                                             bộ nhớ trên cụm lớn với việc chấp nhận sai sót. RDDs được thúc đẩy bởi</p>
-                                        <p><b>Cập nhật:</b><span><textarea style="resize: none" cols="3" rows="5" class="form-control"></textarea></span></p>
+                                        <!--<p><b>Cập nhật:</b><span><textarea style="resize: none" cols="3" rows="5" class="form-control"></textarea></span></p>-->
                                     </div>
 
                                     <div id="pt2" class="activity">
@@ -159,7 +161,11 @@
                                         <h2>Tokyo</h2>
                                         <p>Tokyo is the capital of Japan.</p>
                                     </div>
-
+                                    <div id="pt-create" class="activity">
+                                        <p><b>Cập nhật:</b><span><textarea style="resize: none" cols="3" rows="7" class="form-control"></textarea></span></p>
+                                        <input id="" class="btn btn-success" style="margin-top: 20px; float: right" type="button" name="edit"
+                                               value="Hoàn Thành"/>
+                                    </div>
                                     <script>
                                         openCity("pt1");
                                         function openCity(cityName) {
@@ -187,7 +193,7 @@
                         <ul class="list-inline patient-bt">
                             <li><button type="button" class="btn1 btn-default prev-step">Previous</button></li>
                             <li><button type="button" class="btn1 btn-default next-step">Next</button></li>
-                            <li><button type="button" class="btn1 btn-primary ">Save</button></li>
+                            <!--<li><button type="button" class="btn1 btn-primary ">Save</button></li>-->
                         </ul>
                     </div>
                 </div>

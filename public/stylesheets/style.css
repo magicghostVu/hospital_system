@@ -114,7 +114,7 @@
     color: #fff;
     cursor: pointer;
     text-transform: uppercase;
-    padding: 14px 25px;
+    padding: 10px 20px;
     text-decoration: none;
 }
 
@@ -566,7 +566,7 @@ body {
 }
 
 #exTab3 .tab-content {
-    min-height: 950px;
+    min-height: 400px;
     padding: 5px 15px;
 }
 
@@ -580,7 +580,7 @@ body {
 }
 
 .tab-pane {
-    min-height: 450px;
+    /*min-height: 450px;*/
     max-height: 950px;
     /*overflow-y: auto;*/
     width: 100%;
@@ -641,7 +641,7 @@ body {
 }
 
 .list-patient-left {
-    max-height: 600px;
+    height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -702,6 +702,9 @@ body {
     font-weight: 700;
     color: #6B6B6B;
 }
+.tab-content > .tab-pane > .patient-tab > li.active >a{
+    color: #ed1b2f;
+}
 
 .tab-content > .tab-pane > .patient-tab > li > a:hover {
     color: #ed1b2f;
@@ -712,7 +715,7 @@ body {
 }
 
 .tab-content > .tab-pane > .activity {
-    margin-top: 60px;
+    margin-top: 10px;
 }
 
 .tab-content > .tab-pane > .activity > p > b {
