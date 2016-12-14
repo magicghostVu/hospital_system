@@ -21,7 +21,7 @@ socketPatient.on('data_build_UI', function (data) {
 
 socketPatient.on('send_noti', function (data) {
     console.log(data);
-    toastr.success("Có thông báo");
+    toastr.success(data.msg);
 });
 
 

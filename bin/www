@@ -265,10 +265,42 @@ doctorChannel.on('connection', function (socket) {
                         .getSocketIdByUsername(data.patient_username)
                         .then(function (socketid) {
 
-                            var send_back={
-                              msg: "Done"
-                            };
-                            patientChannel.to(socketid).emit("send_noti", send_back);
+                            var today = new Date();
+                            var dd = today.getDate();
+                            var mm = today.getMonth()+1;
+                            var yyyy = today.getFullYear();
+
+                            if(dd<10) {
+                                dd='0'+dd
+                            }
+
+                            if(mm<10) {
+                                mm='0'+mm
+                            }
+
+                            var stringDate= mm+'/'+dd+'/'+yyyy;
+                            var stringhour= today.getHours()+":"+today.getMinutes();
+                            // create notifi send back
+                            var Noti=require('../models/notifications');
+                            var newNoti=new Noti({
+                                username: data.patient_username,
+                                username_doctor: doctor.username,
+                                content: "Có lịch hẹn khám bệnh mới",
+                                date: stringDate,
+                                time: stringhour,
+                            });
+
+                            newNoti.save()
+                                .then(function (noti) {
+                                    var send_back={
+                                        notification: noti,
+                                        msg: "Bạn có lịch hẹn khám bệnh mới"
+                                    };
+                                    patientChannel.to(socketid).emit("send_noti", send_back);
+                                }, function (err) {
+                                   console.log("www 287"+ JSON.stringify(err));
+                                });
+
                         }, function (err) {
 
                         });

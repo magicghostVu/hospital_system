@@ -694,35 +694,59 @@ body {
 .nav-stacked > li + li {
     margin-top: 0px;
 }
-
-.nav-tabs > li > a {
-    padding: 25px 100px 25px 100px !important;
+.nav-tabs >li >.list-patient-it{
+    background-color: #E3F2FD;
+}
+.nav-tabs > li > .list-patient-it >  a {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 60px;
+    /*padding: 25px 100px 25px 100px !important;*/
     color: #AAAAAA;
     background-color: #E3F2FD;
     border: 0px;
     border-radius: 0px;
     margin: 0;
 }
-
-.nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+.glyphicon{
+    top: 0px;
+}
+.nav-tabs > li >.list-patient-ck > input{
+    width: 20px;
+    height: 20px;
+    margin: 20px 15px;
+}
+.nav-tabs > li >.list-patient-it:hover, .nav-tabs > li > .list-patient-it:focus{
+    background-color: #448AFF;
+}
+.nav-tabs > li >.list-patient-it > a:hover, .nav-tabs > li >.list-patient-it > a:focus {
     background-color: #448AFF;
     color: #FFFFFF;
-    z-index: 99;
-    transition: all 0.5s ease 0s;
-}
+    text-decoration: none;
 
-.nav-tabs > li.active > a {
+}
+.nav-tabs > li.active > .list-patient-it > a{
     color: #FFFFFF;
     background-color: #13acd8;
-    box-shadow: 0 0px 5px rgba(0, 0, 0, .6);
-    z-index: 100;
+
+}
+.nav-tabs > li.active > .list-patient-it{
+    color: #FFFFFF;
+    background-color: #13acd8;
+    box-shadow: 0px 2px 10px 0px #428bca;
+
 }
 
-.nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+.nav-tabs > li.active > .list-patient-it:hover, .nav-tabs > li.active >.list-patient-it:focus {
     color: #FFFFFF;
-    background-color: #2962FF;
-    box-shadow: 0 0px 5px rgba(0, 0, 0, .6);
-    transition: all 0.5s ease 0s;
+    text-decoration: none;
+    background-color: #3c82ff;
+}
+
+.nav-tabs > li.active > .list-patient-it >  a:hover, .nav-tabs > li.active > a:focus {
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #3c82ff;
 }
 
 /*tab activity*/
@@ -732,7 +756,7 @@ body {
     float: left;
 }
 
-.tab-content > .tab-pane > .patient-tab > li > a {
+.tab-content > .tab-pane > .patient-tab > li >  a {
     text-decoration: none;
     font-size: 16px;
     text-transform: uppercase;
@@ -754,7 +778,14 @@ body {
 .tab-content > .tab-pane > .activity {
     margin-top: 10px;
 }
-
+.tab-content > .tab-pane > .activity > p > span > input{
+    margin-left: 10px;
+    width: 80%;
+    border-radius: 30px;
+    border: 1px solid #428bca;
+    box-shadow: 0px 2px 10px 0px #428bca;
+    padding: 10px 10px;
+}
 .tab-content > .tab-pane > .activity > p > b {
     font-weight: bold;
     font-size: 16px;
