@@ -16,6 +16,7 @@ var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";
 
 var Doctor = require('./doctors');
 var Patient = require('./patients');
+var Staff = require('./staffs');
 
 var UserSchema = mongoose.Schema({
     username: {
@@ -148,6 +149,18 @@ module.exports.createUser = function (newUser) {
                     }, function (err) {
                         console.log(err);
                     });
+                } else if (user._type === 'staff') {
+                    var newStaff = new Staff({
+                        username: user.username,
+                        email: user.email
+                    });
+
+                    newStaff.save().then(function (staff) {
+                        resolve(staff);
+                    }, function (err) {
+                        console.log(err);
+                    });
+
                 }
                 resolve(user);
                 console.log(err);
@@ -203,7 +216,7 @@ module.exports.getSocketIdByUsername=function (username) {
     return new Promise(function (resolve, reject) {
         var query={
             username: username
-        }
+        };
         User.find(query).then(function (users) {
            if(users[0].current_socket_id==""){
                reject({

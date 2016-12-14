@@ -111,7 +111,7 @@ patientChannel.on('connection', function (socket) {
 
                                         console.log("www 99 "+ JSON.stringify(notis));
                                         back_data.notifications=notis;
-                                        
+
                                         //let allPromise=[];
                                         //console.log(back_data.notifications);
                                         patientChannel.to(id).emit('data_build_UI', back_data);
@@ -184,19 +184,31 @@ doctorChannel.on('connection', function (socket) {
                 console.log("www 163" + JSON.stringify(err));
             });
 
+            // get profile
             require('../models/doctors').getDoctorDetailByUserName(doctor.username).then(function (_doctor) {
 
                 var response_data = {};
 
                 response_data.profile = _doctor;
 
+                // get list waiting request of doctor
                 require('../models/waiting_requests').getWaitingRequestByDoctor(_doctor.username)
                     .then(function (waiting_requests) {
 
                         response_data.listRequests = waiting_requests;
 
-                        console.log("www 198: " + JSON.stringify(response_data));
-                        doctorChannel.to(id).emit('data_build_UI', response_data);
+                        // get list patient by doctor who serve this patient
+                        require('../models/sessions').getActiveSessionByDoctor(_doctor.username).then(function (sessions) {
+                            response_data.listPatients = sessions;
+
+                            console.log("www 198: " + JSON.stringify(response_data));
+
+                            // send back data to doctor
+                            doctorChannel.to(id).emit('data_build_UI', response_data);
+
+                            },function (err) {
+                                console.log("www 203 : " + JSON.stringify(err));
+                            });
 
                     }, function (err) {
                         console.log(err);
@@ -208,6 +220,7 @@ doctorChannel.on('connection', function (socket) {
             console.log(err);
         });
     });
+
     socket.on('disconnect', function () {
         console.log("www 142" + "doctor " + socket.id + "disconnect");
         //delete socket id in DB
@@ -223,12 +236,10 @@ doctorChannel.on('connection', function (socket) {
             console.log("www 148", JSON.stringify(err));
         });
     });
+
     socket.on('setup_appointment', function (data) {
 
         //write logic
-
-
-        //1
         var id =socket.id;
         require('../models/users').authenticateToken(data.global_info.token)
             .then(function (doctor) {
@@ -247,7 +258,6 @@ doctorChannel.on('connection', function (socket) {
 
                 newSession.save().then(function (session) {
                     // send for doctor and patient
-
 
                     // get socket id of patient
                     var patient_socketID;
@@ -291,12 +301,9 @@ doctorChannel.on('connection', function (socket) {
                                    console.log("www 287"+ JSON.stringify(err));
                                 });
 
-
                         }, function (err) {
 
                         });
-
-
 
                     doctorChannel.to(id).emit('setup_appointment_ss',{
                         msg: "Success"
@@ -322,8 +329,41 @@ staffChanel.on('connection', function (socket) {
         console.log("www 171 " + socket.id);
         var id = socket.id;
 
-        var back_data = {};
-        staffChanel.to(id).emit('data_build_UI', back_data);
+        // authenticate user
+        require('../models/users').authenticateToken(data.token).then(function (staff) {
+
+            //save socket id to push notification
+            staff.current_socket_id = id;
+            staff.save().then(function (staff) {
+                console.log("www 299" + JSON.stringify(staff));
+            }, function (err) {
+                console.log("www 301" + JSON.stringify(err));
+            });
+
+            // get profile of staff
+            require('../models/staffs').getStaffDetailByUserName(staff.username).then(function (_staff) {
+                var response_data = {};
+
+                response_data.profile = _staff;
+
+                // get all waiting requests
+                require('../models/waiting_requests').getAllWaitingRequest().then(function (waiting_requests) {
+
+                    response_data.listRequests = waiting_requests;
+
+                    console.log("www 322: " + JSON.stringify(response_data));
+                    // send back data to client
+                    staffChanel.to(id).emit('data_build_UI', response_data);
+
+                }, function (err) {
+                    console.log("www 312 : " + JSON.stringify(err));
+                });
+            }, function (err) {
+                console.log("www 310 : " + JSON.stringify(err));
+            });
+        }, function (err) {
+            console.log("www 297: " + JSON.stringify(err));
+        });
     });
 });
 

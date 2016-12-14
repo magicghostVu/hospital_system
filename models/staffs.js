@@ -23,10 +23,24 @@ var StaffSchema = mongoose.Schema({
         required: 'Email address is required',
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
+    mobile_phone: {
+        type: String
+    },
     list_serve: []
 });
 
 var Staff = module.exports = mongoose.model('Staff', StaffSchema);
+
+module.exports.createStaffInfo = function (newStaff) {
+    return new Promise(function (resolve, reject){
+        Staff.save().then(function (staff) {
+            resolve(staff);
+        }, function (err) {
+            console.log("staff 39: " + JSON.stringify(err));
+            reject(err);
+        })
+    });
+};
 
 module.exports.getStaffDetailByUserName = function (username) {
     var query = { username: username };
@@ -40,7 +54,7 @@ module.exports.getStaffDetailByUserName = function (username) {
                 resolve(staffs[0]);
             }
         }, function (err) {
-            console.log("staff 44 : " + JSON.stringify(err));
+            console.log("staff 57 : " + JSON.stringify(err));
             reject(err);
         });
     });
