@@ -195,11 +195,30 @@ var doctorContentController = app.controller('doctorContentController', function
     $scope.listPatients = [];
     $scope.profile = {};
 
+    $scope.listRequestElement = [];
+
+    $scope.updateListRequestEl = function (index) {
+        for (k in this.listRequestElement) {
+            if (k == index)
+                this.listRequestElement[k] = "active";
+            else
+                this.listRequestElement[k] = "inactive";
+        }
+    };
+
     $scope.receiveDoctorData = function (data) {
         this.doctorLogin = true;
         this.listRequests = data.listRequests;
+
+        for (i in this.listRequests) {
+            if (i == 0)
+                this.listRequestElement[i] = "active";
+            else
+                this.listRequestElement[i] = "inactive";
+        }
         // this.listPatients = data.listPatients;
         // this.profile = data.profile;
+
     }
 
     $scope.update_profile = function (fullname, mobile_phone, email) {
@@ -237,10 +256,26 @@ var staffContentController = app.controller('staffContentController', function (
     $scope.staffLogin = false;
     $scope.listRequests = [];
 
+    $scope.listRequestElement = [];
+
+    $scope.updateActiveElement = function (index) {
+        for (k in this.listRequestElement) {
+            if (k == index)
+                this.listRequestElement[k] = "active";
+            this.listRequestElement[k] = "";
+        }
+    };
+
     $scope.receiveStaffData = function (data) {
         this.staffLogin = true;
+        console.log(data.listRequests);
         this.listRequests = data.listRequests;
 
+        for (i in this.listRequests) {
+            if (i == 0)
+                this.listRequestElement.push("active");
+            this.listRequestElement.push("");
+        }
     }
 });
 

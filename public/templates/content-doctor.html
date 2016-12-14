@@ -26,34 +26,22 @@
                 <div class="row" style="margin-bottom: 40px">
                     <div class="bhoechie-tab-container">
                         <div class="col-md-3  bhoechie-tab-menu">
-                            <div class="list-group" ng-repeat="request in listRequests">
-                                <a href="#" class="list-group-item text-center" id={{'user_request'+($index+1)}}>
-                                    <h4 class="glyphicon glyphicon-user"></h4><br/>{{request.username}}
+                            <div class="list-group">
+                                <a href="#" class="list-group-item text-center" ng-click="updateListRequestEl($index)" ng-class="listRequestElement[$index]" ng-repeat="req in listRequests">
+                                    <h4 class="glyphicon glyphicon-user"></h4><br/>{{req.username}}
                                 </a>
-                                <!--<a href="#" class="list-group-item  text-center">-->
-                                    <!--<h4 class="glyphicon glyphicon-user"></h4><br/>patien 2-->
-                                <!--</a>-->
-                                <!--<a href="#" class="list-group-item  text-center">-->
-                                    <!--<h4 class="glyphicon glyphicon-user"></h4><br/>patien 3-->
-                                <!--</a>-->
-                                <!--<a href="#" class="list-group-item text-center">-->
-                                    <!--<h4 class="glyphicon glyphicon-user"></h4><br/>patien 4-->
-                                <!--</a>-->
-                                <!--<a href="#" class="list-group-item text-center">-->
-                                    <!--<h4 class="glyphicon glyphicon-user"></h4><br/>patien 5-->
-                                <!--</a>-->
                             </div>
                         </div>
 
                         <!--Request's Details-->
-                        <div class="col-md-9  bhoechie-tab" ng-repeat="request in listRequests">
-                            <div class="bhoechie-tab-content" id={{'request_'+($index+1)}}>
+                        <div class="col-md-9  bhoechie-tab">
+                            <div class="bhoechie-tab-content" ng-class="listRequestElement[$index]" ng-repeat="req in listRequests">
                                 <center>
-                                    <h2 style="margin-top: 0;color:#55518a">{{request.username | uppercase}}'s information</h2>
+                                    <h2 style="margin-top: 0;color:#55518a">{{req.username | uppercase}}'s information</h2>
                                     <div class="date">
                                         <div class="row">
-                                            <p>Descriptions : {{request.description}}</p>
-                                            <h4 style="float: left">Image :</h4> <img style="float: left" src="" height="150px" width="150px" alt="img" />
+                                            <p>Descriptions : {{req.description}}</p>
+                                            <h4 style="float: left">Image :</h4> <img style="float: left" src="http://ancungnguu.com/DATA/luyenvietphap/Tin-tuc/032014/nhung-trieu-chung-benh-tim-mach-ban-nen-biet-2.jpg" height="150px" width="150px" alt="img" />
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
@@ -64,14 +52,13 @@
                                             <div class="col-md-12">
                                                 <div class="form-control-wrapper">
                                                     <input type="text" id="date-format"
-                                                           class="form-control floating-label"
+                                                           class="form-control floating-label aaa"
                                                            placeholder="Begin Date Time">
                                                 </div>
                                             </div>
                                             <div class="col-md-0">
                                                 <code>
-
-                                                    <script>$('#date-format').bootstrapMaterialDatePicker({format: 'dddd DD MMMM YYYY - HH:mm'});</script>
+                                                    <script>$('.aaa').bootstrapMaterialDatePicker({format: 'dddd DD MMMM YYYY - HH:mm'});</script>
                                                 </code>
                                             </div>
                                         </div>
@@ -82,27 +69,6 @@
                                 </center>
                             </div>
 
-                            <!--&lt;!&ndash; patient2 section &ndash;&gt;-->
-                            <!--<div class="bhoechie-tab-content">-->
-                                    <!--<h2 style="margin-top: 0;color:#55518a">Patient's information</h2>-->
-                                    <!--<h3 style="margin-top: 0;color:#55518a">Train Reservation</h3>-->
-                            <!--</div>-->
-
-                            <!--&lt;!&ndash; patient3 search &ndash;&gt;-->
-                            <!--<div class="bhoechie-tab-content">-->
-                                    <!--<h2 style="margin-top: 0;color:#55518a">Patient's information</h2>-->
-                                    <!--<h3 style="margin-top: 0;color:#55518a">Hotel Directory</h3>-->
-                            <!--</div>-->
-                            <!--&lt;!&ndash;patient4 &ndash;&gt;-->
-                            <!--<div class="bhoechie-tab-content">-->
-                                    <!--<h2 style="margin-top: 0;color:#55518a">Patient's information</h2>-->
-                                    <!--<h3 style="margin-top: 0;color:#55518a">Restaurant Diirectory</h3>-->
-                            <!--</div>-->
-                            <!--&lt;!&ndash;patient4 &ndash;&gt;-->
-                            <!--<div class="bhoechie-tab-content">-->
-                                    <!--<h2 style="margin-top: 0;color:#55518a">Patient's information</h2>-->
-                                    <!--<h3 style="margin-top: 0;color:#55518a">Credit Card</h3>-->
-                            <!--</div>-->
                         </div>
 
                     </div>

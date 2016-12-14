@@ -195,6 +195,7 @@ doctorChannel.on('connection', function (socket) {
 
                         response_data.listRequests = waiting_requests;
 
+                        console.log("www 198: " + JSON.stringify(response_data));
                         doctorChannel.to(id).emit('data_build_UI', response_data);
 
                     }, function (err) {
@@ -232,6 +233,7 @@ staffChanel.on('connection', function (socket) {
     socket.on('get_data_for_staff', function (data) {
         console.log("www 171 " + socket.id);
         var id = socket.id;
+
         var back_data = {};
         staffChanel.to(id).emit('data_build_UI', back_data);
     });
