@@ -556,7 +556,7 @@ body {
 }
 
 #exTab3 .tab-content {
-    min-height: 950px;
+    min-height: 450px;
     padding : 5px 15px;
 }
 .items:hover{
