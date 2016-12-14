@@ -430,27 +430,51 @@ a:hover{
     width: 70%;
 }
 
-.p
+.list-docter{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: 1px solid #428bca;
+    box-shadow: 0px 2px 10px 0px #428bca;
+}
 /*end doctors list*/
 
 /* begin notification*/
  .notification{
     border-left: 2px solid #1280b3;
 }
-.notification > h3{
+.request{
+    border: 1px solid #428bca;
+    box-shadow: 0px 2px 10px 0px #428bca;
+}
+.request > h3{
     text-align: center;
     text-transform: uppercase;
-    color: #fff;
-
-    background: url("../images/title.jpg") no-repeat center;
+    color: #06a4d3;
+    font-weight: 700;
     line-height: 40px;
 }
+
+.notification > h3{
+     text-align: center;
+     text-transform: uppercase;
+     color: #fff;
+     background: url("../images/title.jpg")no-repeat center;
+     line-height: 40px;
+ }
+.notification{
+    height: 436px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #428bca;
+    box-shadow: 0px 2px 10px 0px #428bca;
+}
 .notification > ul{
+    margin-left: 30px;
     margin-top: 20px;
     padding: 0;
 }
 .notification > ul > li{
-    list-style:hebrew;
+    list-style:decimal-leading-zero;
     border-right: 2px solid #1280b3;
     margin-bottom: 5px;
 
@@ -536,7 +560,7 @@ body {
     padding : 5px 15px;
 }
 .items:hover{
-    background: hsla(193, 71%, 78%, 0.26);
+    background: rgba(50, 181, 223, 0.06);
 }
 .menu-tab{
 
@@ -662,6 +686,40 @@ body {
     color: #448AFF;
 }
     /*tab activity end*/
+/*session-patient*/
+.session{
+    max-height: 950px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    border: 1px solid #efecec;
+    box-shadow: 0px 2px 10px 0px #428bca;
+}
+.session > h2{
+    color: #fff;
+    margin-top: -10px;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 60px;
+    background: url("../images/title.jpg")no-repeat center;
+}
+.item-session{
+    background-color: rgba(50, 181, 223, 0.06);
+    padding-left: 50px;
+    margin: 0 0 20px 0;
+}
+.item-session > .searchable-container > .items > .item-content{
+    margin-left: 40px;
+}
+.item-session > .searchable-container > .items > h4{
+    font-weight: 800;
+    font-size: 24px;
+    color: #e4101c;
+
+}
+/*session-patient end*/
 .btn1 {
     display: inline-block;
     padding: 6px 12px;

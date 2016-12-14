@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row menu-tab">
             <ul class="nav nav-pills">
-                <li class="logo"><img src="images/logo.png"><span class="lg">is hotpital</span></li>
+                <li class="logo"><img src="images/logo.png"><span class="lg">is hospital</span></li>
                 <li class="active tab">
                     <a href="#1a" data-toggle="tab">List Doctors</a>
                 </li>
@@ -23,149 +23,110 @@
                 <div class="banner-left"><h1>list doctocs</h1></div>
                 <div class="banner-right"><img src="images/bacsi.png" width="300px" height="195px"></div>
             </div>
-            <div class="row item-doctor" ng-repeat="doctor in listDoctors">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="square-box pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                            </div>
-                            <div class="pull-right">
-                                <h4>Bác sĩ {{doctor.faculty}}</h4>
-                                <dl>
-                                    <dt>Full Name:</dt>
-                                    <dd class="name">{{doctor.fullname}}</dd>
-                                    <dt>Có kinh nghiệm về:</dt>
-                                    <dd>
-                                        <span ng-repeat="sick in doctor.list_recommend"> {{sick}}. </span>
-                                    </dd>
-                                    <dt>Email:</dt>
-                                    <dd>{{doctor.email}}</dd>
-                                </dl>
+            <div class="clearfix"></div>
+            <div class="container list-docter">
+                <div class="row item-doctor" ng-repeat="doctor in listDoctors">
+                    <div class="searchable-container">
+                        <div class="items  clearfix">
+                            <div class="info-block block-info clearfix">
+                                <div class="square-box pull-left">
+                                    <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                                </div>
+                                <div class="pull-right">
+                                    <h4>Bác sĩ {{doctor.faculty}}</h4>
+                                    <dl>
+                                        <dt>Full Name:</dt>
+                                        <dd class="name">{{doctor.fullname}}</dd>
+                                        <dt>Có kinh nghiệm về:</dt>
+                                        <dd>
+                                            <span ng-repeat="sick in doctor.list_recommend"> {{sick}}. </span>
+                                        </dd>
+                                        <dt>Email:</dt>
+                                        <dd>{{doctor.email}}</dd>
+                                    </dl>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="tab-pane" id="2a">
             <div class="banner">
                 <div class="banner-left"><h1>sessions</h1></div>
                 <div class="banner-right"><img src="images/sessions.png"></div>
             </div>
-            <div class="row item-session" ng-repeat="session in sessions">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix" style="padding-bottom:20px;border-bottom: 1px solid beige">
+            <div class="container session">
+                <h2>session</h2>
+                <div class="row item-session" ng-repeat="session in sessions">
+                    <div class="searchable-container">
+                        <div class="items  clearfix">
                             <h4>Session {{$index + 1}}</h4>
-                            <p>Bác sĩ phụ trách: {{session.username_doctor}} </p>
-                            <p>Ngày bắt đầu : {{session.begin_date}}</p>
-                            <p>Description : {{session.description}}</p>
-                            <p>Tình trạng : {{session.status}}</p>
-                            <p>Kết quả : {{session.result}}</p>
-                            <div ng-repeat="act in session.activities">
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target={{'#activity'+($index+1)+$parent.$index}}>
-                                    Hoạt động {{$index+1}}
-                                </button>
-                                <div style="margin-top: 10px" id={{'activity'+($index+1)+$parent.$index}} class="collapse">
-                                    <p>Người xác nhận: {{act.doctor_username_confirm}}</p>
-                                    <p>Ngày: {{act.date}}</p>
-                                    <p>Giờ :{{act.time}} </p>
-                                    <p>Đã hoàn tất: {{act.done}}</p>
-                                    <p>Kết quả : <a href=" http://google.com.vn">File kết quả</a></p>
-                                    <p>Chi phí : {{act.cost}}</p>
-                                    <p>Đã thanh toán : {{act.paid}}</p>
+                            <div class="info-block block-info item-content clearfix" style="border-bottom: 1px solid beige">
+
+                                <p><b>Bác sĩ phụ trách:</b> {{session.username_doctor}} </p>
+                                <p><b>Ngày bắt đầu:</b> {{session.begin_date}}</p>
+                                <p><b>Description:</b> {{session.description}}</p>
+                                <p><b>Tình trạng:</b> {{session.status}}</p>
+                                <p><b>Kết quả:</b> {{session.result}}</p>
+                                <div ng-repeat="act in session.activities">
+                                    <button type="button" class="btn1 btn-info" data-toggle="collapse" data-target={{'#activity'+($index+1)+$parent.$index}}>
+                                        Hoạt động {{$index+1}}
+                                    </button>
+                                    <div style="margin-top: 10px" id={{'activity'+($index+1)+$parent.$index}} class="collapse">
+                                        <p>Người xác nhận: {{act.doctor_username_confirm}}</p>
+                                        <p>Ngày: {{act.date}}</p>
+                                        <p>Giờ :{{act.time}} </p>
+                                        <p>Đã hoàn tất: {{act.done}}</p>
+                                        <p>Kết quả : <a href=" http://google.com.vn">File kết quả</a></p>
+                                        <p>Chi phí : {{act.cost}}</p>
+                                        <p>Đã thanh toán : {{act.paid}}</p>
+                                    </div>
+                                    <br/>
+                                    <br/>
                                 </div>
-                                <br/>
-                                <br/>
+
                             </div>
-
-
-                            <!--<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#activity2">
-                                Hoạt động 2
-                            </button>
-                            <div style="margin-top: 10px" id="activity2" class="collapse">
-                                <p>Người xác nhận: Dr.Vũ Hồng Phú</p>
-                                <p>Thời gian:22/12/2016 12:12:12</p>
-                                <p>Đã hoàn tất:Ok</p>
-                                <p>Kết quả : <a href=" http://google.com.vn">File kết quả</a></p>
-                                <p>Chi phí : 200USD</p>
-                                <p>Đã thanh toán : Chưa thanh toán</p>
-                            </div>-->
-
                         </div>
                     </div>
                 </div>
             </div>
-            <!--<div class="row item-session">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix" style="padding-bottom:20px;border-bottom: 1px solid beige;">
-                            <h4>Session 1</h4>
-                            <p>Ngày bắt đầu : 22/22/2016</p>
-                            <p>Description : abccbcbbcbcbbcbcbcbcbcbcbcbcbcbc</p>
-                            <p>Tình trạng : ạhdahsdhaskdh</p>
-                            <p>Kết quả : jkhjkhkjhjkhjhk</p>
-                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#activity3">
-                                Hoạt động 1
-                            </button>
-                            <div style="margin-top: 10px" id="activity3" class="collapse">
-                                <p>Người xác nhận: Dr.Vũ Hồng Phú</p>
-                                <p>Thời gian:22/12/2016 12:12:12</p>
-                                <p>Đã hoàn tất:Ok</p>
-                                <p>Kết quả : <a href=" http://google.com.vn">File kết quả</a></p>
-                                <p>Chi phí : 200USD</p>
-                                <p>Đã thanh toán : Chưa thanh toán</p>
-                            </div>
-                            <br/>
-                            <br/>
-                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#activity4">
-                                Hoạt động 2
-                            </button>
-                            <div style="margin-top: 10px" id="activity4" class="collapse">
-                                <p>Người xác nhận: Dr.Vũ Hồng Phú</p>
-                                <p>Thời gian:22/12/2016 12:12:12</p>
-                                <p>Đã hoàn tất:Ok</p>
-                                <p>Kết quả : <a href=" http://google.com.vn">File kết quả</a></p>
-                                <p>Chi phí : 200USD</p>
-                                <p>Đã thanh toán : Chưa thanh toán</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>-->
         </div>
         <div class="tab-pane" id="3a">
             <div class="banner">
                 <div class="banner-left"><h1>profile</h1></div>
                 <div class="banner-right"><img src="images/profile.png"></div>
             </div>
+            <div class="clearfix"></div>
             <div class="row item-doctor">
                 <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class=" pull-left">
-                                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ"
-                                     width="120" height="120" style="border-radius: 100% ;margin-right: 15px;">
+                    <div class="container clearfix">
+                        <div class="row profile-docter-title">
+                            <h2>thông tin cá nhân</h2>
+                        </div>
+                        <div class="row profile-docter clearfix">
+                            <div class="col-md-1"></div>
+                            <div class=" col-md-4 profile-docter-left">
+                                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ">
                             </div>
-                            <form id="myform" action="" method="post" enctype="multipart/form-data">
-                                <h5>Company Name</h5>
-                                <h4>Name: Tyreese Burn</h4>
-                                <p>Title: Manager</p>
-                                <span>Phone: 555-555-5555</span>
-                                <br/>
-                                <span>Email: sample@company.com</span>
-                                <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
-                            </form>
-                            <input id="edit" class="btn-success" style="margin: 10px 10px" type="button" name="edit"
-                                   value="Sửa thông tin"/>
-                            <input id="ok" class="btn-success" style="display:none;float: left;margin-right: 10px"
-                                   type="button" name="ok" value="Chấp nhận"/>
-                            <input id="exit" class="btn-danger" style="display:none;float: left" type="button"
-                                   name="exit" value="Hủy"/>
+                            <div class="col-md-6 profile-docter-right">
+                                <form id="myform_doctor" action="" method="post" enctype="multipart/form-data">
 
+                                    <h4><b>Name:</b> <strong style="color:#ed1b2f; font-size: 22px">Tyreese Burn</strong></h4></br>
+                                    <p><b>Title:</b> Manager</p></br>
+                                    <span><b>Phone:</b> 555-555-5555</span></br>
+                                    <br/>
+                                    <span><b>Email:</b> <i>sample@company.com</i></span></br>
+                                    <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
+                                </form>
+                                <input id="edit_doctor" class="btn btn-success" style="margin-top: 20px" type="button" name="edit"
+                                       value="Sửa thông tin"/>
+                                <input id="ok_doctor" class="btn btn-success" style="display:none;float: left;margin-right: 10px; margin-top: 10px"
+                                       type="button" name="ok" value="Chấp nhận"/>
+                                <input id="exit_doctor" class="btn btn-danger" style="margin-top:10px; display:none;float: left" type="button"
+                                       name="exit" value="Hủy"/>
+                            </div>
+                            <div class="col-md-1"></div>
 
                         </div>
                     </div>
@@ -178,59 +139,64 @@
                 <div class="banner-left"><h1>notifacation</h1></div>
                 <div class="banner-right"><img src="images/insacation.png"></div>
             </div>
-            <div class="row" style="margin: 40px 0px">
-                <div class="container">
-                    <div class="col-md-5">
-                        <div style="width: 95%" id="left1">
-                            <div class="form-group">
+            <div class="clearfix"></div>
+            <div class="container">
+                <div class="row" style="margin: 40px 0px">
+                    <div class="container">
+                        <div class="col-md-5">
 
-                                <form  enctype="multipart/form-data">
-                                    <label for="description"><h3>Description:</h3></label>
-                                    <textarea ng-model="requestDescription" id="description" class="form-control" style="width:80%;margin: 0 20px;resize: none " cols="10" rows="7"
-                                              placeholder="Your descriptoin "></textarea>
-                                    <h3>Image</h3>
-                                    <div>
-                                        <div id="myfileupload">
-                                            <input type="file" id="uploadfile" name="ImageUpload"
-                                                   onchange="readURL(this);"/>
-                                            <!--      Name  mà server request về sẽ là ImageUpload-->
-                                        </div>
-                                        <div id="thumbbox">
-                                            <img height="150" width="150" alt="Thumb image" id="thumbimage"
-                                                 style="display: none"/>
-                                            <a class="removeimg" href="javascript:"></a></div>
+                            <div id="left1">
+                                <div class="request">
+                                    <h3>request</h3>
+                                    <hr style=" margin:0 " />
+                                    <div class="form-group" style="margin-left: 20px">
+
+                                        <form  enctype="multipart/form-data">
+                                            <label for="description"><h3><b>Description:</b></h3></label>
+                                            <textarea ng-model="requestDescription" id="description" class="form-control" style="width:80%;margin: 0 20px;resize: none " cols="10" rows="7"
+                                                      placeholder="Your descriptoin "></textarea>
+                                            <h3><b>Image:</b></h3>
+                                            <div>
+                                                <div id="myfileupload">
+                                                    <input style="margin-left: 20px" type="file" id="uploadfile" name="ImageUpload"
+                                                           onchange="readURL(this);"/>
+                                                    <!--      Name  mà server request về sẽ là ImageUpload-->
+                                                </div>
+                                                <div id="thumbbox">
+                                                    <img height="150" width="150" alt="Thumb image" id="thumbimage"
+                                                         style="display: none"/>
+                                                    <a class="removeimg" href="javascript:"></a></div>
+                                            </div>
+                                            <input class="btn1 btn-success" ng-click="sendRequest()"
+                                                   style="width: 100px;height: 35px;border-radius: 7px;margin-top:20px; margin-left: 150px"
+                                                   type="button" name="submit" value="Submit" onsubmit="return false" {{}}>
+                                        </form>
+
                                     </div>
-                                    <input class="btn-success" ng-click="sendRequest()"
-                                           style="width: 100px;height: 35px;border-radius: 5px;margin: 20px 0px;"
-                                           type="button" name="submit" value="Submit" onsubmit="return false" {{}}>
-                                </form>
-
+                                </div>
                             </div>
-
                         </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div style="" id="right1">
-                            <div class="notification">
-                                <h3>Notification</h3>
-                                <ul>
-                                    <li ng-repeat="noti in notifications">
-                                        <button type="button" class="notification-id" data-toggle="collapse" data-target={{'#noti'+$index}}>
-                                            {{noti.content}}
-                                        </button>
-                                        <div style="margin-top: 10px" id={{'noti'+$index}} class="collapse">
-                                            <p>Người xác nhận: {{noti.username_doctor}}</p>
-                                            <p>Thời gian {{noti.date}}, {{noti.time}} </p>
-                                        </div>
-                                    </li>
-                                </ul>
+                        <div class="col-md-7">
+                            <div style="" id="right1">
+                                <div class="notification">
+                                    <h3>Notification</h3>
+                                    <ul>
+                                        <li ng-repeat="noti in notifications">
+                                            <button type="button" class="notification-id" data-toggle="collapse" data-target={{'#noti'+$index}}>
+                                                {{noti.content}}
+                                            </button>
+                                            <div style="margin-top: 10px" id={{'noti'+$index}} class="collapse">
+                                                <p>Người xác nhận: {{noti.username_doctor}}</p>
+                                                <p>Thời gian {{noti.date}}, {{noti.time}} </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-
-            </div>
-
         </div>
     </div>
     <script>
