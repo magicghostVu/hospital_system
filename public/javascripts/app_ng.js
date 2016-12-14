@@ -66,10 +66,10 @@ var controller_authen=app.controller('au_ctrl', function($scope, $http){
                 socketPatient.emit("get_data_for_patient",global_info);
 
             }else if(global_info._type ==='doctor'){
-                console.log(global_info);
-
-                socketDoctor.emit("emit_data_for_doctor", global_info);
+                // console.log(global_info);
                 console.log('doctor login');
+
+                socketDoctor.emit("get_data_for_doctor", global_info);
             }else if(global_info._type==='staff'){
 
 
@@ -99,7 +99,7 @@ app.directive("myModal",function() {
         templateUrl: "templates/modal-login.html",
         link: function(scope, element, attr){
             scope.dismiss= function(){
-                console.log('run hide modal');
+                // console.log('run hide modal');
                 $(element.children()[0]).modal('hide');
             };
         }
@@ -145,7 +145,7 @@ var patientContentController=app.controller('patientContentController', function
     $scope.profile={};
     $scope.notifications=[];
     $scope.request={};
-
+    $scope.requestDescription="";
     $scope.receiveData=function(data){
         this.patientLogin=true;
         this.listDoctors=data.listDoctors;
@@ -173,6 +173,14 @@ var patientContentController=app.controller('patientContentController', function
         });
     };
 
+    $scope.sendRequest= function () {
+        // TODO: send file image first to get back img ID
+        // $http send file to server ...
+        // then emit description to server
+        console.log(this.requestDescription);
+
+    }
+
 });
 
 
@@ -195,7 +203,7 @@ var doctorContentController = app.controller('doctorContentController', function
 
     $scope.receiveDoctorData = function (data) {
         this.doctorLogin = true;
-        // this.listRequests = data.listRequests;
+        this.listRequests = data.listRequests;
         // this.listPatients = data.listPatients;
         // this.profile = data.profile;
     }

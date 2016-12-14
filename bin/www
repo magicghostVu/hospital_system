@@ -136,13 +136,25 @@ patientChannel.on('connection', function(socket){
 //handle doctor
 
 doctorChannel.on('connection', function (socket) {
-    console.log('www 91 '+socket.id+ " connected");
+    console.log('www 139 '+socket.id+ " connected");
     socket.on('get_data_for_doctor', function (data) {
+        console.log("www 141: " + JSON.stringify(data));
         var id = socket.id;
         console.log("www 134"+ JSON.stringify(data));
 
-    });
+        require('../models/users').authenticateToken(data.token).then(function (doctor) {
+            require('../models/waiting_requests').getWaitingRequestByDoctor(doctor.username).then(function (wating_requests) {
+                var back_data = {};
+                back_data.listRequests = wating_requests;
 
+                doctorChannel.to(id).emit('data_build_UI', back_data);
+            }, function (err) {
+                console.log("www 149: " + JSON.stringify(err));
+            });
+        }, function (err) {
+            console.log(err);
+        });
+    });
 });
 
 
