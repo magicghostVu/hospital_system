@@ -301,7 +301,7 @@
                 $('#exit_doctor').show();
                 html_doctor = $('#myform_doctor').html();
                 var name = $('#myform_doctor>h4').text().slice(6);
-                var title = $('#myform_doctor>p').text().slice(7);
+                var fullname = $('#myform_doctor>p').text().slice(7);
                 var phone = $('#myform_doctor span').first().text().slice(7);
                 var email = $('#myform_doctor span').last().text().slice(7);
                 var html_after = '';
@@ -313,13 +313,13 @@
                 html_after = html_after + "Name:";
                 html_after += "</td>";
                 html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='name' value='" + name + "'/>";
+                html_after = html_after + "<input class='form-control' disabled='disabled' type='text' name='name' value='" + fullname + "'/>";
                 html_after += "</td>";
                 html_after += "</tr>";
 
                 html_after += "<tr>";
                 html_after += "<td style='height: 55px'>";
-                html_after = html_after + "Title:";
+                html_after = html_after + "Full name:";
                 html_after += "</td>";
                 html_after += "<td>";
                 html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
@@ -343,15 +343,15 @@
                 html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
                 html_after += "</td>";
                 html_after += "</tr>";
-
-                html_after += "<tr>";
-                html_after += "<td style='height: 55px'>";
-                html_after = html_after + "Image:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='file' name='image'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
+/*    upload image */
+//                html_after += "<tr>";
+//                html_after += "<td style='height: 55px'>";
+//                html_after = html_after + "Image:";
+//                html_after += "</td>";
+//                html_after += "<td>";
+//                html_after = html_after + "<input class='form-control' type='file' name='image'/>";
+//                html_after += "</td>";
+//                html_after += "</tr>";
 
                 html_after += "</table>";
                 $('#myform_doctor').html(html_after);

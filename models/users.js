@@ -41,6 +41,9 @@ var UserSchema = mongoose.Schema({
     },
     token: {
         type: String
+    },
+    current_socket_id: {
+        type: String
     }
 });
 
@@ -174,6 +177,24 @@ module.exports.authenticateToken= function(token){
 
             // almost never run over there
             console.log('model/users 140 '+JSON.stringify(err));
+        });
+    });
+};
+
+module.exports.getUserBySocketId= function (socketid) {
+    return new Promise(function (resolve, reject) {
+        User.find({
+            current_socket_id: socketid
+        }).then(function (users) {
+            if(users.length==0){
+                reject({
+                    msg: "Không có user tương ứng với socket id"
+                });
+            }else{
+                resolve(users[0]);
+            }
+        }, function (err) {
+           reject(err);
         });
     });
 };

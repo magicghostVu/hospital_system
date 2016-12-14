@@ -251,13 +251,13 @@
                     html_after = html_after + "User name:";
                     html_after += "</td>";
                     html_after += "<td>";
-                    html_after = html_after + "<input id='input_username' disabled class='form-control' type='text' name='company' value='" + username + "'/>";
+                    html_after = html_after + "<input id='input_username' disabled='disabled' class='form-control' type='text' name='company' value='" + username + "'/>";
                     html_after += "</td>";
                     html_after += "</tr>";
 
                     html_after += "<tr>";
                     html_after += "<td>";
-                    html_after = html_after + "Name:";
+                    html_after = html_after + "Full name:";
                     html_after += "</td>";
                     html_after += "<td>";
                     html_after = html_after + "<input id='input_fullname' class='form-control' type='text' name='name' value='" + fullname + "'/>";
@@ -297,6 +297,15 @@
                     html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
                     html_after += "</td>";
                     html_after += "</tr>";
+
+//                    html_after += "<tr>";
+//                    html_after += "<td style='height: 55px'>";
+//                    html_after = html_after + "Image:";
+//                    html_after += "</td>";
+//                    html_after += "<td>";
+//                    html_after = html_after + "<input class='form-control' type='file' name='image'/>";
+//                    html_after += "</td>";
+//                    html_after += "</tr>";
 
                     html_after += "</table>";
                     console.log(html_after);
