@@ -44,7 +44,10 @@
                                 </a>
                             </div>
                         </div>
+
+                        <!--Request's Details-->
                         <div class="col-md-9  bhoechie-tab">
+
                             <!-- flight section -->
                             <div class="bhoechie-tab-content active">
                                 <center>
@@ -90,38 +93,59 @@
                                         <div class="row">
                                             <button class="btn btn-success"> đặt lịch</button>
                                         </div>
-
                                     </div>
                                 </center>
                             </div>
-                            <!-- train section -->
-                            <div class="bhoechie-tab-content">
-                                <center>
-                                    <h2 style="margin-top: 0;color:#55518a">Patient's information</h2>
-                                    <h3 style="margin-top: 0;color:#55518a">Train Reservation</h3>
-                                </center>
-                            </div>
 
-                            <!-- hotel search -->
-                            <div class="bhoechie-tab-content">
+                            <div class="bhoechie-tab-content active">
                                 <center>
                                     <h2 style="margin-top: 0;color:#55518a">Patient's information</h2>
-                                    <h3 style="margin-top: 0;color:#55518a">Hotel Directory</h3>
-                                </center>
-                            </div>
-                            <div class="bhoechie-tab-content">
-                                <center>
-                                    <h2 style="margin-top: 0;color:#55518a">Patient's information</h2>
-                                    <h3 style="margin-top: 0;color:#55518a">Restaurant Diirectory</h3>
-                                </center>
-                            </div>
-                            <div class="bhoechie-tab-content">
-                                <center>
-                                    <h2 style="margin-top: 0;color:#55518a">Patient's information</h2>
-                                    <h3 style="margin-top: 0;color:#55518a">Credit Card</h3>
+                                    <div class="date">
+                                        <div class="row">
+                                            <p>Chúng tôi trình bày Resilient Distributed Datasets (RDDs) , khái niệm
+                                                trừu tượng để cho lập trình viên thực hiện tính toán thường xuyên trong
+                                                bộ nhớ trên cụm lớn với việc chấp nhận sai sót. RDDs được thúc đẩy bởi
+                                                hai loại ứng dụng mô hình điện toán hiện hành xử lý kém hiệu quả : thuật
+                                                toán lặp lại và công cụ khai phá dữ liệu tương tác. Trong cả hai trường
+                                                hợp, giữ cho dữ liệu trong bộ nhớ có thể cải thiện hiệu suất một bậc. Để
+                                                đạt được khả năng chịu lỗi một cách hiệu quả, RDDs cung cấp một hình
+                                                thức chia sẻ bộ nhớ, dựa trên biến đổi theo cụm lơn chứ không phải là
+                                                biến đổi nhỏ lẻ phân mảnh. Tuy nhiên, chúng tôi cho thấy rằng RDDs được
+                                                biểu hiện đầy đủ để chụp các tính toán lớn, bao gồm cả mô hình lập trình
+                                                chuyên ngành gần đây như Pregel, và các ứng dụng mới có không có mô
+                                                hình. Chúng tôi đã thực hiện RDDs trong một hệ thống gọi là Spark, mà
+                                                chúng tôi đánh giá thông qua một loạt các ứng dụng người dùng và điểm
+                                                chuẩn.</p>
+                                            <h4 style="float: left">Image :</h4> <img style="float: left" src="" height="150px" width="150px" alt="img" />
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h2>Chọn lịch khám</h2>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-control-wrapper">
+                                                    <input type="text" id="date-format"
+                                                           class="form-control floating-label"
+                                                           placeholder="Begin Date Time">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-0">
+                                                <code>
+
+                                                    <script>$('#date-format').bootstrapMaterialDatePicker({format: 'dddd DD MMMM YYYY - HH:mm'});</script>
+                                                </code>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <button class="btn btn-success"> đặt lịch</button>
+                                        </div>
+                                    </div>
                                 </center>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
