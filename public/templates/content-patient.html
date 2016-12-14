@@ -100,59 +100,62 @@
                 <div class="banner-left"><h1>profile</h1></div>
                 <div class="banner-right"><img src="images/profile.png"></div>
             </div>
-            <div class="row item-doctor">
-                <div class="searchable-container">
-                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
-                        <div class="info-block block-info clearfix">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class=" pull-left">
-                                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ"
-                                             width="120" height="120" style="border-radius: 100% ;margin-right: 15px;">
+            <div class="clearfix"></div>
+            <div class="profile-patient container">
+                <h2>profile patient</h2>
+                <div class="row item-patient">
+                    <div class="searchable-container">
+                        <div class="items clearfix">
+                            <div class="info-block block-info clearfix">
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-4">
+                                        <div class=" profile-patient-left">
+                                            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ"
+                                                 width="220" height="260" style="border-radius: 7% ;margin-right: 15px;">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <form class="form-group" id="myform_staff1" action="" method="post" enctype="multipart/form-data">
-                                        <h4 >Name: {{profile.username}}</h4>
+                                    <div class="col-md-6">
+                                        <form class="form-group" id="myform_staff1" action="" method="post" enctype="multipart/form-data">
+                                            <h2 ><b>Name:</b> {{profile.username}}</h2>
 
-                                        <input disabled id="name" class="form-control" type="text" name="name" value="23" style="width: 40%;display: none"/>
+                                            <input disabled id="name" class="form-control" type="text" name="name" value="23" style="width: 40%;display: none"/>
 
 
-                                        <p ng-show="profileDisplay">Fullname: {{profile.fullname}}</p>
-                                        <label ng-show="!profileDisplay" for="fullname">Fullname:</label>
-                                        <input ng-model="profile.fullname" ng-show="!profileDisplay" id="fullname" class="form-control" type="text" name="fullname" value="23" style="width: 40%;" />
-
+                                            <h3 ng-show="profileDisplay"><b>Fullname:</b> <b style="color: #ed1b2f">{{profile.fullname}}</b></h3>
+                                            <label ng-show="!profileDisplay" for="fullname">Fullname:</label>
+                                            <input ng-model="profile.fullname" ng-show="!profileDisplay" id="fullname" class="form-control" type="text" name="fullname" value="23" style="width: 40%;" />
 
 
 
-                                        <span ng-show="profileDisplay">Phone: {{profile.mobile_phone}}</span>
-                                        <label ng-show="!profileDisplay" for="phone">Phone:</label>
-                                        <input ng-model="profile.mobile_phone"  ng-show="!profileDisplay" id="phone" class="form-control" type="text" name="phone" value="23" style="width: 40%;" />
+                                            <br/>
+                                            <span ng-show="profileDisplay"><h4><b>Phone:</b> {{profile.mobile_phone}}</h4></span>
+                                            <label ng-show="!profileDisplay" for="phone">Phone:</label>
+                                            <input ng-model="profile.mobile_phone"  ng-show="!profileDisplay" id="phone" class="form-control" type="text" name="phone" value="23" style="width: 40%;" />
 
+                                            <span ng-show="profileDisplay" ><h4><b>Email:</b> {{profile.email}}</h4></span>
+                                            <label ng-show="!profileDisplay" for="email">Email:</label>
+                                            <input ng-show="!profileDisplay" ng-model="profile.email" id="email" class="form-control" type="text" name="email" value="sample@company.com" style="width: 40%" />
+                                            <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
+                                        </form>
 
-                                        <br/>
-                                        <span ng-show="profileDisplay" >Email: {{profile.email}}</span>
-                                        <label ng-show="!profileDisplay" for="email">Email:</label>
-                                        <input ng-show="!profileDisplay" ng-model="profile.email" id="email" class="form-control" type="text" name="email" value="sample@company.com" style="width: 40%" />
-                                        <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
-                                    </form>
-
-                                    <input id="edit_staff1" ng-show="profileDisplay" class="btn btn-success" style="margin: 10px 10px" type="button"
-                                           name="edit"
-                                           value="Sửa thông tin" ng-click="updateDisplayProfileToFix()"/>
-                                    <input ng-show="!profileDisplay" id="ok_staff1" class="btn btn-success"
-                                           style="float: left;margin-right: 10px"
-                                           type="button" name="ok" value="Chấp nhận" ng-click="update_profile()"/>
-                                    <input ng-show="!profileDisplay" id="exit_staff1" class="btn btn-danger" style="float: left"
-                                           type="button"
-                                           name="exit" value="Hủy" ng-click="updateDisplayProfileToFix()"/>
+                                        <input id="edit_staff1" ng-show="profileDisplay" class="btn btn-success" style="margin: 10px 10px" type="button"
+                                               name="edit"
+                                               value="Sửa thông tin" ng-click="updateDisplayProfileToFix()"/>
+                                        <input ng-show="!profileDisplay" id="ok_staff1" class="btn btn-success"
+                                               style="float: left;margin-right: 10px"
+                                               type="button" name="ok" value="Chấp nhận" ng-click="update_profile()"/>
+                                        <input ng-show="!profileDisplay" id="exit_staff1" class="btn btn-danger" style="float: left"
+                                               type="button"
+                                               name="exit" value="Hủy" ng-click="updateDisplayProfileToFix()"/>
+                                    </div>
+                                    <div class="col-md-1"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="tab-pane" id="4a">
             <div class="banner">
