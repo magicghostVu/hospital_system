@@ -5,9 +5,6 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-var User = require('./users');
-
-var ObjectId = mongoose.Schema.Types.ObjectId;
 /*var uri = "mongodb://root:9235@ds019268.mlab.com:19268/hospital_uet";
 mongoose.connect(uri);*/
 
