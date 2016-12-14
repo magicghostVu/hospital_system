@@ -223,6 +223,62 @@ doctorChannel.on('connection', function (socket) {
             console.log("www 148", JSON.stringify(err));
         });
     });
+    socket.on('setup_appointment', function (data) {
+
+        //write logic
+
+
+        //1
+        var id =socket.id;
+        require('../models/users').authenticateToken(data.global_info.token)
+            .then(function (doctor) {
+                // create new Session
+                var Session =require('../models/sessions');
+                var newSession= new Session({
+                    description: data.description,
+                    username: data.patient_username,
+                    username_doctor: doctor.username,
+
+                    status: "active",
+                    activities: [],
+                    result: "Chưa có kết luận",
+                    begin_date: data.date_time,
+                });
+
+                newSession.save().then(function (session) {
+                    // send for doctor and patient
+
+
+                    // get socket id of patient
+                    var patient_socketID;
+                    require('../models/users')
+                        .getSocketIdByUsername(data.patient_username)
+                        .then(function (socketid) {
+
+                            
+                            var send_back={
+                              msg: "OKOKOK"
+                            };
+                            patientChannel.to(socketid).emit("send_noti", send_back);
+                        }, function (err) {
+
+                        });
+
+
+
+                    doctorChannel.to(id).emit('setup_appointment_ss',{
+                        msg: "Success"
+                    });
+
+                }, function (err) {
+
+                });
+            }, function (err) {
+
+            });
+
+        console.log("www 226"+ JSON.stringify(data));
+    })
 
 });
 

@@ -53,7 +53,7 @@
                                                 <div class="form-control-wrapper">
                                                     <input type="text" id="date-format"
                                                            class="form-control floating-label aaa"
-                                                           placeholder="Begin Date Time">
+                                                           placeholder="Begin Date Time" ng-model="dateTimeAppointment">
                                                 </div>
                                             </div>
                                             <div class="col-md-0">
@@ -63,7 +63,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <button class="btn btn-success"> đặt lịch</button>
+                                            <button ng-click="sendAppointment($index)" class="btn btn-success"> Đặt lịch</button>
                                         </div>
                                     </div>
                                 </center>
