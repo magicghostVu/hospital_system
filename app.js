@@ -66,8 +66,15 @@ app.use('/notify', notify);
 
 
 //set up multer upload file
+
+//
+
+
+var multer=require('multer');
 var upload= multer({dest: './public/images'}).single('file');
 app.use(upload);
+
+
 
 app.use('/api', upfile);
 // catch 404 and forward to error handler
