@@ -200,47 +200,54 @@
                 <div class="banner-left"><h1>profile</h1></div>
                 <div class="banner-right"><img src="images/profile.png"></div>
             </div>
-            <div class="clearfix"></div>
             <div class="row item-doctor">
                 <div class="searchable-container">
-                    <div class="container clearfix">
-                        <div class="row profile-docter-title">
-                            <h2>thông tin cá nhân</h2>
-                        </div>
-                        <div class="row profile-docter clearfix">
-                            <div class="col-md-1"></div>
-                            <div class=" col-md-4 profile-docter-left">
-                                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ">
+                    <div class="items col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-lg-6 col-md-offset-3 clearfix">
+                        <div class="info-block block-info clearfix">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class=" pull-left">
+                                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdTYDwx7qxN8zR6b9OtIRfh3LX4YEytvrAQQ4fQDI-21DCox-pts9cxQ"
+                                             width="120" height="120" style="border-radius: 100% ;margin-right: 15px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <form class="form-group" id="myform_staff1" action="" method="post" enctype="multipart/form-data">
+                                        <h4 >Name: Tyreese Burn</h4>
+                                        <label style="display: none" for="name">Name:</label>
+                                        <input id="name" class="form-control" type="text" name="name" value="23" style="width: 40%;display: none"/>
+                                        <p >Fullname: Manager</p>
+                                        <label style="display: none" for="fullname">Fullname:</label>
+                                        <input id="fullname" class="form-control" type="text" name="fullname" value="23" style="width: 40%;display: none" />
+                                        <span >Phone: 555-555-5555</span>
+                                        <label style="display: none" for="phone">Phone:</label>
+                                        <input id="phone" class="form-control" type="text" name="phone" value="23" style="width: 40%;display: none" />
+                                        <br/>
+                                        <span >Email: sample@company.com</span>
+                                        <label style="display: none" for="email">Email:</label>
+                                        <input  id="email" class="form-control" type="text" name="email" value="sample@company.com" style="width: 40%;display: none" />
+                                        <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
+                                    </form>
+                                    <input id="edit_staff1" class="btn btn-success" style="margin: 10px 10px" type="button"
+                                           name="edit"
+                                           value="Sửa thông tin"/>
+                                    <input id="ok_staff1" class="btn btn-success"
+                                           style="display:none;float: left;margin-right: 10px"
+                                           type="button" name="ok" value="Chấp nhận"/>
+                                    <input id="exit_staff1" class="btn btn-danger" style="display:none;float: left"
+                                           type="button"
+                                           name="exit" value="Hủy"/>
+                                </div>
                             </div>
-                            <div class="col-md-6 profile-docter-right">
-                                <form id="myform_doctor" action="" method="post" enctype="multipart/form-data">
-
-                                    <h4><b>Name:</b> <strong style="color:#ed1b2f; font-size: 22px">Tyreese Burn</strong></h4></br>
-                                    <p><b>Title:</b> Manager</p></br>
-                                    <span><b>Phone:</b> 555-555-5555</span></br>
-                                    <br/>
-                                    <span><b>Email:</b> <i>sample@company.com</i></span></br>
-                                    <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
-                                </form>
-                                <input id="edit_doctor" class="btn btn-success" style="margin-top: 20px" type="button" name="edit"
-                                       value="Sửa thông tin"/>
-                                <input id="ok_doctor" class="btn btn-success" style="display:none;float: left;margin-right: 10px; margin-top: 10px"
-                                       type="button" name="ok" value="Chấp nhận"/>
-                                <input id="exit_doctor" class="btn btn-danger" style="margin-top:10px; display:none;float: left" type="button"
-                                       name="exit" value="Hủy"/>
-                            </div>
-                            <div class="col-md-1"></div>
-
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 <script>
-    $(document).ready(function () {
-
         $(".next-step").click(function (e) {
 
             var $active = $('.nav-tabs li.active');
@@ -277,112 +284,96 @@
         }
         //$(document).ready(function () {
 
-        var setId = function () {
-            console.log($('#request_1'));
-            $('#request_1').addClass("active");
-            $('#user_request1').addClass("active");
-        };
-
-        doctorContentScope.$apply(setId());
-        (function () {
-            var html_doctor = '';
-            console.log('running');
-            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
-                e.preventDefault();
-                $(this).siblings('a.active').removeClass("active");
-                $(this).addClass("active");
-                var index = $(this).index();
-                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-            });
-            $('#edit_doctor').click(function () {
-                $('#edit_doctor').hide();
-                $('#ok_doctor').show();
-                $('#exit_doctor').show();
-                html_doctor = $('#myform_doctor').html();
-                var name = $('#myform_doctor>h4').text().slice(6);
-                var fullname = $('#myform_doctor>p').text().slice(7);
-                var phone = $('#myform_doctor span').first().text().slice(7);
-                var email = $('#myform_doctor span').last().text().slice(7);
-                var html_after = '';
-                html_after += "<table id='table-profile' cellpadding='10' cellspacing='10'>";
-
-
-                html_after += "<tr>";
-                html_after += "<td style='height: 55px'>";
-                html_after = html_after + "Name:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' disabled='disabled' type='text' name='name' value='" + fullname + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-
-                html_after += "<tr>";
-                html_after += "<td style='height: 55px'>";
-                html_after = html_after + "Full name:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-
-                html_after += "<tr>";
-                html_after += "<td style='height: 55px'> ";
-                html_after = html_after + "Phone:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-
-                html_after += "<tr>";
-                html_after += "<td style='height: 55px'>";
-                html_after = html_after + "Email:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-/*    upload image */
+//        (function () {
+//            var html_doctor = '';
+//            console.log('running');
+//            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+//                e.preventDefault();
+//                $(this).siblings('a.active').removeClass("active");
+//                $(this).addClass("active");
+//                var index = $(this).index();
+//                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+//                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+//            });
+//            $('#edit_doctor').click(function () {
+//                alert('abv');
+//                $('#edit_doctor').hide();
+//                $('#ok_doctor').show();
+//                $('#exit_doctor').show();
+//                html_doctor = $('#myform_doctor').html();
+//                var name = $('#myform_doctor>h4').text().slice(6);
+//                var fullname = $('#myform_doctor>p').text().slice(7);
+//                var phone = $('#myform_doctor span').first().text().slice(7);
+//                var email = $('#myform_doctor span').last().text().slice(7);
+//                var html_after = '';
+//                html_after += "<table id='table-profile' cellpadding='10' cellspacing='10'>";
+//
+//
 //                html_after += "<tr>";
 //                html_after += "<td style='height: 55px'>";
-//                html_after = html_after + "Image:";
+//                html_after = html_after + "Name:";
 //                html_after += "</td>";
 //                html_after += "<td>";
-//                html_after = html_after + "<input class='form-control' type='file' name='image'/>";
+//                html_after = html_after + "<input class='form-control' disabled='disabled' type='text' name='name' value='" + fullname + "'/>";
 //                html_after += "</td>";
 //                html_after += "</tr>";
-
-                html_after += "</table>";
-                $('#myform_doctor').html(html_after);
-            });
-            $('#exit_doctor').click(function () {
-                $('#ok_doctor').hide();
-                $('#exit_doctor').hide();
-                $('#myform_doctor').html(html_doctor);
-                $('#edit_doctor').show();
-            });
-
-            $('#demo').click(function () {
-                console.log($('#left1').css('height'));
-            });
-            $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
-                $("#uploadfile").click();
-
-            });
-            $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
-                $("#thumbimage").attr('src', '').hide();
-                $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
-                $(".removeimg").hide();
-                $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
-                    $("#uploadfile").click();
-                });
-                $('.Choicefile').css('background', '#0877D8');
-                $('.Choicefile').css('cursor', 'pointer');
-                $(".filename").text("");
-            });
-        })();
-    });
+//
+//                html_after += "<tr>";
+//                html_after += "<td style='height: 55px'>";
+//                html_after = html_after + "Full name:";
+//                html_after += "</td>";
+//                html_after += "<td>";
+//                html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
+//                html_after += "</td>";
+//                html_after += "</tr>";
+//
+//                html_after += "<tr>";
+//                html_after += "<td style='height: 55px'> ";
+//                html_after = html_after + "Phone:";
+//                html_after += "</td>";
+//                html_after += "<td>";
+//                html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
+//                html_after += "</td>";
+//                html_after += "</tr>";
+//
+//                html_after += "<tr>";
+//                html_after += "<td style='height: 55px'>";
+//                html_after = html_after + "Email:";
+//                html_after += "</td>";
+//                html_after += "<td>";
+//                html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
+//                html_after += "</td>";
+//                html_after += "</tr>";
+//
+//                html_after += "</table>";
+//                $('#myform_doctor').html(html_after);
+//            });
+//            $('#exit_doctor').click(function () {
+//                $('#ok_doctor').hide();
+//                $('#exit_doctor').hide();
+//                $('#myform_doctor').html(html_doctor);
+//                $('#edit_doctor').show();
+//            });
+//
+//            $('#demo').click(function () {
+//                console.log($('#left1').css('height'));
+//            });
+//            $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
+//                $("#uploadfile").click();
+//
+//            });
+//            $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
+//                $("#thumbimage").attr('src', '').hide();
+//                $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
+//                $(".removeimg").hide();
+//                $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
+//                    $("#uploadfile").click();
+//                });
+//                $('.Choicefile').css('background', '#0877D8');
+//                $('.Choicefile').css('cursor', 'pointer');
+//                $(".filename").text("");
+//            });
+//        })();
     function nextTab(elem) {
         $(elem).next().find('a[data-toggle="tab"]').click();
     }
