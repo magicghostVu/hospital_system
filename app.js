@@ -64,9 +64,11 @@ app.use('/patient', patient);
 
 //set up multer upload file
 //
-// var multer=require('multer');
-// var upload= multer({dest: './public/images'}).single('file');
-// app.use(upload);
+
+
+var multer=require('multer');
+var upload= multer({dest: './public/images'}).single('file');
+app.use(upload);
 
 
 app.use('/api', upfile);

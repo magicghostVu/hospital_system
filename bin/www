@@ -22,26 +22,25 @@ app.set('port', port);
 var server = http.createServer(app);
 
 // create all the channel
-var io=require('socket.io')(server);
-var patientChannel=io.of('/patient');
-var doctorChannel=io.of('/doctor');
+var io = require('socket.io')(server);
+var patientChannel = io.of('/patient');
+var doctorChannel = io.of('/doctor');
 var staffChanel = io.of('staff');
-var servicesDoctorChanel= io.of('/services_doctor');
-
+var servicesDoctorChanel = io.of('/services_doctor');
 
 
 //io.listen(server);
 console.log("socket is running");
-io.on('connection', function(socket){
+io.on('connection', function (socket) {
 
     io.to(socket.id).emit('Welcome', {message: 'Welcome to server'});
-    console.log("Client "+ socket.id +" connected");
+    console.log("Client " + socket.id + " connected");
 
-    socket.on('disconnect', function(){
-        console.log("Client "+ this.id +" disconnected");
+    socket.on('disconnect', function () {
+        console.log("Client " + this.id + " disconnected");
     });
 
-    socket.on('sendMessage', function(data){
+    socket.on('sendMessage', function (data) {
         console.log(data.content);
         io.emit('newMessage', data);
     });
@@ -49,39 +48,48 @@ io.on('connection', function(socket){
 });
 
 //handle patient
-patientChannel.on('connection', function(socket){
-    console.log("www 50 client "+socket.id+" connected");
+patientChannel.on('connection', function (socket) {
+    console.log("www 50 client " + socket.id + " connected");
     /*this event will send all the data to build UI for patient
-    * include list doctors, Session (activity), profile
-    *
-    * */
-    socket.on('get_data_for_patient', function(data){
-        var id= socket.id;
-        console.log("www 61"+ JSON.stringify(data));
-        require('../models/users').authenticateToken(data.token).then(function(user){
+     * include list doctors, Session (activity), profile
+     *
+     * */
+    socket.on('get_data_for_patient', function (data) {
+        var id = socket.id;
+        console.log("www 61" + JSON.stringify(data));
+        require('../models/users').authenticateToken(data.token).then(function (user) {
+            //save socket id to database to send noti
+            //var newuser=
+            user.current_socket_id = id;
+            user.save().then(function (user) {
+                console.log("www 66, saved socket_id" + JSON.stringify(user));
+            }, function (err) {
+                console.log("www 68" + JSON.stringify(err));
+            });
+
             // get List Doctors
-            require('../models/doctors').getAllDoctorDetails().then(function(_data){
-                var back_data={};
-                back_data.listDoctors=_data;
+            require('../models/doctors').getAllDoctorDetails().then(function (_data) {
+                var back_data = {};
+                back_data.listDoctors = _data;
 
 
                 // get Session and doctor detail foreach session
                 require('../models/sessions').getSessionsByUsername(user.username)
-                    .then(function(sessions){
-                        back_data.sessions=sessions;
+                    .then(function (sessions) {
+                        back_data.sessions = sessions;
 
-                        var allPromise=[];
+                        var allPromise = [];
 
-                        for (idx in sessions){
-                            console.log(sessions[idx].username_doctor +" www 81");
+                        for (idx in sessions) {
+                            console.log(sessions[idx].username_doctor + " www 81");
                             allPromise.push(
                                 require('../models/doctors').getDoctorDetailByUserName(sessions[idx].username_doctor));
 
                         }
                         Promise.all(allPromise).then(function (doctors) {
                             //console.log(doctors[0].fullName);
-                            for (k in sessions){
-                                sessions[k].username_doctor=doctors[k].fullname;
+                            for (k in sessions) {
+                                sessions[k].username_doctor = doctors[k].fullname;
                             }
                             //TODO: get profile
 
@@ -96,18 +104,17 @@ patientChannel.on('connection', function(socket){
                                 require('../models/notifications')
                                     .getNotificationByUsername(user.username)
                                     .then(function (notis) {
-                                        console.log("www 103 "+ JSON.stringify(notis));
-                                        back_data.notifications=notis;
+                                        console.log("www 103 " + JSON.stringify(notis));
+                                        back_data.notifications = notis;
 
                                         //let allPromise=[];
-
 
 
                                         //console.log(back_data.notifications);
                                         patientChannel.to(id).emit('data_build_UI', back_data);
 
                                     }, function (err) {
-                                        console.log("www 106"+ JSON.stringify(err));
+                                        console.log("www 106" + JSON.stringify(err));
                                     });
 
 
@@ -118,16 +125,32 @@ patientChannel.on('connection', function(socket){
                             console.log(" www 110" + JSON.stringify(err));
                         });
 
-                    }, function(err){
-                        console.log("www 68"+ JSON.stringify(err));
+                    }, function (err) {
+                        console.log("www 68" + JSON.stringify(err));
                     });
                 //patientChannel.to(id).emit('data_build_UI', back_data);
-            }, function(err){
-                console.log('www 120 '+ JSON.stringify(err));
+            }, function (err) {
+                console.log('www 120 ' + JSON.stringify(err));
             });
 
-        }, function(err){
+        }, function (err) {
 
+        });
+
+    });
+    socket.on('disconnect', function () {
+        console.log("www 142" + "patient " + socket.id + "disconnect");
+        //delete socket id in DB
+        require('../models/users')
+            .getUserBySocketId(socket.id).then(function (user) {
+            user.current_socket_id="";
+            user.save().then(function (user) {
+                console.log("www 148 đã xóa socketid patient");
+            }, function (err) {
+                console.log("www 150"+ JSON.stringify(err));
+            });
+        }, function (err) {
+            console.log("www 148", JSON.stringify(err));
         });
 
     });
@@ -136,13 +159,24 @@ patientChannel.on('connection', function(socket){
 //handle doctor
 
 doctorChannel.on('connection', function (socket) {
-    console.log('www 139 '+socket.id+ " connected");
+
+    console.log('www 139 ' + socket.id + " connected");
     socket.on('get_data_for_doctor', function (data) {
+
         console.log("www 141: " + JSON.stringify(data));
         var id = socket.id;
-        console.log("www 134"+ JSON.stringify(data));
+        console.log("www 134" + JSON.stringify(data));
 
         require('../models/users').authenticateToken(data.token).then(function (doctor) {
+
+            //save socket id to push notification
+            doctor.current_socket_id = id;
+            doctor.save().then(function (doctor) {
+                console.log("www 161" + JSON.stringify(doctor));
+            }, function (err) {
+                console.log("www 163" + JSON.stringify(err));
+            });
+
             require('../models/waiting_requests').getWaitingRequestByDoctor(doctor.username).then(function (wating_requests) {
                 var back_data = {};
                 back_data.listRequests = wating_requests;
@@ -155,6 +189,22 @@ doctorChannel.on('connection', function (socket) {
             console.log(err);
         });
     });
+    socket.on('disconnect', function () {
+        console.log("www 142" + "doctor " + socket.id + "disconnect");
+        //delete socket id in DB
+        require('../models/users')
+            .getUserBySocketId(socket.id).then(function (user) {
+            user.current_socket_id="";
+            user.save().then(function (user) {
+                console.log("www 148 đã xóa socketid patient");
+            }, function (err) {
+                console.log("www 150"+ JSON.stringify(err));
+            });
+        }, function (err) {
+            console.log("www 148", JSON.stringify(err));
+        });
+    });
+
 });
 
 
@@ -171,19 +221,19 @@ server.on('listening', onListening);
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+    var port = parseInt(val, 10);
 
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
+    if (isNaN(port)) {
+        // named pipe
+        return val;
+    }
 
-  if (port >= 0) {
-    // port number
-    return port;
-  }
+    if (port >= 0) {
+        // port number
+        return port;
+    }
 
-  return false;
+    return false;
 }
 
 /**
@@ -191,27 +241,27 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+    var bind = typeof port === 'string'
+        ? 'Pipe ' + port
+        : 'Port ' + port;
 
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
 }
 
 /**
@@ -219,9 +269,9 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+    var addr = server.address();
+    var bind = typeof addr === 'string'
+        ? 'pipe ' + addr
+        : 'port ' + addr.port;
+    debug('Listening on ' + bind);
 }

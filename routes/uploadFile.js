@@ -4,11 +4,39 @@
 
 var express = require('express');
 var router = express.Router();
+var fs= require('fs');
+
+function getExtentionOfFile(filename) {
+    var subString=filename.split('.');
+    return subString[subString.length-1];
+}
 
 router.post('/upfile', function (req, res, next) {
-    console.log(req.file.filename);
+    var pathOrigin= './public/images/'+req.file.filename;
+
+
+
+    var extension= getExtentionOfFile(req.file.originalname);
+    var pathExpect= pathOrigin+'.'+extension;
+
+    fs.rename(pathOrigin, pathExpect, function (err) {
+        if(err){
+            console.log('upfile 24'+ "có lỗi khi đổi tên file" + JSON.stringify(err));
+        }
+
+    });
+
+    var filenameExpect= req.file.filename+"."+ extension;
+    //TODO: rename file name (add extension)
+
+
+
+
+    console.log(pathExpect+" "+ filenameExpect);
+
+    console.log(req.file.originalname);
     res.send({
-        msg: "OK, upfile"
+        msg: filenameExpect
     });
 });
 
