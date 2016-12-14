@@ -1,4 +1,4 @@
-<div id="exTab4" class="container-all" ng-show="patientLogin">
+<div id="exTab4" style="display: none" class="container-all" ng-show="patientLogin">
     <div class="container">
         <div class="row menu-tab">
             <ul class="nav nav-pills">
@@ -62,7 +62,8 @@
                     <div class="searchable-container">
                         <div class="items  clearfix">
                             <h4>Session {{$index + 1}}</h4>
-                            <div class="info-block block-info item-content clearfix" style="border-bottom: 1px solid beige">
+                            <div class="info-block block-info item-content clearfix"
+                                 style="border-bottom: 1px solid beige">
 
                                 <p><b>Bác sĩ phụ trách:</b> {{session.username_doctor}} </p>
                                 <p><b>Ngày bắt đầu:</b> {{session.begin_date}}</p>
@@ -70,10 +71,12 @@
                                 <p><b>Tình trạng:</b> {{session.status}}</p>
                                 <p><b>Kết quả:</b> {{session.result}}</p>
                                 <div ng-repeat="act in session.activities">
-                                    <button type="button" class="btn1 btn-info" data-toggle="collapse" data-target={{'#activity'+($index+1)+$parent.$index}}>
+                                    <button type="button" class="btn1 btn-info" data-toggle="collapse"
+                                            data-target={{'#activity'+($index+1)+$parent.$index}}>
                                         Hoạt động {{$index+1}}
                                     </button>
-                                    <div style="margin-top: 10px" id={{'activity'+($index+1)+$parent.$index}} class="collapse">
+                                    <div style="margin-top: 10px" id={{'activity'+($index+1)+$parent.$index}}
+                                         class="collapse">
                                         <p>Người xác nhận: {{act.doctor_username_confirm}}</p>
                                         <p>Ngày: {{act.date}}</p>
                                         <p>Giờ :{{act.time}} </p>
@@ -112,18 +115,23 @@
                             <div class="col-md-6 profile-docter-right">
                                 <form id="myform" action="" method="post" enctype="multipart/form-data">
 
-                                    <h4><b>Name:</b> <strong style="color:#ed1b2f; font-size: 22px">Tyreese Burn</strong></h4></br>
+                                    <h4><b>Name:</b> <strong style="color:#ed1b2f; font-size: 22px">Tyreese
+                                        Burn</strong></h4></br>
                                     <p><b>Title:</b> Manager</p></br>
                                     <span><b>Phone:</b> 555-555-5555</span></br>
                                     <br/>
                                     <span><b>Email:</b> <i>sample@company.com</i></span></br>
                                     <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
                                 </form>
-                                <input id="edit" class="btn btn-success" style="margin-top: 20px" type="button" name="edit"
+
+                                <input id="edit_doctor" class="btn btn-success" style="margin-top: 20px" type="button"
+                                       name="edit"
                                        value="Sửa thông tin"/>
-                                <input id="ok" class="btn btn-success" style="display:none;float: left;margin-right: 10px; margin-top: 10px"
+                                <input id="ok_doctor" class="btn btn-success"
+                                       style="display:none;float: left;margin-right: 10px; margin-top: 10px"
                                        type="button" name="ok" value="Chấp nhận"/>
-                                <input id="exit" class="btn btn-danger" style="margin-top:10px; display:none;float: left" type="button"
+                                <input id="exit_doctor" class="btn btn-danger"
+                                       style="margin-top:10px; display:none;float: left" type="button"
                                        name="exit" value="Hủy"/>
                             </div>
                             <div class="col-md-1"></div>
@@ -148,17 +156,20 @@
                             <div id="left1">
                                 <div class="request">
                                     <h3>request</h3>
-                                    <hr style=" margin:0 " />
+                                    <hr style=" margin:0 "/>
                                     <div class="form-group" style="margin-left: 20px">
 
-                                        <form  enctype="multipart/form-data">
+                                        <form enctype="multipart/form-data">
                                             <label for="description"><h3><b>Description:</b></h3></label>
-                                            <textarea ng-model="requestDescription" id="description" class="form-control" style="width:80%;margin: 0 20px;resize: none " cols="10" rows="7"
+                                            <textarea ng-model="requestDescription" id="description"
+                                                      class="form-control"
+                                                      style="width:80%;margin: 0 20px;resize: none " cols="10" rows="7"
                                                       placeholder="Your descriptoin "></textarea>
                                             <h3><b>Image:</b></h3>
                                             <div>
                                                 <div id="myfileupload">
-                                                    <input style="margin-left: 20px" type="file" id="uploadfile" name="ImageUpload"
+                                                    <input style="margin-left: 20px" type="file" id="uploadfile"
+                                                           name="ImageUpload"
                                                            onchange="readURL(this);"/>
                                                     <!--      Name  mà server request về sẽ là ImageUpload-->
                                                 </div>
@@ -169,7 +180,8 @@
                                             </div>
                                             <input class="btn1 btn-success" ng-click="sendRequest()"
                                                    style="width: 100px;height: 35px;border-radius: 7px;margin-top:20px; margin-left: 150px"
-                                                   type="button" name="submit" value="Submit" onsubmit="return false" {{}}>
+                                                   type="button" name="submit" value="Submit" onsubmit="return false"
+                                                   {{}}>
                                         </form>
 
                                     </div>
@@ -182,7 +194,8 @@
                                     <h3>Notification</h3>
                                     <ul>
                                         <li ng-repeat="noti in notifications">
-                                            <button type="button" class="notification-id" data-toggle="collapse" data-target={{'#noti'+$index}}>
+                                            <button type="button" class="notification-id" data-toggle="collapse"
+                                                    data-target={{'#noti'+$index}}>
                                                 {{noti.content}}
                                             </button>
                                             <div style="margin-top: 10px" id={{'noti'+$index}} class="collapse">
@@ -197,121 +210,121 @@
                     </div>
 
                 </div>
+            </div>
         </div>
-    </div>
-    <script>
-        function readURL(input, thumbimage) {
-            if (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $("#thumbimage").attr('src', e.target.result);
+        <script>
+            function readURL(input, thumbimage) {
+                if (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $("#thumbimage").attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
                 }
-                reader.readAsDataURL(input.files[0]);
-            }
-            else { // Sử dụng cho IE
-                $("#thumbimage").attr('src', input.value);
+                else { // Sử dụng cho IE
+                    $("#thumbimage").attr('src', input.value);
+
+                }
+                $("#thumbimage").show();
+                $('.filename').text($("#uploadfile").val());
+                $('.Choicefile').css('background', '#C4C4C4');
+                $('.Choicefile').css('cursor', 'default');
+                $(".removeimg").show();
+                $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
 
             }
-            $("#thumbimage").show();
-            $('.filename').text($("#uploadfile").val());
-            $('.Choicefile').css('background', '#C4C4C4');
-            $('.Choicefile').css('cursor', 'default');
-            $(".removeimg").show();
-            $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
+            //$(document).ready(function () {
+            (function () {
+                var html = '';
+                $('#edit').click(function () {
+                    $('#edit').hide();
+                    $('#ok').show();
+                    $('#exit').show();
+                    html = $('#myform').html();
+                    var company = $('#myform>h5').text();
+                    var name = $('#myform>h4').text().slice(6);
+                    var title = $('#myform>p').text().slice(7);
+                    var phone = $('#myform span').first().text().slice(7);
+                    var email = $('#myform span').last().text().slice(7);
+                    var html_after = '';
+                    html_after += "<table cellpadding='10'>";
 
-        }
-        //$(document).ready(function () {
-        (function () {
-            var html = '';
-            $('#edit').click(function () {
-                $('#edit').hide();
-                $('#ok').show();
-                $('#exit').show();
-                html = $('#myform').html();
-                var company = $('#myform>h5').text();
-                var name = $('#myform>h4').text().slice(6);
-                var title = $('#myform>p').text().slice(7);
-                var phone = $('#myform span').first().text().slice(7);
-                var email = $('#myform span').last().text().slice(7);
-                var html_after = '';
-                html_after += "<table cellpadding='10'>";
+                    html_after += "<tr>";
+                    html_after += "<td>";
+                    html_after = html_after + "Company:";
+                    html_after += "</td>";
+                    html_after += "<td>";
+                    html_after = html_after + "<input class='form-control' type='text' name='company' value='" + company + "'/>";
+                    html_after += "</td>";
+                    html_after += "</tr>";
 
+                    html_after += "<tr>";
+                    html_after += "<td>";
+                    html_after = html_after + "Name:";
+                    html_after += "</td>";
+                    html_after += "<td>";
+                    html_after = html_after + "<input class='form-control' type='text' name='name' value='" + name + "'/>";
+                    html_after += "</td>";
+                    html_after += "</tr>";
 
-                html_after += "<tr>";
-                html_after += "<td>";
-                html_after = html_after + "Name:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='name' value='" + name + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
+                    html_after += "<tr>";
+                    html_after += "<td>";
+                    html_after = html_after + "Title:";
+                    html_after += "</td>";
+                    html_after += "<td>";
+                    html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
+                    html_after += "</td>";
+                    html_after += "</tr>";
 
-                html_after += "<tr>";
-                html_after += "<td>";
-                html_after = html_after + "Title:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
+                    html_after += "<tr>";
+                    html_after += "<td>";
+                    html_after = html_after + "Phone:";
+                    html_after += "</td>";
+                    html_after += "<td>";
+                    html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
+                    html_after += "</td>";
+                    html_after += "</tr>";
+                    html_after += "<tr>";
+                    html_after += "<td>";
+                    html_after = html_after + "Email:";
+                    html_after += "</td>";
+                    html_after += "<td>";
+                    html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
+                    html_after += "</td>";
+                    html_after += "</tr>";
 
-                html_after += "<tr>";
-                html_after += "<td>";
-                html_after = html_after + "Phone:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-                html_after += "<tr>";
-                html_after += "<td>";
-                html_after = html_after + "Email:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-
-                html_after += "<tr>";
-                html_after += "<td style='height: 55px'>";
-                html_after = html_after + "Image:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='file' name='image'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-
-                html_after += "</table>";
-                console.log(html_after);
-                $('#myform').html(html_after);
-            });
-            $('#exit').click(function () {
-                $('#ok').hide();
-                $('#exit').hide();
-                $('#myform').html(html);
-                $('#edit').show();
-            });
-
-            $('#demo').click(function () {
-                console.log($('#left1').css('height'));
-            });
-            $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
-                $("#uploadfile").click();
-
-            });
-            $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
-                $("#thumbimage").attr('src', '').hide();
-                $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
-                $(".removeimg").hide();
-                $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
-                    $("#uploadfile").click();
+                    html_after += "</table>";
+                    console.log(html_after);
+                    $('#myform').html(html_after);
                 });
-                $('.Choicefile').css('background', '#0877D8');
-                $('.Choicefile').css('cursor', 'pointer');
-                $(".filename").text("");
-            });
-        })();
+                $('#exit').click(function () {
+                    $('#ok').hide();
+                    $('#exit').hide();
+                    $('#myform').html(html);
+                    $('#edit').show();
+                });
 
-        //});
-    </script>
+                $('#demo').click(function () {
+                    console.log($('#left1').css('height'));
+                });
+                $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
+                    $("#uploadfile").click();
+
+                });
+                $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
+                    $("#thumbimage").attr('src', '').hide();
+                    $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
+                    $(".removeimg").hide();
+                    $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
+                        $("#uploadfile").click();
+                    });
+                    $('.Choicefile').css('background', '#0877D8');
+                    $('.Choicefile').css('cursor', 'pointer');
+                    $(".filename").text("");
+                });
+            })();
+
+            //});
+        </script>
+    </div>
 </div>
