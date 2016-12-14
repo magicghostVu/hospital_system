@@ -199,6 +199,25 @@ module.exports.getUserBySocketId= function (socketid) {
     });
 };
 
+module.exports.getSocketIdByUsername=function (username) {
+    return new Promise(function (resolve, reject) {
+        var query={
+            username: username
+        }
+        User.find(query).then(function (users) {
+           if(users[0].current_socket_id==""){
+               reject({
+                  msg: "User offline"
+               });
+           } else{
+               resolve(users[0].current_socket_id);
+           }
+        }, function (err) {
+            reject(err);
+        });
+    });
+}
+
 /*
 User.find({}).then(function (data) {
     console.log(data);

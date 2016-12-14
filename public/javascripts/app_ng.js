@@ -11,6 +11,9 @@ var doctorContentScope;
 var staffContentScope;
 
 
+
+var ng_socket_doctor;
+
 var app=angular.module('app', []);
 
 var controller_authen=app.controller('au_ctrl', function($scope, $http){
@@ -195,6 +198,8 @@ var doctorContentController = app.controller('doctorContentController', function
     $scope.listPatients = [];
     $scope.profile = {};
 
+    $scope.dateTimeAppointment='';
+
     $scope.listRequestElement = [];
 
     $scope.updateListRequestEl = function (index) {
@@ -220,6 +225,18 @@ var doctorContentController = app.controller('doctorContentController', function
         // this.profile = data.profile;
 
     }
+
+    $scope.sendAppointment=function (index) {
+        let data={};
+        data.date_time=this.dateTimeAppointment;
+        data.global_info=global_info;
+        data.description = this.listRequests[index].description;
+        data.patient_username=this.listRequests[index].username;
+
+
+        console.log(data);
+        ng_socket_doctor.emit('setup_appointment',data);
+    };
 
     $scope.update_profile = function (fullname, mobile_phone, email) {
         var req = {
