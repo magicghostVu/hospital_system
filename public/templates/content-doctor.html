@@ -27,7 +27,8 @@
                     <div class="bhoechie-tab-container">
                         <div class="col-md-3  bhoechie-tab-menu">
                             <div class="list-group">
-                                <a href="#" class="list-group-item text-center" ng-click="updateListRequestEl($index)" ng-class="listRequestElement[$index]" ng-repeat="req in listRequests">
+                                <a href="#" class="list-group-item text-center" ng-click="updateListRequestEl($index)"
+                                   ng-class="listRequestElement[$index]" ng-repeat="req in listRequests">
                                     <h4 class="glyphicon glyphicon-user"></h4><br/>{{req.username}}
                                 </a>
                             </div>
@@ -35,13 +36,18 @@
 
                         <!--Request's Details-->
                         <div class="col-md-9  bhoechie-tab">
-                            <div class="bhoechie-tab-content" ng-class="listRequestElement[$index]" ng-repeat="req in listRequests">
+                            <div class="bhoechie-tab-content" ng-class="listRequestElement[$index]"
+                                 ng-repeat="req in listRequests">
                                 <center>
-                                    <h2 style="margin-top: 0;color:#55518a">{{req.username | uppercase}}'s information</h2>
+                                    <h2 style="margin-top: 0;color:#55518a">{{req.username | uppercase}}'s
+                                        information</h2>
                                     <div class="date">
                                         <div class="row">
                                             <p>Descriptions : {{req.description}}</p>
-                                            <h4 style="float: left">Image :</h4> <img style="float: left" src="http://ancungnguu.com/DATA/luyenvietphap/Tin-tuc/032014/nhung-trieu-chung-benh-tim-mach-ban-nen-biet-2.jpg" height="150px" width="150px" alt="img" />
+                                            <h4 style="float: left">Image :</h4> <img style="float: left"
+                                                                                      src="http://ancungnguu.com/DATA/luyenvietphap/Tin-tuc/032014/nhung-trieu-chung-benh-tim-mach-ban-nen-biet-2.jpg"
+                                                                                      height="150px" width="150px"
+                                                                                      alt="img"/>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
@@ -63,7 +69,9 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <button ng-click="sendAppointment($index)" class="btn btn-success"> Đặt lịch</button>
+                                            <button ng-click="sendAppointment($index)" class="btn btn-success"> Đặt
+                                                lịch
+                                            </button>
                                         </div>
                                     </div>
                                 </center>
@@ -83,120 +91,143 @@
             <div class="clearfix"></div>
 
 
-                <div class="container list-patient" >
-                    <div class="row">
-                        <h2>activity</h2>
-                        <div class="col col-sm-4 list-patient-left">
-                            <ul class="nav nav-tabs nav-stacked text-center" role="tablist">
-                                <li role="presentation" class="active">
+            <div class="container list-patient">
+                <div class="row">
+                    <h2>activity</h2>
+                    <div class="col col-sm-4 list-patient-left">
+                        <ul class="nav nav-tabs nav-stacked text-center" role="tablist">
+                            <li role="presentation" class="active">
 
-                                    <div class="list-patient-it" style="float: left; width: 90%"><a class="glyphicon glyphicon-user" href="#patient1" aria-controls="patient1" role="tab" data-toggle="tab"> Nguyễn Văn A</a></div>
-                                    <div class="list-patient-ck" style="float: left; width: 10%"><input type="checkbox" class="checkbox" /></div>
+                                <div class="list-patient-it" style="float: left; width: 90%"><a
+                                        class="glyphicon glyphicon-user" href="#patient1" aria-controls="patient1"
+                                        role="tab" data-toggle="tab"> Nguyễn Văn A</a></div>
+                                <div class="list-patient-ck" style="float: left; width: 10%"><input type="checkbox"
+                                                                                                    class="checkbox"/>
+                                </div>
 
-                                </li>
-                                <li role="presentation">
+                            </li>
+                            <li role="presentation">
 
-                                    <div class="list-patient-it"  style="float: left; width: 90%"><a class="glyphicon glyphicon-user" href="#patient2" aria-controls="patient2" role="tab" data-toggle="tab"> Nguyễn Văn A</a></div>
-                                    <div class="list-patient-ck" style="float: left; width: 10%"><input type="checkbox" class="checkbox" /></div>
+                                <div class="list-patient-it" style="float: left; width: 90%"><a
+                                        class="glyphicon glyphicon-user" href="#patient2" aria-controls="patient2"
+                                        role="tab" data-toggle="tab"> Nguyễn Văn A</a></div>
+                                <div class="list-patient-ck" style="float: left; width: 10%"><input type="checkbox"
+                                                                                                    class="checkbox"/>
+                                </div>
 
-                                </li>
-                                <li role="presentation" >
+                            </li>
+                            <li role="presentation">
 
-                                    <div class="list-patient-it"  style="float: left; width: 90%"><a class="glyphicon glyphicon-user" href="#patient3" aria-controls="patient3" role="tab" data-toggle="tab"> Nguyễn Văn A</a></div>
-                                    <div class="list-patient-ck" style="float: left; width: 10%"><input type="checkbox" class="checkbox" /></div>
+                                <div class="list-patient-it" style="float: left; width: 90%"><a
+                                        class="glyphicon glyphicon-user" href="#patient3" aria-controls="patient3"
+                                        role="tab" data-toggle="tab"> Nguyễn Văn A</a></div>
+                                <div class="list-patient-ck" style="float: left; width: 10%"><input type="checkbox"
+                                                                                                    class="checkbox"/>
+                                </div>
 
-                                </li>
+                            </li>
 
-                                <!--<li role="presentation"><a class="glyphicon glyphicon-user" href="#patient2" aria-controls="patient2" role="tab" data-toggle="tab"> Nguyễn Văn B</a>
-                                </li>
-                                <li role="presentation"><a class="glyphicon glyphicon-user" href="#patient3" aria-controls="patient3" role="tab" data-toggle="tab"> Nguyễn Văn C</a>
-                                </li>-->
-                            </ul>
-                        </div>
-                        <div class="col col-sm-8 list-patient-right">
-                            <div class="row tab-content">
-                                <div role="tabpanel" class="tab-pane fade active in" id="patient1">
-                                    <ul class="patient-tab row">
-                                        <li class=""><a  href="javascript:void(0)" onclick="openCity('pt1')">Activity 1</a></li>
-                                        <li class=""><a href="javascript:void(0)" onclick="openCity('pt2')">Activity 2</a></li>
-                                        <li class=""><a href="javascript:void(0)" onclick="openCity('pt3')">Activity 3</a></li>
-                                        <li class=""><a href="javascript:void(0)" onclick="openCity('pt-create')">Create Activity</a></li>
+                            <!--<li role="presentation"><a class="glyphicon glyphicon-user" href="#patient2" aria-controls="patient2" role="tab" data-toggle="tab"> Nguyễn Văn B</a>
+                            </li>
+                            <li role="presentation"><a class="glyphicon glyphicon-user" href="#patient3" aria-controls="patient3" role="tab" data-toggle="tab"> Nguyễn Văn C</a>
+                            </li>-->
+                        </ul>
+                    </div>
+                    <div class="col col-sm-8 list-patient-right">
+                        <div class="row tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="patient1">
+                                <ul class="patient-tab row">
+                                    <li class=""><a href="javascript:void(0)" onclick="openCity('pt1')">Activity 1</a>
+                                    </li>
+                                    <li class=""><a href="javascript:void(0)" onclick="openCity('pt2')">Activity 2</a>
+                                    </li>
+                                    <li class=""><a href="javascript:void(0)" onclick="openCity('pt3')">Activity 3</a>
+                                    </li>
+                                    <li class=""><a href="javascript:void(0)" onclick="openCity('pt-create')">Create
+                                        Activity</a></li>
 
-                                    </ul>
+                                </ul>
 
-                                    <div id="pt1" class=" activity form-group">
-                                        <p><b>Ngày :</b>14/12/2016</p>
-                                        <p><b>Giờ :</b>8h</p>
-                                        <p><b>Nội dung :</b> <input type="text" value="Nội dung activities"></p>
-                                        <p><b>Đã thực hiện :</b><input type="text" value="Chưa thực hiện"></p>
-                                        <p><b>Kết quả :</b><input type="text" value="Chưa có kết quả"></p>
-                                        <p><b>Giá: </b><input type="text" value="0"></p>
-                                        <p><b>Đã thanh toán: </b><input type="checkbox"></p>
-                                        <input  class="btn btn-success" style="margin-top: 40px; float: right" type="button" name="edit"
-                                               value="Cập Nhật"/>
-                                    </div>
+                                <div id="pt1" class=" activity form-group">
+                                    <p><b>Ngày :</b>14/12/2016</p>
+                                    <p><b>Giờ :</b>8h</p>
+                                    <p><b>Nội dung :</b> <input type="text" value="Nội dung activities"></p>
+                                    <p><b>Đã thực hiện :</b><input type="text" value="Chưa thực hiện"></p>
+                                    <p><b>Kết quả :</b><input type="text" value="Chưa có kết quả"></p>
+                                    <p><b>Giá: </b><input type="text" value="0"></p>
+                                    <p><b>Đã thanh toán: </b><input type="checkbox"></p>
+                                    <input class="btn btn-success" style="margin-top: 40px; float: right" type="button"
+                                           name="edit"
+                                           value="Cập Nhật"/>
+                                </div>
 
-                                    <div id="pt2" class="activity">
-                                        <p><b>Ngày :</b>14/12/2016</p>
-                                        <p><b>Giờ :</b>8h</p>
-                                        <p><b>Nội dung :</b> <input type="text" value="Nội dung activities"></p>
-                                        <p><b>Đã thực hiện :</b><input type="text" value="Chưa thực hiện"></p>
-                                        <p><b>Kết quả :</b><input type="text" value="Chưa có kết quả"></p>
-                                        <p><b>Giá: </b><input type="text" value="0"></p>
-                                        <p><b>Đã thanh toán: </b><input type="checkbox"></p>
-                                        <input  class="btn btn-success" style="margin-top: 40px; float: right" type="button" name="edit"
-                                                value="Cập Nhật"/>
-                                    </div>
+                                <div id="pt2" class="activity">
+                                    <p><b>Ngày :</b>14/12/2016</p>
+                                    <p><b>Giờ :</b>8h</p>
+                                    <p><b>Nội dung :</b> <input type="text" value="Nội dung activities"></p>
+                                    <p><b>Đã thực hiện :</b><input type="text" value="Chưa thực hiện"></p>
+                                    <p><b>Kết quả :</b><input type="text" value="Chưa có kết quả"></p>
+                                    <p><b>Giá: </b><input type="text" value="0"></p>
+                                    <p><b>Đã thanh toán: </b><input type="checkbox"></p>
+                                    <input class="btn btn-success" style="margin-top: 40px; float: right" type="button"
+                                           name="edit"
+                                           value="Cập Nhật"/>
+                                </div>
 
-                                    <div id="pt3" class="activity">
-                                        <p><b>Ngày :</b>14/12/2016</p>
-                                        <p><b>Giờ :</b>8h</p>
-                                        <p><b>Nội dung :</b> <input type="text" value="Nội dung activities"></p>
-                                        <p><b>Đã thực hiện :</b><input type="text" value="Chưa thực hiện"></p>
-                                        <p><b>Kết quả :</b><input type="text" value="Chưa có kết quả"></p>
-                                        <p><b>Giá: </b><input type="text" value="0"></p>
-                                        <p><b>Đã thanh toán: </b><input type="checkbox"></p>
-                                        <input  class="btn btn-success" style="margin-top: 40px; float: right" type="button" name="edit"
-                                                value="Cập Nhật"/>
-                                    </div>
-                                    <div id="pt-create" class="activity">
-                                        <p><b>Tạo activity mới</b></p>
-                                        <p><b>Nội dung : </b><span><input type="text"/></span></p>
-                                            <input id="" class="btn btn-success" style="margin-top: 40px; float: right" type="button" name="edit"
-                                                   value="Hoàn Thành"/>
-                                    </div>
-                                    <script>
-                                        openCity("pt1");
-                                        function openCity(cityName) {
-                                            var i;
-                                            /*$('.patient-tab li:first-child a').hover();*/
-                                            var x = document.getElementsByClassName("activity");
-                                            for (i = 0; i < x.length; i++) {
-                                                x[i].style.display = "none";
-                                            }
-                                            document.getElementById(cityName).style.display = "block";
+                                <div id="pt3" class="activity">
+                                    <p><b>Ngày :</b>14/12/2016</p>
+                                    <p><b>Giờ :</b>8h</p>
+                                    <p><b>Nội dung :</b> <input type="text" value="Nội dung activities"></p>
+                                    <p><b>Đã thực hiện :</b><input type="text" value="Chưa thực hiện"></p>
+                                    <p><b>Kết quả :</b><input type="text" value="Chưa có kết quả"></p>
+                                    <p><b>Giá: </b><input type="text" value="0"></p>
+                                    <p><b>Đã thanh toán: </b><input type="checkbox"></p>
+                                    <input class="btn btn-success" style="margin-top: 40px; float: right" type="button"
+                                           name="edit"
+                                           value="Cập Nhật"/>
+                                </div>
+                                <div id="pt-create" class="activity">
+                                    <p><b>Tạo activity mới</b></p>
+                                    <p><b>Nội dung : </b><span><input type="text"/></span></p>
+                                    <input id="" class="btn btn-success" style="margin-top: 40px; float: right"
+                                           type="button" name="edit"
+                                           value="Hoàn Thành"/>
+                                </div>
+                                <script>
+                                    openCity("pt1");
+                                    function openCity(cityName) {
+                                        var i;
+                                        /*$('.patient-tab li:first-child a').hover();*/
+                                        var x = document.getElementsByClassName("activity");
+                                        for (i = 0; i < x.length; i++) {
+                                            x[i].style.display = "none";
                                         }
-                                    </script>
-                                </div>
+                                        document.getElementById(cityName).style.display = "block";
+                                    }
+                                </script>
+                            </div>
 
-                                <div role="tabpanel" class="tab-pane fade" id="patient2">
+                            <div role="tabpanel" class="tab-pane fade" id="patient2">
 
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="patient3">
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="patient3">
 
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <ul class="list-inline patient-bt">
-                            <li><button type="button" class="btn1 btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn1 btn-default next-step">Next</button></li>
-                            <!--<li><button type="button" class="btn1 btn-primary ">Save</button></li>-->
-                        </ul>
-                    </div>
                 </div>
-
+                <div class="row">
+                    <ul class="list-inline patient-bt">
+                        <li>
+                            <button type="button" class="btn1 btn-default prev-step">Previous</button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn1 btn-default next-step">Next</button>
+                        </li>
+                        <!--<li><button type="button" class="btn1 btn-primary ">Save</button></li>-->
+                    </ul>
+                </div>
+            </div>
 
 
         </div>
@@ -217,29 +248,46 @@
                                     </div>
                                 </div>
                                 <div class="col-md-9">
-                                    <form class="form-group" id="myform_staff1" action="" method="post" enctype="multipart/form-data">
-                                        <h4 >Name: Tyreese Burn</h4>
-                                        <label style="display: none" for="name">Name:</label>
-                                        <input id="name" class="form-control" type="text" name="name" value="23" style="width: 40%;display: none"/>
-                                        <p >Fullname: Manager</p>
-                                        <label style="display: none" for="fullname">Fullname:</label>
-                                        <input id="fullname" class="form-control" type="text" name="fullname" value="23" style="width: 40%;display: none" />
-                                        <span >Phone: 555-555-5555</span>
-                                        <label style="display: none" for="phone">Phone:</label>
-                                        <input id="phone" class="form-control" type="text" name="phone" value="23" style="width: 40%;display: none" />
+                                    <form class="form-group" id="myform_staff1" action="" method="post"
+                                          enctype="multipart/form-data">
+                                        <h2><b>Name:</b> {{profile.username}}</h2>
+                                        <input disabled id="name" class="form-control" type="text" name="name"
+                                               value="23" style="width: 40%;display: none"/>
+
+                                        <h3 ng-show="profileShow"><b>Fullname:</b> <b style="color: #ed1b2f">{{profile.fullname}}</b>
+                                        </h3>
+                                        <label ng-show="!profileShow" for="fullname">Fullname:</label>
+                                        <input ng-show="!profileShow" ng-model="profile.fullname" id="fullname"
+                                               class="form-control" type="text" name="fullname"
+                                               value="{{profile.fullname}}" style="width: 40%"/>
+
+                                        <span ng-show="profileShow"><h4><b>Phone:</b> {{profile.mobile_phone}}</h4></span>
+                                        <label ng-show="!profileShow" for="phone">Phone:</label>
+                                        <input ng-model="profile.mobile_phone" ng-show="!profileShow" id="phone"
+                                               class="form-control" type="text" name="phone" style="width: 40%"/>
+
+                                        <span ng-show="profileShow"><h4><b>Faculty:</b> {{profile.falcuty}}</h4></span>
+                                        <label ng-show="!profileShow" for="phone">Faculty:</label>
+                                        <input ng-model="profile.faculty" ng-show="!profileShow" id="phone"
+                                               class="form-control" type="text" name="phone" value=""
+                                               style="width: 40%"/>
                                         <br/>
-                                        <span >Email: sample@company.com</span>
-                                        <label style="display: none" for="email">Email:</label>
-                                        <input  id="email" class="form-control" type="text" name="email" value="sample@company.com" style="width: 40%;display: none" />
+                                        <span ng-show="profileShow"><h4><b>Email:</b> {{profile.email}}</h4></span>
+                                        <label ng-show="!profileShow" for="email">Email:</label>
+                                        <input ng-model="profile.email" ng-show="!profileShow" id="email"
+                                               class="form-control" type="text" name="email" value=""
+                                               style="width: 40%;"/>
                                         <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
                                     </form>
-                                    <input id="edit_staff1" class="btn btn-success" style="margin: 10px 10px" type="button"
-                                           name="edit"
+                                    <input id="edit_staff1" ng-show="profileShow" class="btn btn-success"
+                                           style="margin: 10px 10px" type="button"
+                                           name="edit" ng-click="flipProfleStatus()"
                                            value="Sửa thông tin"/>
-                                    <input id="ok_staff1" class="btn btn-success"
-                                           style="display:none;float: left;margin-right: 10px"
+                                    <input id="ok_staff1" ng-show="!profileShow" class="btn btn-success"
+                                           ng-click="update_profile()" style="float: left;margin-right: 10px"
                                            type="button" name="ok" value="Chấp nhận"/>
-                                    <input id="exit_staff1" class="btn btn-danger" style="display:none;float: left"
+                                    <input id="exit_staff1" ng-click="flipProfleStatus()" ng-show="!profileShow" class="btn btn-danger"
+                                           style="float: left"
                                            type="button"
                                            name="exit" value="Hủy"/>
                                 </div>
@@ -253,137 +301,44 @@
     </div>
 </div>
 <script>
-        $(".next-step").click(function (e) {
+    $(".next-step").click(function (e) {
 
-            var $active = $('.nav-tabs li.active');
-            $active.next().removeClass('disabled');
-            nextTab($active);
+        var $active = $('.nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
 
-        });
-        $(".prev-step").click(function (e) {
+    });
+    $(".prev-step").click(function (e) {
 
-            var $active = $('.nav-tabs li.active');
-            prevTab($active);
+        var $active = $('.nav-tabs li.active');
+        prevTab($active);
 
-        });
+    });
 
-        function readURL(input, thumbimage) {
-            if (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $("#thumbimage").attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
+    function readURL(input, thumbimage) {
+        if (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#thumbimage").attr('src', e.target.result);
             }
-            else { // Sử dụng cho IE
-                $("#thumbimage").attr('src', input.value);
-
-            }
-            $("#thumbimage").show();
-            $('.filename').text($("#uploadfile").val());
-            $('.Choicefile').css('background', '#C4C4C4');
-            $('.Choicefile').css('cursor', 'default');
-            $(".removeimg").show();
-            $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
+            reader.readAsDataURL(input.files[0]);
+        }
+        else { // Sử dụng cho IE
+            $("#thumbimage").attr('src', input.value);
 
         }
-        //$(document).ready(function () {
+        $("#thumbimage").show();
+        $('.filename').text($("#uploadfile").val());
+        $('.Choicefile').css('background', '#C4C4C4');
+        $('.Choicefile').css('cursor', 'default');
+        $(".removeimg").show();
+        $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
 
-//        (function () {
-//            var html_doctor = '';
-//            console.log('running');
-//            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
-//                e.preventDefault();
-//                $(this).siblings('a.active').removeClass("active");
-//                $(this).addClass("active");
-//                var index = $(this).index();
-//                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-//                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-//            });
-//            $('#edit_doctor').click(function () {
-//                alert('abv');
-//                $('#edit_doctor').hide();
-//                $('#ok_doctor').show();
-//                $('#exit_doctor').show();
-//                html_doctor = $('#myform_doctor').html();
-//                var name = $('#myform_doctor>h4').text().slice(6);
-//                var fullname = $('#myform_doctor>p').text().slice(7);
-//                var phone = $('#myform_doctor span').first().text().slice(7);
-//                var email = $('#myform_doctor span').last().text().slice(7);
-//                var html_after = '';
-//                html_after += "<table id='table-profile' cellpadding='10' cellspacing='10'>";
-//
-//
-//                html_after += "<tr>";
-//                html_after += "<td style='height: 55px'>";
-//                html_after = html_after + "Name:";
-//                html_after += "</td>";
-//                html_after += "<td>";
-//                html_after = html_after + "<input class='form-control' disabled='disabled' type='text' name='name' value='" + fullname + "'/>";
-//                html_after += "</td>";
-//                html_after += "</tr>";
-//
-//                html_after += "<tr>";
-//                html_after += "<td style='height: 55px'>";
-//                html_after = html_after + "Full name:";
-//                html_after += "</td>";
-//                html_after += "<td>";
-//                html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
-//                html_after += "</td>";
-//                html_after += "</tr>";
-//
-//                html_after += "<tr>";
-//                html_after += "<td style='height: 55px'> ";
-//                html_after = html_after + "Phone:";
-//                html_after += "</td>";
-//                html_after += "<td>";
-//                html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
-//                html_after += "</td>";
-//                html_after += "</tr>";
-//
-//                html_after += "<tr>";
-//                html_after += "<td style='height: 55px'>";
-//                html_after = html_after + "Email:";
-//                html_after += "</td>";
-//                html_after += "<td>";
-//                html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
-//                html_after += "</td>";
-//                html_after += "</tr>";
-//
-//                html_after += "</table>";
-//                $('#myform_doctor').html(html_after);
-//            });
-//            $('#exit_doctor').click(function () {
-//                $('#ok_doctor').hide();
-//                $('#exit_doctor').hide();
-//                $('#myform_doctor').html(html_doctor);
-//                $('#edit_doctor').show();
-//            });
-//
-//            $('#demo').click(function () {
-//                console.log($('#left1').css('height'));
-//            });
-//            $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
-//                $("#uploadfile").click();
-//
-//            });
-//            $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
-//                $("#thumbimage").attr('src', '').hide();
-//                $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
-//                $(".removeimg").hide();
-//                $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
-//                    $("#uploadfile").click();
-//                });
-//                $('.Choicefile').css('background', '#0877D8');
-//                $('.Choicefile').css('cursor', 'pointer');
-//                $(".filename").text("");
-//            });
-//        })();
+    }
     function nextTab(elem) {
         $(elem).next().find('a[data-toggle="tab"]').click();
     }
     function prevTab(elem) {
         $(elem).prev().find('a[data-toggle="tab"]').click();
     }
-
 </script>

@@ -201,19 +201,9 @@ var doctorContentController = app.controller('doctorContentController', function
     $scope.listRequests = [];
     $scope.listPatients = [];
     $scope.profile = {};
-
+    $scope.profileShow = true;
     $scope.dateTimeAppointment='';
-
     $scope.listRequestElement = [];
-
-    $scope.updateListRequestEl = function (index) {
-        for (k in this.listRequestElement) {
-            if (k == index)
-                this.listRequestElement[k] = "active";
-            else
-                this.listRequestElement[k] = "inactive";
-        }
-    };
 
     $scope.receiveDoctorData = function (data) {
         this.doctorLogin = true;
@@ -227,7 +217,20 @@ var doctorContentController = app.controller('doctorContentController', function
             else
                 this.listRequestElement[i] = "inactive";
         }
-    }
+    };
+
+    $scope.updateListRequestEl = function (index) {
+        for (k in this.listRequestElement) {
+            if (k == index)
+                this.listRequestElement[k] = "active";
+            else
+                this.listRequestElement[k] = "inactive";
+        }
+    };
+
+    $scope.flipProfleStatus = function () {
+        this.profileShow = !this.profileShow;
+    };
 
     $scope.sendAppointment=function (index) {
         let data={};
@@ -241,16 +244,19 @@ var doctorContentController = app.controller('doctorContentController', function
         ng_socket_doctor.emit('setup_appointment',data);
     };
 
-    $scope.update_profile = function (fullname, mobile_phone, email) {
+    $scope.update_profile = function () {
         var req = {
             token: global_info.token,
-            fullname: this.profile,
-            mobile_phone: this.profile.mobile_phone,
-            email: this.profile.email
+            fullname: $scope.profile.fullname,
+            falcuty: $scope.profile.falculty,
+            mobile_phone: $scope.profile.mobile_phone,
+            email: $scope.profile.email
         };
 
         $http.post('doctor/edit', req).then(function (res) {
             console.log(res);
+            $scope.flipProfleStatus();
+            toastr.success("Update info successful");
         }, function (err) {
             console.log(err);
         });
@@ -274,9 +280,11 @@ var staffContentController = app.controller('staffContentController', function (
     $scope.profile = {};
     $scope.listRequestElement = [];
 
+    $scope.profileShow = true;
+
     $scope.receiveStaffData = function (data) {
         this.staffLogin = true;
-        this.listRequests = data.listRequests;
+        this.listRequests = data.listRequestsup;
         this.profile = data.profile;
 
         // set default
@@ -287,7 +295,12 @@ var staffContentController = app.controller('staffContentController', function (
                 this.listRequestElement[i] = "inactive";
             }
         }
-    }
+    };
+
+    $scope.flipProfileShow = function () {
+        this.profileShow = !this.profileShow;
+    };
+
 
     $scope.updateActiveElement = function (index) {
         for (k in this.listRequestElement) {

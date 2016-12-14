@@ -14,12 +14,12 @@ router.post('/edit', function (req, res, next) {
     var token = req.body.token;
     var fullname = req.body.fullname;
     var email = req.body.email;
-    var falcuty = req.body.falcuty;
+    var faculty = req.body.faculty;
     var mobile_phone = req.body.mobile_phone;
 
     req.checkBody('token', 'Token is required').notEmpty();
     req.checkBody('fullname', 'Full Name is required').notEmpty();
-    req.checkBody('falcuty', 'Falcuty is required').notEmpty();
+    req.checkBody('faculty', 'Faculty is required').notEmpty();
     var errors = req.validationErrors();
 
     if (errors) {
@@ -27,7 +27,7 @@ router.post('/edit', function (req, res, next) {
             errors: errors,
             token: token,
             fullname: fullname,
-            falculty: falcuty,
+            faculty: faculty,
             email: email,
             mobile_phone: mobile_phone
         });
@@ -37,7 +37,7 @@ router.post('/edit', function (req, res, next) {
                 var doctor_update = doctor;
                 doctor_update.email = email;
                 doctor_update.fullname = fullname;
-                doctor_update.falcuty = falcuty;
+                doctor_update.faculty = faculty;
                 doctor_update.mobile_phone = mobile_phone;
 
                 doctor_update.save().then(function (user) {

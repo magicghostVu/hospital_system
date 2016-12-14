@@ -14,7 +14,7 @@ socketPatient.on('data_build_UI', function (data) {
     // console.log(data);
 
     patientContentScope.$apply(function () {
-        console.log(data.profile);
+        // console.log(data.profile);
         patientContentScope.receivePatientData(data);
 
     });
@@ -35,6 +35,7 @@ socketDoctor.on('data_build_UI', function (data) {
 
     console.log(data);
     doctorContentScope.$apply(function () {
+        console.log(data.profile);
         doctorContentScope.receiveDoctorData(data);
     });
 });

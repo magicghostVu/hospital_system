@@ -117,16 +117,13 @@
                                     </div>
                                     <div class="col-md-6">
                                         <form class="form-group" id="myform_staff1" action="" method="post" enctype="multipart/form-data">
+
                                             <h2 ><b>Name:</b> {{profile.username}}</h2>
-
                                             <input disabled id="name" class="form-control" type="text" name="name" value="23" style="width: 40%;display: none"/>
-
 
                                             <h3 ng-show="profileDisplay"><b>Fullname:</b> <b style="color: #ed1b2f">{{profile.fullname}}</b></h3>
                                             <label ng-show="!profileDisplay" for="fullname">Fullname:</label>
                                             <input ng-model="profile.fullname" ng-show="!profileDisplay" id="fullname" class="form-control" type="text" name="fullname" value="23" style="width: 40%;" />
-
-
 
                                             <br/>
                                             <span ng-show="profileDisplay"><h4><b>Phone:</b> {{profile.mobile_phone}}</h4></span>
