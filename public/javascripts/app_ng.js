@@ -199,6 +199,25 @@ var doctorContentController = app.controller('doctorContentController', function
         // this.listPatients = data.listPatients;
         // this.profile = data.profile;
     }
+
+    $scope.update_profile = function (fullname, mobile_phone, email) {
+        var req = {
+            token: global_info.token,
+            fullname: fullname,
+            mobile_phone: mobile_phone,
+            email: email
+        };
+
+        return new Promise(function (resolve, reject) {
+            $http.post('doctor/edit', req).then(function (res) {
+                console.log(res);
+                resolve(res);
+            }, function (err) {
+                console.log(err);
+                reject(err);
+            });
+        });
+    };
 });
 
 console.log("ng run");

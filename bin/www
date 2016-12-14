@@ -98,7 +98,7 @@ patientChannel.on('connection', function(socket){
                                     .then(function (notis) {
                                         console.log("www 99 "+ JSON.stringify(notis));
                                         back_data.notifications=notis;
-
+                                        
                                         //let allPromise=[];
                                         //console.log(back_data.notifications);
                                         patientChannel.to(id).emit('data_build_UI', back_data);
@@ -162,6 +162,8 @@ doctorChannel.on('connection', function (socket) {
                 }, function (err) {
                     console.log("www 162: " + JSON.stringify(err));
                 });
+        }, function (err) {
+            console.log(err);
         });
     });
 });

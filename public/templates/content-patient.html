@@ -151,18 +151,17 @@
                                      width="120" height="120" style="border-radius: 100% ;margin-right: 15px;">
                             </div>
                             <form id="myform" action="" method="post" enctype="multipart/form-data">
-                                <h5>Company Name</h5>
-                                <h4>Name: Tyreese Burn</h4>
-                                <p>Title: Manager</p>
-                                <span>Phone: 555-555-5555</span>
+                                <h5>User name: {{profile.username}}</h5>
+                                <h4>Full name: {{profile.fullname}}</h4>
+                                <span>Phone: {{profile.mobile_phone}}</span>
                                 <br/>
-                                <span>Email: sample@company.com</span>
+                                <span>Email: {{profile.email}}</span>
                                 <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
                             </form>
                             <input id="edit" class="btn-success" style="margin: 10px 10px" type="button" name="edit"
                                    value="Sửa thông tin"/>
                             <input id="ok" class="btn-success" style="display:none;float: left;margin-right: 10px"
-                                   type="button" name="ok" value="Chấp nhận"/>
+                                   type="button" onclick="update_profile()" name="ok" value="Chấp nhận"/>
                             <input id="exit" class="btn-danger" style="display:none;float: left" type="button"
                                    name="exit" value="Hủy"/>
 
@@ -262,9 +261,8 @@
                 $('#ok').show();
                 $('#exit').show();
                 html = $('#myform').html();
-                var company = $('#myform>h5').text();
-                var name = $('#myform>h4').text().slice(6);
-                var title = $('#myform>p').text().slice(7);
+                var username = $('#myform>h5').text().slide(10);
+                var fullname = $('#myform>h4').text().slice(10);
                 var phone = $('#myform span').first().text().slice(7);
                 var email = $('#myform span').last().text().slice(7);
                 var html_after = '';
@@ -273,10 +271,10 @@
 
                 html_after += "<tr>";
                 html_after += "<td>";
-                html_after = html_after + "Company:";
+                html_after = html_after + "User name:";
                 html_after += "</td>";
                 html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='company' value='" + company + "'/>";
+                html_after = html_after + "<input id='input_username' disabled class='form-control' type='text' name='company' value='" + username + "'/>";
                 html_after += "</td>";
                 html_after += "</tr>";
 
@@ -285,16 +283,7 @@
                 html_after = html_after + "Name:";
                 html_after += "</td>";
                 html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='name' value='" + name + "'/>";
-                html_after += "</td>";
-                html_after += "</tr>";
-
-                html_after += "<tr>";
-                html_after += "<td>";
-                html_after = html_after + "Title:";
-                html_after += "</td>";
-                html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='title' value='" + title + "'/>";
+                html_after = html_after + "<input id='input_fullname' class='form-control' type='text' name='name' value='" + fullname + "'/>";
                 html_after += "</td>";
                 html_after += "</tr>";
 
@@ -303,7 +292,7 @@
                 html_after = html_after + "Phone:";
                 html_after += "</td>";
                 html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
+                html_after = html_after + "<input id='input_phone' class='form-control' type='text' name='phone' value='" + phone + "'/>";
                 html_after += "</td>";
                 html_after += "</tr>";
                 html_after += "<tr>";
@@ -311,7 +300,7 @@
                 html_after = html_after + "Email:";
                 html_after += "</td>";
                 html_after += "<td>";
-                html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
+                html_after = html_after + "<input id='input_email' class='form-control' type='text' name='email' value='" + email + "'/>";
                 html_after += "</td>";
                 html_after += "</tr>";
 
@@ -346,6 +335,13 @@
             });
         })();
 
+        var update_profile = function () {
+            var fullname = $('#input_fullname').val(),
+                phone = $('#input_phone').val(),
+                email = $('#input_email').val();
+
+            patientContentScope.update_profile(fullname, phone, email);
+        };
         //});
     </script>
 </div>

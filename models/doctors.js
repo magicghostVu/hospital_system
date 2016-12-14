@@ -22,8 +22,7 @@ var DoctorSchema = mongoose.Schema({
         type: String
     },
     falcuty: {
-        type: ObjectId,
-        ref: 'falcuties'
+        type: String
     },
     email: {
         type: String,
