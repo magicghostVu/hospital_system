@@ -11,8 +11,12 @@ var doctorContentScope;
 var staffContentScope;
 
 
-
+// socket var use in ng-ap
 var ng_socket_doctor;
+var ng_socket_patient;
+var ng_socket_staff;
+
+
 
 var app=angular.module('app', []);
 
