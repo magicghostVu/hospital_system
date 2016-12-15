@@ -205,10 +205,63 @@ var doctorContentController = app.controller('doctorContentController', function
     $scope.dateTimeAppointment='';
     $scope.listRequestElement = [];
 
+    $scope.infoNewAct='';
+
+    $scope.classActiveForListPatient=[];
+
+    $scope.createActShow=[];
+
+    $scope.clickCreateAct=function (indexPatient) {
+        for (i in this.createActShow){
+            this.createActShow[i]=false;
+        }
+        this.createActShow[indexPatient]=true;
+    };
+
+    $scope.classActiveForAcivites=[];
+    $scope.clickItemListPatient=function (index) {
+        for (n in this.classActiveForListPatient){
+            this.classActiveForListPatient[n]= 'inactive';
+        }
+        this.classActiveForListPatient[index]='active';
+    }
+
+    $scope.createActEmit=function (indexPatient) {
+        let username=this.listPatients[indexPatient].username;
+        let info=this.infoNewAct;
+        let data={
+            username: username,
+            info: info
+        }
+        console.log(data);
+        ng_socket_doctor.emit('createActivity', data);
+    };
+
+    $scope.clickAtivities=function (parentIdx, index) {
+        for(ff in this.listPatients){
+            this.classActiveForAcivites[ff]=[]
+            for(aa in this.listPatients[ff].activities ){
+                let ab= this.classActiveForAcivites[ff];
+                if(aa==0){
+                    ab[aa]=false;
+                }else{
+                    ab[aa]=false;
+                }
+            }
+        }
+        this.classActiveForAcivites[parentIdx][index]=true;
+
+        for(h in this.createActShow){
+            this.createActShow[h]=false;
+        }
+    }
+
     $scope.receiveDoctorData = function (data) {
         this.doctorLogin = true;
         this.listRequests = data.listRequests;
         this.profile = data.profile;
+        this.listPatients=data.listPatients;
+
 
         // set default class each eletment in loop
         for (i in this.listRequests) {
@@ -217,6 +270,34 @@ var doctorContentController = app.controller('doctorContentController', function
             else
                 this.listRequestElement[i] = "inactive";
         }
+
+        for(ff in this.listPatients){
+            this.createActShow[ff]=false;
+
+            this.classActiveForAcivites[ff]=[]
+            for(aa in this.listPatients[ff].activities ){
+                let ab= this.classActiveForAcivites[ff];
+                if(aa==0){
+                    ab[aa]=true;
+                }else{
+                    ab[aa]=false;
+                }
+            }
+        }
+        //console.log(this.classActiveForAcivites);
+
+        for(p in this.listPatients){
+            if(p==0){
+                this.classActiveForListPatient[p]='active';
+            }else{
+                this.classActiveForListPatient[p]='inactive';
+            }
+        }
+
+
+
+
+
     };
 
     $scope.updateListRequestEl = function (index) {
