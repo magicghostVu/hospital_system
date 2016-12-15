@@ -153,7 +153,7 @@ patientChannel.on('connection', function (socket) {
             console.log("www 153");
             var new_waiting_request = new Waiting_Request({
                 username: _patient.username,
-                description: data.description
+                description: data.request.description
             });
 
             new_waiting_request.save().then(function (waiting_request) {
@@ -180,7 +180,7 @@ patientChannel.on('connection', function (socket) {
                                 msg: "Có một request khám bệnh mới"
                             }
                             staffChanel.emit('noti_new_request', data)
-                                socket.to(socketid).emit('noti_new_request', data);
+                                staffChanel.to(socketid).emit('noti_new_request', data);
                         }, function (err) {
                             console.log(err);
                         });

@@ -378,7 +378,7 @@ var staffContentController = app.controller('staffContentController', function (
 
     $scope.receiveStaffData = function (data) {
         this.staffLogin = true;
-        this.listRequests = data.listRequestsup;
+        this.listRequests = data.listRequests;
         this.profile = data.profile;
 
         // set default
