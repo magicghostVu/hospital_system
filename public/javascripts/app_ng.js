@@ -231,7 +231,8 @@ var doctorContentController = app.controller('doctorContentController', function
         let info=this.infoNewAct;
         let data={
             username: username,
-            info: info
+            info: info,
+            global_info: global_info
         }
         console.log(data);
         ng_socket_doctor.emit('createActivity', data);

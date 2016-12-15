@@ -51,6 +51,24 @@ module.exports.getSessionsByUsername = function(username){
   });
 };
 
+
+module.exports.getSessionActiveByUsername=function (username) {
+    return new Promise(function (resolve, reject) {
+       Session.find({
+           username: username,
+           status: "active"
+       }).then(function (sessions) {
+           if(sessions.length==0){
+               reject({msg: "No active Sessions"});
+           }else{
+               resolve(sessions[0]);
+           }
+       }, function (err) {
+           reject(err);
+       });
+    });
+};
+
 module.exports.getActiveSessionByDoctor = function (doctorname) {
     return new Promise(function (resolve, reject) {
         var query = {

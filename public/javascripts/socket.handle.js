@@ -18,10 +18,19 @@ socketPatient.on('data_build_UI', function (data) {
         patientContentScope.receivePatientData(data);
 
     });
+
+    console.log(data.notifications);
 });
 
 socketPatient.on('send_noti', function (data) {
     console.log(data);
+
+    patientContentScope.$apply(function () {
+        patientContentScope.notifications.push(data.notification);
+    });
+
+    //todo : update scope patient
+
     toastr.success(data.msg);
 });
 
