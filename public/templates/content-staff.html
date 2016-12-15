@@ -143,29 +143,41 @@
                                     </div>
                                 </div>
                                 <div class="col-md-9">
-                                    <form class="form-group" id="myform_staff1" action="" method="post" enctype="multipart/form-data">
-                                        <h4 >Name: Tyreese Burn</h4>
-                                        <label style="display: none" for="name">Name:</label>
-                                        <input id="name" class="form-control" type="text" name="name" value="23" style="width: 40%;display: none"/>
-                                        <p >Fullname: Manager</p>
-                                        <label style="display: none" for="fullname">Fullname:</label>
-                                        <input id="fullname" class="form-control" type="text" name="fullname" value="23" style="width: 40%;display: none" />
-                                        <span >Phone: 555-555-5555</span>
-                                        <label style="display: none" for="phone">Phone:</label>
-                                        <input id="phone" class="form-control" type="text" name="phone" value="23" style="width: 40%;display: none" />
+                                    <form class="form-group" id="myform_staff1" action="" method="post"
+                                          enctype="multipart/form-data">
+                                        <h2><b>Name:</b> {{profile.username}}</h2>
+                                        <input disabled id="name" class="form-control" type="text" name="name"
+                                               value="23" style="width: 40%;display: none"/>
+
+                                        <h3 ng-show="profileShow"><b>Fullname:</b> <b style="color: #ed1b2f">{{profile.fullname}}</b>
+                                        </h3>
+                                        <label ng-show="!profileShow" for="fullname">Fullname:</label>
+                                        <input ng-show="!profileShow" ng-model="profile.fullname" id="fullname"
+                                               class="form-control" type="text" name="fullname"
+                                               value="{{profile.fullname}}" style="width: 40%"/>
+
+                                        <span ng-show="profileShow"><h4><b>Phone:</b> {{profile.mobile_phone}}</h4></span>
+                                        <label ng-show="!profileShow" for="phone">Phone:</label>
+                                        <input ng-model="profile.mobile_phone" ng-show="!profileShow" id="phone"
+                                               class="form-control" type="text" name="phone" style="width: 40%"/>
+
                                         <br/>
-                                        <span >Email: sample@company.com</span>
-                                        <label style="display: none" for="email">Email:</label>
-                                        <input  id="email" class="form-control" type="text" name="email" value="sample@company.com" style="width: 40%;display: none" />
+                                        <span ng-show="profileShow"><h4><b>Email:</b> {{profile.email}}</h4></span>
+                                        <label ng-show="!profileShow" for="email">Email:</label>
+                                        <input ng-model="profile.email" ng-show="!profileShow" id="email"
+                                               class="form-control" type="text" name="email" value=""
+                                               style="width: 40%;"/>
                                         <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
                                     </form>
-                                    <input id="edit_staff1" class="btn btn-success" style="margin: 10px 10px" type="button"
-                                           name="edit"
+                                    <input id="edit_staff1" ng-show="profileShow" class="btn btn-success"
+                                           style="margin: 10px 10px" type="button"
+                                           name="edit" ng-click="flipProfileShow()"
                                            value="Sửa thông tin"/>
-                                    <input id="ok_staff1" class="btn btn-success"
-                                           style="display:none;float: left;margin-right: 10px"
+                                    <input id="ok_staff1" ng-show="!profileShow" class="btn btn-success"
+                                           ng-click="update_profile()" style="float: left;margin-right: 10px"
                                            type="button" name="ok" value="Chấp nhận"/>
-                                    <input id="exit_staff1" class="btn btn-danger" style="display:none;float: left"
+                                    <input id="exit_staff1" ng-click="flipProfileShow()" ng-show="!profileShow" class="btn btn-danger"
+                                           style="float: left"
                                            type="button"
                                            name="exit" value="Hủy"/>
                                 </div>
@@ -260,105 +272,4 @@
         $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
 
     }
-//
-//                $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
-//                    e.preventDefault();
-//                    $(this).siblings('a.active').removeClass("active");
-//                    $(this).addClass("active");
-//                    var index = $(this).index();
-//                    $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-//                    $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-//                });
-    //$(document).ready(function () {
-    //    (function () {
-    //        var html_staff = '';
-    //        $('#edit_staff').click(function () {
-    //            $('#edit_staff').hide();
-    //            $('#ok_staff').show();
-    //            $('#exit_staff').show();
-    //            html_staff = $('#myform_staff').html();
-    //            var name = $('#myform_staff>h4').text().slice(6);
-    //            var fullname = $('#myform_staff>p').text().slice(7);
-    //            var phone = $('#myform_staff span').first().text().slice(7);
-    //            console.log($('#myform_staff>h4').text());
-    //            var email = $('#myform_staff span').last().text().slice(7);
-    //            var html_after = '';
-    //            html_after += "<table cellpadding='10'>";
-    //
-    //
-    //            html_after += "<tr>";
-    //            html_after += "<td style='height: 55px;'>";
-    //            html_after = html_after + "Name:";
-    //            html_after += "</td>";
-    //            html_after += "<td>";
-    //            html_after = html_after + "<input class='form-control' disabled='disabled' type='text' name='name' value='" + name + "'/>";
-    //            html_after += "</td>";
-    //            html_after += "</tr>";
-    //
-    //            html_after += "<tr>";
-    //            html_after += "<td style='height: 55px;'>";
-    //            html_after = html_after + "Fullname:";
-    //            html_after += "</td>";
-    //            html_after += "<td>";
-    //            html_after = html_after + "<input class='form-control' type='text' name='fullname' value='" + fullname + "'/>";
-    //            html_after += "</td>";
-    //            html_after += "</tr>";
-    //
-    //            html_after += "<tr>";
-    //            html_after += "<td style='height: 55px;'>";
-    //            html_after = html_after + "Phone:";
-    //            html_after += "</td>";
-    //            html_after += "<td>";
-    //            html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
-    //            html_after += "</td>";
-    //            html_after += "</tr>";
-    //            html_after += "<tr>";
-    //            html_after += "<td style='height: 55px;'>";
-    //            html_after = html_after + "Email:";
-    //            html_after += "</td>";
-    //            html_after += "<td>";
-    //            html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
-    //            html_after += "</td>";
-    //            html_after += "</tr>";
-    //
-    ////            html_after += "<tr>";
-    ////            html_after += "<td style='height: 55px'>";
-    ////            html_after = html_after + "Image:";
-    ////            html_after += "</td>";
-    ////            html_after += "<td>";
-    ////            html_after = html_after + "<input class='form-control' type='file' name='image'/>";
-    ////            html_after += "</td>";
-    ////            html_after += "</tr>";
-    //
-    //            html_after += "</table>";
-    //            $('#myform_staff').html(html_after);
-    //        });
-    //        $('#exit_staff').click(function () {
-    //            $('#ok_staff').hide();
-    //            $('#exit_staff').hide();
-    //            $('#myform_staff').html(html_staff);
-    //            $('#edit_staff').show();
-    //        });
-    //
-    //        $('#demo').click(function () {
-    //            console.log($('#left1').css('height'));
-    //        });
-    //        $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
-    //            $("#uploadfile").click();
-    //
-    //        });
-    //        $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
-    //            $("#thumbimage").attr('src', '').hide();
-    //            $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
-    //            $(".removeimg").hide();
-    //            $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
-    //                $("#uploadfile").click();
-    //            });
-    //            $('.Choicefile').css('background', '#0877D8');
-    //            $('.Choicefile').css('cursor', 'pointer');
-    //            $(".filename").text("");
-    //        });
-    //    })();
-
-    //});
 </script>
