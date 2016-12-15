@@ -21,13 +21,16 @@ var patient = require('./routes/patients');
 var doctor = require('./routes/doctors');
 var staff = require('./routes/staffs');
 var notify = require('./routes/notifications');
-var upfile= require('./routes/uploadFile');
+var request= require('./routes/requests');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// setup multer
+app.use(multer({dest: './public/images/'}).single('photo'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -64,16 +67,9 @@ app.use('/patient', patient);
 app.use('/doctor', doctor);
 app.use('/staff', staff);
 app.use('/notify', notify);
-
+app.use('/request', request);
 //set up multer upload file
 
-var multer=require('multer');
-var upload= multer({dest: './public/images'}).single('file');
-app.use(upload);
-
-
-
-app.use('/api', upfile);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

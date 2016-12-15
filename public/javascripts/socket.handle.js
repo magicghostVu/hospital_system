@@ -25,7 +25,14 @@ socketPatient.on('send_noti', function (data) {
     toastr.success(data.msg);
 });
 
+socketPatient.on('send_request', function (data) {
+    console.log(data);
+    toastr.success(data.msg);
+});
 
+// socketPatient.on('noti_new_request', function (data) {
+//    toastr.success("Request da duoc gui thanh cong");
+// });
 // doctor namespace
 var socketDoctor = io('/doctor');
 
@@ -45,7 +52,7 @@ socketDoctor.on('setup_appointment_ss', function (data) {
 
 
 var socketStaff = io('/staff');
-ng_socket_staff=socketStaff
+ng_socket_staff=socketStaff;
 socketStaff.on('data_build_UI', function (data) {
 
     console.log(data);
@@ -54,3 +61,7 @@ socketStaff.on('data_build_UI', function (data) {
     });
 });
 
+socketStaff.on('noti_new_request', function (data) {
+    console.log(data);
+    toastr.info(data.msg);
+});

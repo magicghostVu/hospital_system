@@ -45,6 +45,9 @@ var UserSchema = mongoose.Schema({
     },
     current_socket_id: {
         type: String
+    },
+    avatar: {
+        type: String
     }
 });
 

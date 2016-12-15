@@ -167,7 +167,7 @@
                                         <input ng-model="profile.email" ng-show="!profileShow" id="email"
                                                class="form-control" type="text" name="email" value=""
                                                style="width: 40%;"/>
-                                        <input style="margin: 0 135px;display: none" type="file" value="Change Avatar">
+                                        <input ng-model="profile.avatar" style="margin: 0 135px;" ng-show="!profileShow" type="file" value="Change Avatar">
                                     </form>
                                     <input id="edit_staff1" ng-show="profileShow" class="btn btn-success"
                                            style="margin: 10px 10px" type="button"
@@ -191,7 +191,7 @@
         <div class="tab-pane" id="3c">
             <div class="banner">
                 <div class="banner-left"><h1>notifacation</h1></div>
-                <div class="banner-right"><img src="images/insacation.png"></div>
+                <div class="banner-right"><img src=""></div>
             </div>
             <div class="row" style="margin: 40px 0px">
                 <div class="container">
@@ -207,7 +207,7 @@
                                     <h3>Image</h3>
                                     <div>
                                         <div id="myfileupload">
-                                            <input type="file" id="uploadfile" name="ImageUpload"
+                                            <input type="file" id="uploadfile" name="avatar"
                                                    onchange="readURL(this);"/>
                                             <!--      Name  mà server request về sẽ là ImageUpload-->
                                         </div>

@@ -13,6 +13,10 @@ router.post('/edit', function (req, res, next) {
     var email = req.body.email;
     var mobile_phone = req.body.mobile_phone;
 
+    if (req.file) {
+        console.log('up avatar');
+    };
+
     req.checkBody('token', 'Token is required').notEmpty();
     req.checkBody('fullname', 'Full Name is required').notEmpty();
     req.checkBody('email', 'Email is required').notEmpty();
