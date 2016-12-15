@@ -18,7 +18,10 @@ var DoctorSchema = mongoose.Schema({
     fullname: {
         type: String
     },
-    falcuty: {
+    faculty: {
+        type: String
+    },
+    mobile_phone: {
         type: String
     },
     email: {

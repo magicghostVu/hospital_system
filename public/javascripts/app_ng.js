@@ -238,9 +238,7 @@ var doctorContentController = app.controller('doctorContentController', function
         data.global_info=global_info;
         data.description = this.listRequests[index].description;
         data.patient_username=this.listRequests[index].username;
-
-
-        console.log(data);
+        // console.log(data);
         ng_socket_doctor.emit('setup_appointment',data);
     };
 
@@ -248,17 +246,18 @@ var doctorContentController = app.controller('doctorContentController', function
         var req = {
             token: global_info.token,
             fullname: $scope.profile.fullname,
-            falcuty: $scope.profile.falculty,
+            faculty: $scope.profile.faculty,
             mobile_phone: $scope.profile.mobile_phone,
             email: $scope.profile.email
         };
 
         $http.post('doctor/edit', req).then(function (res) {
-            console.log(res);
+            // console.log(res);
             $scope.flipProfleStatus();
-            toastr.success("Update info successful");
+            toastr.success(res.data.msg);
         }, function (err) {
             console.log(err);
+            toastr.warning(err.message.msg);
         });
     };
 });
@@ -279,7 +278,6 @@ var staffContentController = app.controller('staffContentController', function (
     $scope.listRequests = [];
     $scope.profile = {};
     $scope.listRequestElement = [];
-
     $scope.profileShow = true;
 
     $scope.receiveStaffData = function (data) {
@@ -314,13 +312,20 @@ var staffContentController = app.controller('staffContentController', function (
 
     $scope.update_profile = function(fullname, email, mobile_phone) {
         var req = {
-            fullname: this.profile.fullname,
-            email: this.profile.email,
-            mobile_phone: this.profile.mobile_phone,
+            token: global_info.token,
+            fullname: $scope.profile.fullname,
+            email: $scope.profile.email,
+            mobile_phone: $scope.profile.mobile_phone,
         }
 
         $http.post('staff/edit', req).then(function (res) {
-            console.log(res);
+            $scope.flipProfileShow()
+            if (res.data.errors) {
+                for (i in res.data.errors) {
+                    toastr.warning(res.data.errors[i].msg);
+                }
+            }
+            toastr.success(res.data.msg);
         }, function(err) {
             console.log(err);
         })

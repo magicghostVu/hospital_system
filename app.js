@@ -19,6 +19,7 @@ var login = require('./routes/login');
 var register = require('./routes/register');
 var patient = require('./routes/patients');
 var doctor = require('./routes/doctors');
+var staff = require('./routes/staffs');
 var notify = require('./routes/notifications');
 var upfile= require('./routes/uploadFile');
 
@@ -61,14 +62,10 @@ app.use('/login', login);
 app.use('/register', register);
 app.use('/patient', patient);
 app.use('/doctor', doctor);
+app.use('/staff', staff);
 app.use('/notify', notify);
 
-
-
 //set up multer upload file
-
-//
-
 
 var multer=require('multer');
 var upload= multer({dest: './public/images'}).single('file');

@@ -21,7 +21,7 @@ router.post('/edit', function (req, res, next) {
 
     if (errors) {
         res.send({
-            error: error,
+            errors: errors,
             token: token,
             fullname: fullname,
             email: email,

@@ -19,7 +19,7 @@ router.post('/edit', function (req, res, next) {
 
     req.checkBody('token', 'Token is required').notEmpty();
     req.checkBody('fullname', 'Full Name is required').notEmpty();
-    req.checkBody('faculty', 'Faculty is required').notEmpty();
+    // req.checkBody('faculty', 'Faculty is required').notEmpty();
     var errors = req.validationErrors();
 
     if (errors) {
