@@ -142,6 +142,57 @@ patientChannel.on('connection', function (socket) {
         });
 
     });
+
+    socket.on('send_request', function (data) {
+        console.log("www 147 :" + JSON.stringify(data));
+
+        // TODO: create a new notify for staff and new waiting_request
+        var Waiting_Request = require('../models/waiting_requests');
+        require('../models/users').authenticateToken(data.info.token).then(function (_patient) {
+
+            console.log("www 153");
+            var new_waiting_request = new Waiting_Request({
+                username: _patient.username,
+                description: data.description
+            });
+
+            new_waiting_request.save().then(function (waiting_request) {
+                console.log(waiting_request);
+                var Notify = require('../models/notifications');
+
+                console.log("www 163");
+                var new_totify = new Notify({
+                    username: "longvuong",
+                    username_doctor: "",
+                    content: "Có một request khám bệnh mới",
+                    date : new Date().toDateString(),
+                    time: ""
+                });
+                new_totify.save().then(function (notify) {
+                    console.log(notify);
+
+                    // emit notify to all staff (trong nay dang den 1 staff)
+                    require('../models/users').getSocketIdByUsername("longvuong")
+                        .then(function (socketid) {
+
+                            // console.log("www 177: " + patient_socketid);
+                            var data = {
+                                msg: "Có một request khám bệnh mới"
+                            }
+                            staffChanel.emit('noti_new_request', data)
+                                socket.to(socketid).emit('noti_new_request', data);
+                        }, function (err) {
+                            console.log(err);
+                        });
+                }, function (err) {
+                    console.log("www 170: " + JSON.stringify(err));
+                })
+            }, function (err) {
+                console.log("www 160: " + JSON.stringify(err));
+            })
+        });
+    });
+
     socket.on('disconnect', function () {
         console.log("www 142" + "patient " + socket.id + "disconnect");
         //delete socket id in DB
@@ -179,9 +230,9 @@ doctorChannel.on('connection', function (socket) {
             //save socket id to push notification
             doctor.current_socket_id = id;
             doctor.save().then(function (doctor) {
-                console.log("www 161" + JSON.stringify(doctor));
+                console.log("www 234" + JSON.stringify(doctor));
             }, function (err) {
-                console.log("www 163" + JSON.stringify(err));
+                console.log("www 263" + JSON.stringify(err));
             });
 
             // get profile
@@ -426,9 +477,10 @@ staffChanel.on('connection', function (socket) {
                 console.log("www 301" + JSON.stringify(err));
             });
 
+            var response_data = {};
+
             // get profile of staff
             require('../models/staffs').getStaffDetailByUserName(staff.username).then(function (_staff) {
-                var response_data = {};
 
                 response_data.profile = _staff;
 

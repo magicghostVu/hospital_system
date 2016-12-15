@@ -181,7 +181,7 @@
                                             <div>
                                                 <div id="myfileupload">
                                                     <input style="margin-left: 20px" type="file" id="uploadfile"
-                                                           name="ImageUpload"
+                                                           name="attachment"
                                                            onchange="readURL(this);"/>
                                                     <!--      Name  mà server request về sẽ là ImageUpload-->
                                                 </div>
@@ -244,120 +244,6 @@
                 $(".removeimg").show();
                 $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
             }
-            //$(document).ready(function () {
-//            (function () {
-//                var html = '';
-//                $('#edit').click(function () {
-//                    $('#edit').hide();
-//                    $('#ok').show();
-//                    $('#exit').show();
-//                    html = $('#myform').html();
-//                    var username = $('#myform>h5').text().slice(10);
-//                    var fullname = $('#myform>h4').text().slice(10);
-//                    var phone = $('#myform span').first().text().slice(7);
-//                    var email = $('#myform span').last().text().slice(7);
-//                    var html_after = '';
-//                    html_after += "<table cellpadding='10'>";
-//
-//                    html_after += "<tr>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "User name:";
-//                    html_after += "</td>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "<input id='input_username' disabled='disabled' class='form-control' type='text' name='company' value='" + username + "'/>";
-//                    html_after += "</td>";
-//                    html_after += "</tr>";
-//
-//                    html_after += "<tr>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "Full name:";
-//                    html_after += "</td>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "<input id='input_fullname' class='form-control' type='text' name='name' value='" + fullname + "'/>";
-//                    html_after += "</td>";
-//                    html_after += "</tr>";
-//
-//                    html_after += "<tr>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "Phone:";
-//                    html_after += "</td>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "<input id='input_phone' class='form-control' type='text' name='phone' value='" + phone + "'/>";
-//                    html_after += "</td>";
-//                    html_after += "</tr>";
-//                    html_after += "<tr>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "Email:";
-//                    html_after += "</td>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "<input id='input_email' class='form-control' type='text' name='email' value='" + email + "'/>";
-//                    html_after += "</td>";
-//                    html_after += "</tr>";
-//
-//                    html_after += "<tr>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "Phone:";
-//                    html_after += "</td>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "<input class='form-control' type='text' name='phone' value='" + phone + "'/>";
-//                    html_after += "</td>";
-//                    html_after += "</tr>";
-//                    html_after += "<tr>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "Email:";
-//                    html_after += "</td>";
-//                    html_after += "<td>";
-//                    html_after = html_after + "<input class='form-control' type='text' name='email' value='" + email + "'/>";
-//                    html_after += "</td>";
-//                    html_after += "</tr>";
-//
-////                    html_after += "<tr>";
-////                    html_after += "<td style='height: 55px'>";
-////                    html_after = html_after + "Image:";
-////                    html_after += "</td>";
-////                    html_after += "<td>";
-////                    html_after = html_after + "<input class='form-control' type='file' name='image'/>";
-////                    html_after += "</td>";
-////                    html_after += "</tr>";
-//
-//                    html_after += "</table>";
-//                    console.log(html_after);
-//                    $('#myform').html(html_after);
-//                });
-//                $('#exit').click(function () {
-//                    $('#ok').hide();
-//                    $('#exit').hide();
-//                    $('#myform').html(html);
-//                    $('#edit').show();
-//                });
-//
-//                $('#demo').click(function () {
-//                    console.log($('#left1').css('height'));
-//                });
-//                $(".Choicefile").bind('click', function () { //Chọn file khi .Choicefile Click
-//                    $("#uploadfile").click();
-//
-//                });
-//                $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
-//                    $("#thumbimage").attr('src', '').hide();
-//                    $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
-//                    $(".removeimg").hide();
-//                    $(".Choicefile").bind('click', function () {//Tạo lại sự kiện click để chọn file
-//                        $("#uploadfile").click();
-//                    });
-//                    $('.Choicefile').css('background', '#0877D8');
-//                    $('.Choicefile').css('cursor', 'pointer');
-//                    $(".filename").text("");
-//                });
-//            })();
-
-            var update_profile = function () {
-                var fullname = $('#input_fullname').val(),
-                    phone = $('#input_phone').val(),
-                    email = $('#input_email').val();
-
-                patientContentScope.update_profile(fullname, phone, email);
-            };
         </script>
     </div>
 </div>

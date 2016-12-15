@@ -11,7 +11,12 @@ function getExtentionOfFile(filename) {
     return subString[subString.length-1];
 }
 
-router.post('/upfile', function (req, res, next) {
+router.post('/', function (req, res, next) {
+
+    if (req.attachment) {
+        console.log("upload file");
+    };
+
     var pathOrigin= './public/images/'+req.file.filename;
 
 
@@ -28,6 +33,7 @@ router.post('/upfile', function (req, res, next) {
 
     var filenameExpect= req.file.filename+"."+ extension;
     //TODO: rename file name (add extension)
+
 
 
 

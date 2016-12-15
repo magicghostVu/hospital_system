@@ -145,7 +145,10 @@ var patientContentController=app.controller('patientContentController', function
     $scope.notifications=[];
     $scope.request={};
     $scope.requestDescription="";
+    $scope.fileupload="";
+
     $scope.profileDisplay=true;
+
     $scope.receivePatientData=function(data){
         this.patientLogin=true;
         this.listDoctors=data.listDoctors;
@@ -178,9 +181,25 @@ var patientContentController=app.controller('patientContentController', function
         // TODO: send file image first to get back img ID
         // $http send file to server ...
         // then emit description to server
-        console.log(this.requestDescription);
+        this.request = {
+            description: $scope.requestDescription,
+            // file: $scope.fileupload
+        };
 
-    }
+        console.log(this.request);
+        // $http.post('/request/send', $scope.request).then(function (res) {
+        //     console.log(res);
+        // }, function (err) {
+        //     console.log(err);
+        // });
+
+        var data = {
+            request: $scope.request,
+            msg: "Send a request",
+            info: global_info
+        };
+        ng_socket_patient.emit('send_request', data);
+    };
 
 });
 
@@ -231,9 +250,9 @@ var doctorContentController = app.controller('doctorContentController', function
         let info=this.infoNewAct;
         let data={
             username: username,
-            info: info,
-            global_info: global_info
-        }
+            info: info
+        };
+
         console.log(data);
         ng_socket_doctor.emit('createActivity', data);
     };
@@ -294,11 +313,6 @@ var doctorContentController = app.controller('doctorContentController', function
                 this.classActiveForListPatient[p]='inactive';
             }
         }
-
-
-
-
-
     };
 
     $scope.updateListRequestEl = function (index) {
@@ -392,13 +406,15 @@ var staffContentController = app.controller('staffContentController', function (
         }
     };
 
-    $scope.update_profile = function(fullname, email, mobile_phone) {
+    $scope.update_profile = function() {
+
         var req = {
             token: global_info.token,
             fullname: $scope.profile.fullname,
             email: $scope.profile.email,
             mobile_phone: $scope.profile.mobile_phone,
-        }
+            file: $scope.profile.avatar,
+        };
 
         $http.post('staff/edit', req).then(function (res) {
             $scope.flipProfileShow()
