@@ -179,8 +179,8 @@ patientChannel.on('connection', function (socket) {
                             var data = {
                                 msg: "Có một request khám bệnh mới"
                             }
-                            staffChanel.emit('noti_new_request', data)
-                                staffChanel.to(socketid).emit('noti_new_request', data);
+                            staffChanel.to(socketid).emit('noti_new_request', data);
+                            // staffChanel.to(socketid).emit('noti_new_request', data);
                         }, function (err) {
                             console.log(err);
                         });
@@ -503,8 +503,52 @@ staffChanel.on('connection', function (socket) {
             console.log("www 297: " + JSON.stringify(err));
         });
     });
-});
 
+    socket.on('set_doctor', function (data) {
+        console.log("www 508: " + JSON.stringify(data));
+        require('../models/users').getSocketIdByUsername(data.username_doctor)
+            .then(function (socketid) {
+                console.log(socketid);
+                var back_data = {
+                    username: data.username_doctor,
+                    patient_username: data.patient_username,
+                    msg: "Bạn có request khám bệnh mới"
+                };
+                console.log("www 516: " + JSON.stringify(back_data));
+                doctorChannel.to(socketid).emit('sent_set_request', back_data);
+
+                require('../models/waiting_requests').getWaitingRequestByProcessed(data.patient_username)
+                    .then(function (req) {
+
+                        var Session = require('../models/sessions');
+
+                        var newSession = new Session({
+                            description: req.description,
+                            begin_date: new Date().toDateString(),
+                            username: data.patient_username,
+                            username_doctor: data.username_doctor,
+                            status: "active"
+                        });
+
+                        newSession.save().then(function (session) {
+                            console.log(session);
+                        }, function (err) {
+                            console.log(err);
+                        });
+
+                        require('../models/users').getSocketIdByUsername(data.patient_username).then(function (socketid) {
+
+                            patientChannel.to(socketid).emit("new_sessions", { msg: "Yeu cau da duoc chap nhan"});
+                        })
+
+                    }, function (err) {
+                        console.log(err);
+                    })
+            }, function (err) {
+                console.log("www 519 " + JSON.stringify(err));
+            });
+    });
+});
 
 /**
  * Listen on provided port, on all network interfaces.

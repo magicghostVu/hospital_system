@@ -82,6 +82,20 @@ module.exports.getAllWaitingRequest = function () {
         });
     });
 };
+
+module.exports.getWaitingRequestByProcessed =function (username) {
+    return new Promise(function (resolve, reject) {
+        var query = {
+            username: username,
+            processed: true
+        };
+        WaitingRequest.find(query).then(function (req) {
+            resolve(req[0])
+        }, function (err) {
+            console.log(err);
+        });
+    });
+};
 // WaitingRequest.getWaitingRequestByDoctor("hoangvuong52").then(function (waiting_request) {
 //     console.log(waiting_request);
 // }, function (err) {

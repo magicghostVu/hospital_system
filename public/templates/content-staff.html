@@ -46,16 +46,19 @@
                                     <div class="date">
                                         <div class="row">
                                             <p>Description: {{req.description}}</p>
-                                            <h4 style="float: left">Image :</h4> <img style="float: left" src="http://dieutribenhlau.net/wp-content/uploads/2016/01/sep-ba-nhiem-benh-lau-vi-ham-ho-phi-cong-tre-dao-hoa-2.jpg"
+                                            <h4 style="float: left">Image :</h4> <img style="float: left" src=""
                                                                                       height="150px" width="150px"
                                                                                       alt="img"/>
                                         </div>
+
+
                                         <div class="row ">
                                             <div class="container">
                                                 <label for="text_dropdown">Doctor's Name</label>
                                             </div>
 
                                         </div>
+
                                         <div class="row form-group" style="margin: 10px 0">
                                             <div class="col-md-4">
                                                 <div class="dropdown">
@@ -67,30 +70,27 @@
                                                     <div id="myDropdown" class="dropdown-content">
                                                         <input type="text" placeholder="Search.." id="myInput"
                                                                onkeyup="filterFunction()">
-                                                        <a href="">About</a>
-                                                        <a href="">Base</a>
-                                                        <a href="">Blog</a>
-                                                        <a href="">Contact</a>
-                                                        <a href="">Custom</a>
-                                                        <a href="">Support</a>
-                                                        <a href="">Tools</a>
+                                                        <a href="">thang</a>
+                                                        <a href="">hoangvuong52</a>
+                                                        <a href="">ngoc</a>
+                                                        <a href="">long</a>
+                                                        <a href="">thanh</a>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-5">
-                                                <input class="form-control" type="text" value=""
+                                                <input class="form-control" type="text" value="" ng-model="username_doctor"
                                                        name="" id="text_dropdown"
                                                        placeholder="Doctor's name"
                                                        style="display: none"/></div>
                                             <script>
                                                 $('#myDropdown a').click(function () {
-
                                                     $('#text_dropdown').show();
                                                     $('#text_dropdown').val($(this).text());
                                                     $('#butn').click();
                                                 });
                                             </script>
-                                            <div class="col-md-3"><input class="btn1 btn-success" type="button"
+                                            <div class="col-md-3"><input ng-click="update_doctor()" class="btn1 btn-success" type="button"
                                                                          value="Assign"/></div>
 
                                             <script>
@@ -99,7 +99,6 @@
                                                 function myFunction() {
                                                     document.getElementById("myDropdown").classList.toggle("show");
                                                 }
-
                                                 function filterFunction() {
                                                     var input, filter, ul, li, a, i;
                                                     input = document.getElementById("myInput");

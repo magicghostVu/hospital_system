@@ -375,6 +375,7 @@ var staffContentController = app.controller('staffContentController', function (
     $scope.profile = {};
     $scope.listRequestElement = [];
     $scope.profileShow = true;
+    $scope.username_doctor = '';
 
     $scope.receiveStaffData = function (data) {
         this.staffLogin = true;
@@ -406,6 +407,14 @@ var staffContentController = app.controller('staffContentController', function (
         }
     };
 
+    $scope.update_doctor = function () {
+        var data = {
+            username_doctor: 'hoangvuong52',
+            patient_username: $scope.listRequests[0].username
+        };
+        ng_socket_staff.emit('set_doctor', data);
+    };
+
     $scope.update_profile = function() {
 
         var req = {
@@ -417,7 +426,7 @@ var staffContentController = app.controller('staffContentController', function (
         };
 
         $http.post('staff/edit', req).then(function (res) {
-            $scope.flipProfileShow()
+            $scope.flipProfileShow();
             if (res.data.errors) {
                 for (i in res.data.errors) {
                     toastr.warning(res.data.errors[i].msg);

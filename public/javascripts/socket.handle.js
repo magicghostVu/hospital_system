@@ -39,6 +39,9 @@ socketPatient.on('send_request', function (data) {
     toastr.success(data.msg);
 });
 
+socketPatient.on('new_sessions', function (data) {
+    toastr.info("Yêu cầu của bạn đã được chấp nhận");
+});
 // socketPatient.on('noti_new_request', function (data) {
 //    toastr.success("Request da duoc gui thanh cong");
 // });
@@ -59,6 +62,9 @@ socketDoctor.on('setup_appointment_ss', function (data) {
     console.log('Đặt lịch thành công');
 });
 
+socketDoctor.on('sent_set_request', function (data) {
+    toastr.info("Bạn có một yêu cầu khám bệnh mới.");
+});
 
 var socketStaff = io('/staff');
 ng_socket_staff=socketStaff;
