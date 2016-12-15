@@ -199,9 +199,11 @@ doctorChannel.on('connection', function (socket) {
 
                         // get list patient by doctor who serve this patient
                         require('../models/sessions').getActiveSessionByDoctor(_doctor.username).then(function (sessions) {
+
                             response_data.listPatients = sessions;
 
                             console.log("www 198: " + JSON.stringify(response_data));
+
 
                             // send back data to doctor
                             doctorChannel.to(id).emit('data_build_UI', response_data);
@@ -221,6 +223,12 @@ doctorChannel.on('connection', function (socket) {
         });
     });
 
+    socket.on('createActivity', function (data) {
+        //create new act and update db, create noti, and send noti if can
+        
+
+       console.log(data);
+    });
     socket.on('disconnect', function () {
         console.log("www 142" + "doctor " + socket.id + "disconnect");
         //delete socket id in DB

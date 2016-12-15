@@ -33,7 +33,7 @@ var socketDoctor = io('/doctor');
 ng_socket_doctor = socketDoctor;
 socketDoctor.on('data_build_UI', function (data) {
 
-    console.log(data);
+    console.log(data.listPatients);
     doctorContentScope.$apply(function () {
         console.log(data.profile);
         doctorContentScope.receiveDoctorData(data);
