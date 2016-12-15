@@ -6,6 +6,7 @@ var router = express.Router();
 var FCM = require('fcm-push');
 
 router.post('/send', function (req, res, next) {
+    var FCM = require('fcm-push');
     var serverKey = "AAAAtbX1V6g:APA91bFl0IlGkXjEINIIG_-mh4LHitRRj8dAS1Af4HDp5DiYUwlla1Oskqd_15GNERWMbY4S1FXKAOSgM6hZfT_zcvt_xNnjd3-mUiUvDUGKhnmuJZCsaUD0xjIghvIW8OYBzbSnAgiWJ1VBPvR0MfhROCPQLi5QYQ";
 
     // var token = 'dE2k_bKDMOA:APA91bHNAg5JGt8B6fiEHGW9Wjyztd1hRjaDVGgpLXIRGOG_XUWK76JexpPujHXbCc0zDBMQ0cCEqtl6QrJ2V8p2flmi_EzVpfbsOyCohmwV1vhIAhe_GYvIDl50r3g7iZ8IwxwH9Ivw';

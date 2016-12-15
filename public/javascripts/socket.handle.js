@@ -6,6 +6,9 @@
 // all event handle here ???? yes or no ??
 var socket = io();
 
+//
+
+
 // patient namespace
 var socketPatient = io("/patient");
 ng_socket_patient=socketPatient
